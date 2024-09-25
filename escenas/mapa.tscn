@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=4 uid="uid://cwqohrojyjh0e"]
 
 [ext_resource type="Script" path="res://escenas/mapa.gd" id="1_812g3"]
-[ext_resource type="TileSet" uid="uid://e1ugupsweubu" path="res://Recursos/chilling runestres.tres" id="1_yrs0c"]
+[ext_resource type="TileSet" uid="uid://bckp2sxh4p8hk" path="res://Recursos/chilling runestres.tres" id="1_yrs0c"]
 [ext_resource type="Texture2D" uid="uid://dtt1858mwjbes" path="res://icon.svg" id="3_e1j5k"]
 [ext_resource type="Texture2D" uid="uid://cvntdgdrsegdl" path="res://Recursos/hearts.png" id="4_661y6"]
 
