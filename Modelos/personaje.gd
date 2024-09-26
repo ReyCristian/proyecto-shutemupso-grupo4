@@ -13,17 +13,17 @@ extends CharacterBody2D;
 @export var esperando: bool  = false;
 @export var skin: ListasTexturas.texturas_personaje;
 
-var disparo:bool = true
-var pre_laser:Resource = preload("res://Modelos/laser.tscn")
-var antena_superior:bool = true
+var disparo:bool = true;
+var pre_laser:Resource = preload("res://Modelos/laser.tscn");
+var antena_superior:bool = true;
 
-@export var vida: int = 3
+@export var vida: int = 3;
 var muerto:bool = false;
 var limpiar_cadaver:bool = true;
 
 func _ready() -> void:
 	if self.is_in_group("enemigo"):
-		self.set_collision_layer(2);
+		self.set_collision_layer(1);
 		self.set_collision_mask(0);
 
 func _physics_process(delta: float) -> void:
@@ -32,7 +32,7 @@ func _physics_process(delta: float) -> void:
 		return;
 		
 	var direccion_normalizada = self.direccion.normalized();
-	var direccion_automatica = auto_mover(direccion_normalizada)
+	var direccion_automatica = auto_mover(direccion_normalizada);
 	var movimiento=calcular_movimiento(direccion_automatica,delta);
 		
 	move_and_collide(movimiento);
@@ -58,10 +58,11 @@ func calcular_movimiento(direccion_normalizada: Vector2,delta: float) -> Vector2
 		movimiento *=20;
 	return movimiento;
 
-func dar_golpe(body: Node2D) -> void:
+func dar_golpe(body: Node2D = null) -> void:
 	if muerto:
 		return;
-	$Sprite2D/direccion.set_direccion(body.global_position - global_position)
+	if body!=null:
+		$Sprite2D/direccion.set_direccion(body.global_position - global_position)
 	if tiene_espada:
 		$Sprite2D.dar_golpe_espada();
 	else:
@@ -84,9 +85,11 @@ func shot():
 		disparo = false
 		await get_tree().create_timer(0.5).timeout
 		disparo = true
+func detener_shot():
+	$Sprite2D.detener_shot();
 
 func tomar_daño():
-	if muerto:
+	if muerto or recibio_daño():
 		return;
 	vida -=1;
 	if vida <=0:
@@ -100,7 +103,10 @@ func morir():
 	$hitbox.queue_free();
 	$hostilidad.queue_free();
 	$CollisionShape2D.queue_free();
-		
+	
+func recibio_daño() -> bool:
+	return $Sprite2D.recibio_daño()
+	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 	pass # Replace with function body.
@@ -125,5 +131,7 @@ func _on_animacion_animation_finished(anim_name: StringName) -> void:
 
 func hacer_daño():
 	for golpeado in $area_espada.get_overlapping_bodies():
-		if golpeado.is_in_group("vivo"):
+		if golpeado.is_in_group("vivo") and golpeado != self:
 			golpeado.tomar_daño()
+		if golpeado.is_in_group("TileMapDestruible"):
+			golpeado.romper_posicion_global(global_position + direccion.normalized() * 8)

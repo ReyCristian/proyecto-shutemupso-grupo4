@@ -92,7 +92,12 @@ func get_skin_aleatoria():
 	return ListasTexturas.texturas_personaje.values()[indice_aleatorio] ;
 
 func reproducir(animacion: String):
+	if reproductor_animaciones.current_animation != animacion:
+		reproductor_animaciones.play("RESET");
 	reproductor_animaciones.play(animacion);
+	
+func reproducir_queue(animacion: String):
+	reproductor_animaciones.queue(animacion);
 
 func dar_golpe():
 	reproducir("golpe");
@@ -101,7 +106,15 @@ func dar_golpe_espada():
 	reproducir("espada");
 
 func shot() -> void:
-	reproducir("magia");
+	if not esta_atacando():
+		reproducir("casteo_magia")
+		reproducir_queue("magia");
+		
+func detener_shot() -> void:
+	reproducir("RESET")
+
+func esta_atacando() -> bool:
+	return reproductor_animaciones.current_animation in ["magia","casteo_magia"];
 	
 func tomar_daño():
 	reproducir("daño");
@@ -111,3 +124,6 @@ func morir():
 	
 func esta_ocupado() -> bool:
 	return reproductor_animaciones.esta_ocupado()
+
+func recibio_daño() -> bool:
+	return reproductor_animaciones.current_animation in ["daño","muerte"]

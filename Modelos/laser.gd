@@ -23,8 +23,6 @@ func _process(delta):
 
 				# Destruir el tile en esa posición
 				tilemap.erase_cell(cell_pos)
-				print("laser impacta en la posición:", collision_point)
-				print("Tile destruido en la posición:", cell_pos)
 				queue_free()
 
 func _physics_process(delta: float) -> void:

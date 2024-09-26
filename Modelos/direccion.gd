@@ -6,7 +6,7 @@ extends AnimationPlayer
 func _process(_delta: float) -> void:
 	if personaje.en_demo:
 		return;
-	if sprite.esta_ocupado():
+	if sprite.esta_ocupado() and not sprite.esta_atacando():
 		return;
 	var direccion = (personaje.direccion + personaje.auto_movimiento)
 	

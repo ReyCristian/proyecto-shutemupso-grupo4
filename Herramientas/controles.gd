@@ -40,8 +40,10 @@ func check_corriendo():
 
 func check_golpe():
 	if Input.is_action_just_pressed("ui_accept"):
-		personaje.dar_golpe()
+		personaje.dar_golpe();
 
 func check_shot():
 	if Input.is_action_pressed("ataque1"):
-		personaje.shot()
+		personaje.shot();
+	elif Input.is_action_just_released("ataque1"):
+		personaje.detener_shot();
