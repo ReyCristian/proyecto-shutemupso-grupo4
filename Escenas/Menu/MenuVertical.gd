@@ -23,6 +23,7 @@ func _process(delta: float) -> void:
 			position.x -= 1500*delta; 
 		else:
 			visible = false;
+			get_parent().pause_off();
 	pass
 
 func showMenu() -> void:

@@ -1,9 +1,12 @@
 extends AnimationPlayer
 
 @onready var personaje =  $"../.."
+@onready var sprite =  $".."
 
 func _process(_delta: float) -> void:
-	if get_tree().current_scene.name == "personaje":
+	if personaje.en_demo:
+		return;
+	if sprite.esta_ocupado():
 		return;
 	var direccion = (personaje.direccion + personaje.auto_movimiento)
 	

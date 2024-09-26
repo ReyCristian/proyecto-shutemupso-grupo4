@@ -3,7 +3,7 @@ extends Sprite2D
 @onready var personaje = $"..";
 @onready var reproductor_animaciones:AnimationPlayer = $Animacion;
 
-func _ready() -> void:
+func _ready() -> void:	
 	cargar_skin()
 	reproductor_animaciones.play("RESET");
 	
@@ -37,7 +37,8 @@ func cargar_skin() -> void:
 	if personaje.skin != null:
 		texture = load(skin_texturas[personaje.skin])
 		#Carga las animaciones de la skin
-		reproductor_animaciones.active = false;
+		$Animacion.active = false;
+		$Animacion2.active = false;
 		reproductor_animaciones = get_animation_player_skin();
 		reproductor_animaciones.active = true;
 
@@ -94,7 +95,19 @@ func reproducir(animacion: String):
 	reproductor_animaciones.play(animacion);
 
 func dar_golpe():
-	reproductor_animaciones.play("golpe");
+	reproducir("golpe");
 	
 func dar_golpe_espada():
-	reproductor_animaciones.play("espada");
+	reproducir("espada");
+
+func shot() -> void:
+	reproducir("magia");
+	
+func tomar_daño():
+	reproducir("daño");
+
+func morir():
+	reproducir("muerte");
+	
+func esta_ocupado() -> bool:
+	return reproductor_animaciones.esta_ocupado()

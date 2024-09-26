@@ -1,17 +1,23 @@
 extends Control;
 
 @export var personaje_principal: NodePath;
+@export var mapa_nivel: NodePath;
 
 @export var isCorriendo: bool = false;
 
 @onready var personaje = get_node(personaje_principal);
+@onready var mapa = get_node(mapa_nivel);
+
+func _ready() -> void:
+	personaje.auto_movimiento.y = -float(mapa.velocidad) / 100
 
 func _physics_process(_delta: float) -> void:
-	if personaje:
+	if personaje and not personaje.muerto:
 		reset()
 		check_movimiento();
 		check_corriendo();
 		check_golpe();
+		check_shot()
 	pass;
 
 
@@ -35,3 +41,7 @@ func check_corriendo():
 func check_golpe():
 	if Input.is_action_just_pressed("ui_accept"):
 		personaje.dar_golpe()
+
+func check_shot():
+	if Input.is_action_pressed("ataque1"):
+		personaje.shot()

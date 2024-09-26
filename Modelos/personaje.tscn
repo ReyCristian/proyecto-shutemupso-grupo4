@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://bp3b1wcfik24s"]
+[gd_scene load_steps=46 format=3 uid="uid://bp3b1wcfik24s"]
 
 [ext_resource type="Script" path="res://Modelos/personaje.gd" id="1_k874c"]
 [ext_resource type="Texture2D" uid="uid://cjbbfhcehiy55" path="res://Recursos/personajes/Human-Soldier-Cyan.png" id="2_537m2"]
@@ -286,7 +286,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_6phne"]
 resource_name = "daño"
-length = 1.2
+length = 0.8
 step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -295,10 +295,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.8, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [19, 21, 21, 22]
+"values": [21, 21, 22]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -307,7 +307,7 @@ tracks/1/path = NodePath("Sprite2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"times": PackedFloat32Array(-1.49012e-08, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -327,12 +327,13 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [19, 20, 21]
+"values": [20, 21, 19]
 }
 
 [sub_resource type="Animation" id="Animation_dnt4d"]
 resource_name = "espada"
-step = 0.2
+length = 0.6
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -340,10 +341,24 @@ tracks/0/path = NodePath("Sprite2D:frame_coords")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(5, 0)]
+"values": [Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hacer_daño"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ln8w4"]
@@ -411,7 +426,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [19, 21, 22, 23]
+"values": [21, 19, 22, 23]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -420,10 +435,10 @@ tracks/1/path = NodePath("Sprite2D:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.8, 1, 1.2, 1.4, 1.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.8, 1, 1.2, 1.4, 1.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [false, true, false, true, false]
+"values": [true, false, true, false, true, false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dcydf"]
@@ -717,8 +732,15 @@ radius = 4.0
 height = 8.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nwevv"]
+radius = 24.0208
 
-[node name="personaje" type="CharacterBody2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvdeg"]
+radius = 6.0
+height = 14.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7aq8q"]
+
+[node name="personaje" type="CharacterBody2D" groups=["vivo"]]
 position = Vector2(239, 139)
 script = ExtResource("1_k874c")
 skin = 2
@@ -740,7 +762,6 @@ libraries = {
 script = ExtResource("3_yhpdf")
 
 [node name="Animacion" type="AnimationPlayer" parent="Sprite2D"]
-active = false
 root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_dcydf")
@@ -748,21 +769,42 @@ libraries = {
 script = ExtResource("4_644rf")
 
 [node name="Animacion2" type="AnimationPlayer" parent="Sprite2D"]
-active = false
 libraries = {
 "": SubResource("AnimationLibrary_s7h2q")
 }
 script = ExtResource("4_644rf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_jor17")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="hostilidad" type="Area2D" parent="."]
+visible = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hostilidad"]
 position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_nwevv")
 debug_color = Color(0.821314, 0.207266, 0.842732, 0.42)
 
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
+position = Vector2(3.09944e-06, -3)
+scale = Vector2(0.7, 1)
+
+[node name="hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
+shape = SubResource("CapsuleShape2D_lvdeg")
+
+[node name="area_espada" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="area_espada"]
+shape = SubResource("CircleShape2D_7aq8q")
+
+[connection signal="animation_finished" from="Sprite2D/Animacion" to="." method="_on_animacion_animation_finished"]
+[connection signal="body_entered" from="hostilidad" to="." method="_on_cuerpo_entra_zona_hostilidad"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_area_entra_hitbox"]

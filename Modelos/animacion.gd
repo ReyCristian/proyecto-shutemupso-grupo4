@@ -2,11 +2,13 @@ extends AnimationPlayer
 
 @onready var personaje =  $"../..";
 
+const animaciones_no_prioritarias = ["idle","correr","caminar","","RESET"]
+
 func _process(_delta: float) -> void:
 	if personaje.en_demo:
 		return;
 		
-	if not self.current_animation in ["idle","correr","caminar","","RESET"]:
+	if esta_ocupado():
 		return;
 	elif (personaje.direccion + personaje.auto_movimiento)== Vector2.ZERO || personaje.esperando:
 		self.play("idle");
@@ -16,3 +18,6 @@ func _process(_delta: float) -> void:
 		self.play("caminar");
 		
 	pass
+
+func esta_ocupado() -> bool:
+	return not self.current_animation in animaciones_no_prioritarias;
