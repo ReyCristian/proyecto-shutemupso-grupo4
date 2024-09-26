@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 	else:
 		if position.x > hidePos:
 			position.x -= 1500*delta; 
-		else:
+		elif visible:
 			visible = false;
 			get_parent().pause_off();
 	pass

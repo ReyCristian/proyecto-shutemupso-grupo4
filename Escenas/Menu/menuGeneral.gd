@@ -12,7 +12,7 @@ func hideMenu() -> void:
 
 
 func pause_off() -> bool:
-	if $Niveles.visible || $Principal.visible:
+	if $Niveles.visible or $Principal.visible:
 		return false;
-	#get_tree().paused = false
+	get_tree().paused = false
 	return true;

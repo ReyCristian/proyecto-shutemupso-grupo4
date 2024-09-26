@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsa8wjw6v5etj"
-path="res://.godot/imported/hearts.png-0aa6a8f14209c46e5cdff61f1d479958.ctex"
+uid="uid://di4iyoydia6eb"
+path="res://.godot/imported/laser naranja.png-038b9a85894c78ca722eff157a92eed9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Escenas/hearts.png"
-dest_files=["res://.godot/imported/hearts.png-0aa6a8f14209c46e5cdff61f1d479958.ctex"]
+source_file="res://Recursos/laser naranja.png"
+dest_files=["res://.godot/imported/laser naranja.png-038b9a85894c78ca722eff157a92eed9.ctex"]
 
 [params]
 

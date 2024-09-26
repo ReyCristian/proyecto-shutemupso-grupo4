@@ -1,7 +1,7 @@
 extends Control
 
 const pre_lvl_1 = preload("res://Escenas/nivel_1.tscn");
-const pre_lvl_2 = preload("res://Escenas/mapa_2.tscn");
+const pre_lvl_2 = preload("res://Escenas/nivel_2.tscn");
 const pre_lvl_3 = preload("res://Escenas/mapa.tscn");
 
 var principal: Node2D;

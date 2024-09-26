@@ -15,7 +15,7 @@ size = Vector2(21.75, 46.75)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mq61"]
 size = Vector2(44, 20)
 
-[node name="Node2D" type="Node2D"]
+[node name="Fondo_menu" type="Node2D"]
 
 [node name="Delimitador" type="Area2D" parent="."]
 position = Vector2(165.25, 293.75)

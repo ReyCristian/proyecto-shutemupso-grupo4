@@ -8,14 +8,20 @@ func _ready() -> void:
 	principal = get_tree().current_scene;
 	
 func _process(_delta: float) -> void:
+	var isMenuOpened = get_parent().isShowed
+	if es_menu_principal() and isMenuOpened:
+		return; #El menu principal esta abierto
 	if Input.is_action_just_released("ui_cancel"):
-		var isMenuOpened = get_parent().isShowed
 		menu_principal.hideMenu();
 		if not isMenuOpened:
 			get_parent().showMenu();
-			#get_tree().paused = true
+			if not es_menu_principal():
+				get_tree().paused = true
 	pass
 
 func _on_salir_pressed() -> void:
 	get_tree().quit()
 	pass
+
+func es_menu_principal() ->bool :
+	return principal.lvl_actual.name == "Fondo_menu"

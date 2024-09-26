@@ -32,6 +32,7 @@ script = ExtResource("4_wb1qn")
 personaje_principal = NodePath("..")
 mapa_nivel = NodePath("../..")
 isCorriendo = true
+metadata/_edit_use_anchors_ = true
 
 [node name="Generadores" type="CanvasLayer" parent="."]
 

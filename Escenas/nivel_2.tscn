@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://72k80u106hb3"]
+
+[ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_3eoju"]
+[ext_resource type="PackedScene" uid="uid://bj223svbntw7t" path="res://Escenas/mapa_2.tscn" id="2_qpulv"]
+[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="3_w1ild"]
+[ext_resource type="Script" path="res://Herramientas/controles.gd" id="4_xdoaj"]
+[ext_resource type="Script" path="res://Escenas/generador_enemigos.gd" id="5_iwcra"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s6q0b"]
+size = Vector2(340, 12.25)
+
+[node name="nivel_2" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_3eoju")
+
+[node name="mapa2" parent="." instance=ExtResource("2_qpulv")]
+script = null
+
+[node name="personaje" parent="." groups=["personaje"] instance=ExtResource("3_w1ild")]
+position = Vector2(256, 218)
+skin = 3
+
+[node name="Control" type="Control" parent="personaje"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_xdoaj")
+personaje_principal = NodePath("..")
+mapa_nivel = NodePath("../..")
+isCorriendo = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Generadores" type="CanvasLayer" parent="."]
+
+[node name="generador_enemigos" type="Area2D" parent="Generadores"]
+position = Vector2(233, -28)
+script = ExtResource("5_iwcra")
+skin = 11
+
+[node name="Timer" type="Timer" parent="Generadores/generador_enemigos"]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Generadores/generador_enemigos"]
+shape = SubResource("RectangleShape2D_s6q0b")
+
+[connection signal="timeout" from="Generadores/generador_enemigos/Timer" to="Generadores/generador_enemigos" method="_on_timer_timeout"]

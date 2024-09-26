@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dt21djwlgk53x"]
 
 [ext_resource type="Script" path="res://Modelos/laser.gd" id="1_fwqrj"]
-[ext_resource type="Texture2D" uid="uid://dtt1858mwjbes" path="res://icon.svg" id="2_7jd2f"]
+[ext_resource type="Texture2D" uid="uid://di4iyoydia6eb" path="res://Recursos/laser naranja.png" id="2_cme2c"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qlm6j"]
 size = Vector2(5, 3)
@@ -9,9 +9,10 @@ size = Vector2(5, 3)
 [node name="Laser" type="Node2D"]
 script = ExtResource("1_fwqrj")
 
-[node name="Icon" type="Sprite2D" parent="."]
-scale = Vector2(0.263672, 0.0273438)
-texture = ExtResource("2_7jd2f")
+[node name="LaserNaranja" type="Sprite2D" parent="."]
+position = Vector2(4, 5.96046e-08)
+scale = Vector2(0.168478, 0.168478)
+texture = ExtResource("2_cme2c")
 
 [node name="Area2D" type="Area2D" parent="." groups=["laser"]]
 position = Vector2(14, 0)
