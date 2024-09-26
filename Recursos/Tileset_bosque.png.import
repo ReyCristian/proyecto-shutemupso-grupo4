@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsa8wjw6v5etj"
-path="res://.godot/imported/hearts.png-0aa6a8f14209c46e5cdff61f1d479958.ctex"
+uid="uid://n4crsc08urid"
+path="res://.godot/imported/Tileset_bosque.png-367be6d2dd6b535951c2d5c28ccdf59a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Escenas/hearts.png"
-dest_files=["res://.godot/imported/hearts.png-0aa6a8f14209c46e5cdff61f1d479958.ctex"]
+source_file="res://Recursos/Tileset_bosque.png"
+dest_files=["res://.godot/imported/Tileset_bosque.png-367be6d2dd6b535951c2d5c28ccdf59a.ctex"]
 
 [params]
 

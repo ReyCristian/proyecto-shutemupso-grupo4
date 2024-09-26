@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://dx4378fg2vya0"]
+
+[ext_resource type="PackedScene" uid="uid://cwqohrojyjh0e" path="res://Escenas/mapa.tscn" id="1_2r6gf"]
+[ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_ay07l"]
+[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="3_jnqyg"]
+[ext_resource type="Script" path="res://Herramientas/controles.gd" id="4_wb1qn"]
+
+[node name="Nivel1" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_ay07l")
+
+[node name="mapa" parent="." instance=ExtResource("1_2r6gf")]
+
+[node name="Enemigo" parent="." groups=["enemigo"] instance=ExtResource("3_jnqyg")]
+position = Vector2(252, 134)
+skin = 9
+
+[node name="personaje" parent="." groups=["personaje"] instance=ExtResource("3_jnqyg")]
+position = Vector2(256, 218)
+skin = 3
+
+[node name="Control" type="Control" parent="personaje"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_wb1qn")
+personaje_principal = NodePath("..")
+isCorriendo = true

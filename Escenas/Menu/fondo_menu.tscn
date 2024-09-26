@@ -1,0 +1,101 @@
+[gd_scene load_steps=9 format=3 uid="uid://bbqeov3sq8ncn"]
+
+[ext_resource type="Script" path="res://Modelos/area_delimitada.gd" id="1_wb6xj"]
+[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="2_20mo6"]
+[ext_resource type="Script" path="res://Modelos/esperando.gd" id="3_4gdfb"]
+[ext_resource type="PackedScene" uid="uid://3qq60mdm3lup" path="res://Escenas/Menu/mapa_menu.tscn" id="3_vcvet"]
+[ext_resource type="Script" path="res://Escenas/Menu/camera_2d.gd" id="5_adegn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2hr6y"]
+size = Vector2(44, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1phn6"]
+size = Vector2(21.75, 46.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mq61"]
+size = Vector2(44, 20)
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Delimitador" type="Area2D" parent="."]
+position = Vector2(165.25, 293.75)
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_wb6xj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Delimitador"]
+position = Vector2(27.5, 1)
+shape = SubResource("RectangleShape2D_2hr6y")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Delimitador"]
+position = Vector2(-91.125, 108.25)
+shape = SubResource("RectangleShape2D_1phn6")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Delimitador"]
+position = Vector2(29, 187)
+shape = SubResource("RectangleShape2D_6mq61")
+
+[node name="Enemigo1" parent="." groups=["patrullero"] instance=ExtResource("2_20mo6")]
+position = Vector2(181.5, 294)
+direccion = Vector2(1, 0)
+skin = 5
+
+[node name="Enemigo2" parent="." groups=["patrullero"] instance=ExtResource("2_20mo6")]
+position = Vector2(74, 414.625)
+direccion = Vector2(0, -1)
+skin = 6
+
+[node name="Enemigo3" parent="." groups=["patrullero"] instance=ExtResource("2_20mo6")]
+position = Vector2(183, 480)
+collision_mask = 4
+direccion = Vector2(1, 0)
+skin = 5
+
+[node name="Enemigo4" parent="." groups=["patrullero"] instance=ExtResource("2_20mo6")]
+position = Vector2(34, 356)
+direccion = Vector2(1, 0)
+skin = 6
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Enemigo4"]
+position = Vector2(38, -4)
+script = ExtResource("3_4gdfb")
+
+[node name="Enemigo5" parent="." groups=["patrullero"] instance=ExtResource("2_20mo6")]
+z_index = 4
+position = Vector2(32, 242)
+direccion = Vector2(1, 0)
+esperando = true
+skin = 5
+
+[node name="Enemigo6" parent="." groups=["patrullero"] instance=ExtResource("2_20mo6")]
+z_index = 4
+position = Vector2(37, 210)
+direccion = Vector2(1, 0)
+esperando = true
+skin = 5
+
+[node name="Enemigo7" parent="." groups=["patrullero"] instance=ExtResource("2_20mo6")]
+z_index = 4
+position = Vector2(29, 176)
+direccion = Vector2(1, 0)
+esperando = true
+skin = 5
+
+[node name="Enemigo8" parent="." instance=ExtResource("2_20mo6")]
+position = Vector2(208, 480)
+collision_mask = 4
+direccion = Vector2(-1, 0)
+skin = 5
+
+[node name="Mapa3" parent="." instance=ExtResource("3_vcvet")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(244, 489)
+limit_left = 0
+limit_top = 0
+limit_right = 800
+limit_bottom = 622
+script = ExtResource("5_adegn")
+
+[connection signal="body_exited" from="Delimitador" to="Delimitador" method="_on_body_exited"]
+[connection signal="screen_entered" from="Enemigo4/VisibleOnScreenEnabler2D" to="Enemigo4/VisibleOnScreenEnabler2D" method="_on_screen_entered"]

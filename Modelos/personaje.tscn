@@ -1,7 +1,8 @@
-[gd_scene load_steps=42 format=3 uid="uid://bp3b1wcfik24s"]
+[gd_scene load_steps=44 format=3 uid="uid://bp3b1wcfik24s"]
 
 [ext_resource type="Script" path="res://Modelos/personaje.gd" id="1_k874c"]
-[ext_resource type="Texture2D" uid="uid://dew3ymwtde0hq" path="res://Recursos/personajes/Character-Base.png" id="2_nkf4w"]
+[ext_resource type="Texture2D" uid="uid://cjbbfhcehiy55" path="res://Recursos/personajes/Human-Soldier-Cyan.png" id="2_537m2"]
+[ext_resource type="Script" path="res://Modelos/skins.gd" id="3_c85e1"]
 [ext_resource type="Script" path="res://Modelos/direccion.gd" id="3_yhpdf"]
 [ext_resource type="Script" path="res://Modelos/animacion.gd" id="4_644rf"]
 
@@ -712,22 +713,24 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jor17"]
-radius = 7.0
-height = 16.0
+radius = 4.0
+height = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwevv"]
 
 [node name="personaje" type="CharacterBody2D"]
 position = Vector2(239, 139)
 script = ExtResource("1_k874c")
 skin = 2
-metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_nkf4w")
+texture = ExtResource("2_537m2")
 hframes = 24
 frame = 1
 region_enabled = true
 region_rect = Rect2(0, 0, 768, 32)
+script = ExtResource("3_c85e1")
 
 [node name="direccion" type="AnimationPlayer" parent="Sprite2D"]
 root_node = NodePath("../Animacion")
@@ -752,4 +755,14 @@ libraries = {
 script = ExtResource("4_644rf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_jor17")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_nwevv")
+debug_color = Color(0.821314, 0.207266, 0.842732, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

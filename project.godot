@@ -11,14 +11,20 @@ config_version=5
 [application]
 
 config/name="proyecto-shutemupso-grupo4"
-run/main_scene="res://escenas/mapa.tscn"
+run/main_scene="res://Escenas/Principal.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+ListasTexturas="*res://listas_texturas.gd"
 
 [display]
 
 window/size/viewport_width=480
 window/size/viewport_height=270
+window/size/window_width_override=960
+window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 
 [rendering]
