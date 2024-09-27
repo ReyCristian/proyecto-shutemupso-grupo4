@@ -1,7 +1,9 @@
 extends Node2D
 
 func _ready() -> void:
-	$AnimationPlayer.play("laser")	
+	var game_time = float(Time.get_ticks_msec() % 1000)/1000
+	$AnimationPlayer.play("laser")
+	$AnimationPlayer.seek(1-game_time, true)
 	
 func _process(delta):
 	var space_state = get_world_2d().direct_space_state
