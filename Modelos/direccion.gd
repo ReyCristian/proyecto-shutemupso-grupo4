@@ -20,13 +20,9 @@ func _process(_delta: float) -> void:
 func get_angulo() -> int:
 	return angulo
 
-func angulo_simplificado(angulo_en_grados: int) -> int:
-	if (angulo_en_grados % 90 > 0):
-		return round(angulo_en_grados / 90) * 90 + 45;
-	elif (angulo_en_grados % 90 < 0):
-		return round(angulo_en_grados / 90) * 90 - 45;
-	else:
-		return angulo_en_grados;
+func angulo_simplificado(angulo_en_grados: float) -> int:
+	return round(angulo_en_grados / 45) * 45
+	
 
 func set_direccion(direccion:Vector2):
 	var angulo_en_grados = int(rad_to_deg(direccion.angle()));
@@ -47,7 +43,7 @@ func apuntar(angulo_en_grados:int):
 			self.play("arriba");
 		-135:
 			self.play("arriba_izquierda");
-		180:
+		180,-180:
 			self.play("izquierda");
 		135:
 			self.play("abajo_izquierda");

@@ -39,10 +39,16 @@ func _physics_process(delta: float) -> void:
 	var direccion_automatica = auto_mover(direccion_normalizada);
 	var movimiento=calcular_movimiento(direccion_automatica,delta);
 		
-	move_and_collide(movimiento);
-	
+	if get_parent() is PathFollow2D:
+		seguir_camino(movimiento);
+	else:
+		move_and_collide(movimiento);
 	pass;
-
+	
+func seguir_camino(movimiento:Vector2):
+	get_parent().progress += movimiento.length()
+	$Sprite2D.rotation = -get_parent().rotation
+	direccion = Vector2.RIGHT.rotated(get_parent().rotation) * direccion.length()
 
 func auto_mover(direccion_normalizada) -> Vector2:
 	if direccion_normalizada.x == 0:

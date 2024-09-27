@@ -81,7 +81,7 @@ direccion = Vector2(1, 0)
 esperando = true
 skin = 5
 
-[node name="Enemigo8" parent="." instance=ExtResource("2_20mo6")]
+[node name="Enemigo8" parent="." groups=["patrullero"] instance=ExtResource("2_20mo6")]
 position = Vector2(208, 480)
 collision_mask = 4
 direccion = Vector2(-1, 0)

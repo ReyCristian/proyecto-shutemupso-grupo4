@@ -1,10 +1,23 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx4378fg2vya0"]
+[gd_scene load_steps=10 format=3 uid="uid://dx4378fg2vya0"]
 
 [ext_resource type="PackedScene" uid="uid://cwqohrojyjh0e" path="res://Escenas/mapa.tscn" id="1_2r6gf"]
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_ay07l"]
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="3_jnqyg"]
+[ext_resource type="PackedScene" uid="uid://dgecw6xfucsoi" path="res://Modelos/patrullero.tscn" id="4_t2y3p"]
 [ext_resource type="Script" path="res://Herramientas/controles.gd" id="4_wb1qn"]
 [ext_resource type="Script" path="res://Escenas/generador_enemigos.gd" id="5_togga"]
+
+[sub_resource type="Curve2D" id="Curve2D_vt127"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -121, -18, 0, 0, 0, 0, 197, 79, 0, 0, 0, 0, 199, -37, 0, 0, 0, 0, -121, 82, 0, 0, 0, 0, -121, -18)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_ahint"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -96, -24, 0, 0, 0, 0, -75, 45, 0, 0, 0, 0, -2, 66, 0, 0, 0, 0, 67, 36, 0, 0, 0, 0, -13, -56, 0, 0, 0, 0, -96, -24)
+}
+point_count = 6
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2wrqx"]
 size = Vector2(340, 12.25)
@@ -17,7 +30,17 @@ script = ExtResource("1_ay07l")
 
 [node name="Enemigo" parent="." groups=["enemigo"] instance=ExtResource("3_jnqyg")]
 position = Vector2(252, 134)
-skin = 9
+skin = 13
+
+[node name="Patrullero" parent="." instance=ExtResource("4_t2y3p")]
+
+[node name="Patrullero2" parent="." instance=ExtResource("4_t2y3p")]
+position = Vector2(209, -467)
+curve = SubResource("Curve2D_vt127")
+
+[node name="Patrullero3" parent="." instance=ExtResource("4_t2y3p")]
+position = Vector2(230, -180)
+curve = SubResource("Curve2D_ahint")
 
 [node name="personaje" parent="." groups=["personaje"] instance=ExtResource("3_jnqyg")]
 position = Vector2(256, 218)
