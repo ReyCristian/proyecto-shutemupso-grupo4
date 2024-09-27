@@ -14,6 +14,7 @@ extends CharacterBody2D;
 @export var skin: ListasTexturas.texturas_personaje;
 
 var disparo:bool = true;
+var magia_lista:bool = false;
 var pre_laser:Resource = preload("res://Modelos/laser.tscn");
 var antena_superior:bool = true;
 
@@ -21,10 +22,13 @@ var antena_superior:bool = true;
 var muerto:bool = false;
 var limpiar_cadaver:bool = true;
 
-func _ready() -> void:
+func _ready() -> void:		
 	if self.is_in_group("enemigo"):
 		self.set_collision_layer(1);
 		self.set_collision_mask(0);
+		
+	guardar_antenas_disparo();
+	
 
 func _physics_process(delta: float) -> void:
 	#Si esta en espera no hace nada
@@ -36,6 +40,7 @@ func _physics_process(delta: float) -> void:
 	var movimiento=calcular_movimiento(direccion_automatica,delta);
 		
 	move_and_collide(movimiento);
+	
 	pass;
 
 
@@ -71,26 +76,50 @@ func dar_golpe(body: Node2D = null) -> void:
 func shot():
 	if muerto:
 		return;
-	if disparo:
+	if disparo and magia_lista:
 		var laser = pre_laser.instantiate()
 		get_parent().add_child(laser)
-		laser.position.x = position.x + 16
-		if antena_superior:
-			laser.position.y = position.y - 8
-		else:
-			laser.position.y = position.y + 8
-		#antena_superior = not antena_superior 
-		$Sprite2D.shot()
-		
+		var antena = get_antena_disparo($Sprite2D/direccion.get_angulo())
+		laser.global_position = antena.global_position
+		#laser.rotation = antena.rotation 
+		laser.rotation = deg_to_rad($Sprite2D/direccion.get_angulo())
 		disparo = false
-		await get_tree().create_timer(0.5).timeout
+		await get_tree().create_timer(0,5).timeout
 		disparo = true
+
+func preparar_shot():
+	$Sprite2D.shot()
+
+func set_magia_lista():
+	magia_lista = true;
+
 func detener_shot():
 	$Sprite2D.detener_shot();
+	magia_lista = false;
+
+var antenas_disparo = {}
+
+func guardar_antenas_disparo():
+	for antena in $antenas_disparo.get_children():
+		antenas_disparo[int(round(antena.rotation_degrees))] = antena
+		
+func get_antena_disparo(angulo_deg: int) -> Node2D:
+	return antenas_disparo[angulo_deg];
+
+func get_antena_disparo_cercana(angulo_deg: int) -> Node2D:
+	var antena_cercana = $"antenas_disparo/Antena 1"
+	var diferencia_minima = 25
+	for angulo in antenas_disparo.keys():
+		var diferencia = abs(angulo - angulo_deg)
+		if diferencia < diferencia_minima:
+			diferencia_minima = diferencia
+			antena_cercana = antenas_disparo[angulo]
+	return antena_cercana
 
 func tomar_daño():
 	if muerto or recibio_daño():
 		return;
+	magia_lista = false
 	vida -=1;
 	if vida <=0:
 		morir()

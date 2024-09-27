@@ -482,7 +482,7 @@ tracks/1/keys = {
 resource_name = "magia"
 length = 0.3
 loop_mode = 1
-step = 0.2
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -506,6 +506,20 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"set_magia_lista"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_0q0pd"]
@@ -858,7 +872,7 @@ skin = 2
 texture_filter = 1
 texture = ExtResource("2_537m2")
 hframes = 24
-frame = 18
+frame = 15
 region_enabled = true
 region_rect = Rect2(0, 0, 768, 32)
 script = ExtResource("3_c85e1")
@@ -889,6 +903,7 @@ position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_jor17")
 
 [node name="hostilidad" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hostilidad"]
 position = Vector2(0, 4)
@@ -896,6 +911,7 @@ shape = SubResource("CircleShape2D_nwevv")
 debug_color = Color(0.821314, 0.207266, 0.842732, 0.42)
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+visible = false
 position = Vector2(3.09944e-06, -3)
 scale = Vector2(0.7, 1)
 
@@ -906,9 +922,43 @@ visible = false
 shape = SubResource("CapsuleShape2D_lvdeg")
 
 [node name="area_espada" type="Area2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_espada"]
 shape = SubResource("CircleShape2D_7aq8q")
+
+[node name="antenas_disparo" type="Node2D" parent="."]
+
+[node name="Antena 1" type="Node2D" parent="antenas_disparo"]
+position = Vector2(3, -4)
+rotation = -1.5708
+
+[node name="Antena 2" type="Node2D" parent="antenas_disparo"]
+position = Vector2(-7, 0)
+rotation = -2.35619
+
+[node name="Antena 3" type="Node2D" parent="antenas_disparo"]
+position = Vector2(-8, 2)
+rotation = 3.14159
+
+[node name="Antena 4" type="Node2D" parent="antenas_disparo"]
+position = Vector2(-7, 6)
+rotation = 2.35619
+
+[node name="Antena 5" type="Node2D" parent="antenas_disparo"]
+position = Vector2(-3, 9)
+rotation = 1.5708
+
+[node name="Antena 6" type="Node2D" parent="antenas_disparo"]
+position = Vector2(7, 5)
+rotation = 0.785398
+
+[node name="Antena 7" type="Node2D" parent="antenas_disparo"]
+position = Vector2(8, 2)
+
+[node name="Antena 8" type="Node2D" parent="antenas_disparo"]
+position = Vector2(7, 0)
+rotation = -0.785398
 
 [connection signal="animation_finished" from="Sprite2D/Animacion" to="." method="_on_animacion_animation_finished"]
 [connection signal="body_entered" from="hostilidad" to="." method="_on_cuerpo_entra_zona_hostilidad"]

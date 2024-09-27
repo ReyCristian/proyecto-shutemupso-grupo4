@@ -14,7 +14,6 @@ y_sort_enabled = true
 script = ExtResource("1_3eoju")
 
 [node name="mapa2" parent="." instance=ExtResource("2_qpulv")]
-script = null
 
 [node name="personaje" parent="." groups=["personaje"] instance=ExtResource("3_w1ild")]
 position = Vector2(256, 218)

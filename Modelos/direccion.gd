@@ -3,6 +3,8 @@ extends AnimationPlayer
 @onready var personaje =  $"../.."
 @onready var sprite =  $".."
 
+var angulo : int = 0;
+
 func _process(_delta: float) -> void:
 	if personaje.en_demo:
 		return;
@@ -13,8 +15,10 @@ func _process(_delta: float) -> void:
 	if direccion == Vector2.ZERO:
 		return;
 	set_direccion(direccion);
-
 	pass
+
+func get_angulo() -> int:
+	return angulo
 
 func angulo_simplificado(angulo_en_grados: int) -> int:
 	if (angulo_en_grados % 90 > 0):
@@ -29,7 +33,8 @@ func set_direccion(direccion:Vector2):
 	apuntar(angulo_en_grados);
 	
 func apuntar(angulo_en_grados:int):
-	match angulo_simplificado(angulo_en_grados):
+	angulo = angulo_simplificado(angulo_en_grados)
+	match angulo:
 		90:
 			self.play("abajo");
 		45:

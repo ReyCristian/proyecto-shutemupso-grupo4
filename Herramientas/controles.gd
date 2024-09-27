@@ -9,8 +9,9 @@ extends Control;
 @onready var mapa = get_node(mapa_nivel);
 
 func _ready() -> void:
-	personaje.auto_movimiento.y = -float(mapa.velocidad) / 100
-
+	load_movimiento_automatico()
+	pass
+	
 func _physics_process(_delta: float) -> void:
 	if personaje and not personaje.muerto:
 		reset()
@@ -42,8 +43,15 @@ func check_golpe():
 	if Input.is_action_just_pressed("ui_accept"):
 		personaje.dar_golpe();
 
-func check_shot():
+func check_shot():	
+	if Input.is_action_just_pressed("ataque1"):
+		personaje.preparar_shot();
+		personaje.auto_movimiento = Vector2.ZERO
 	if Input.is_action_pressed("ataque1"):
 		personaje.shot();
-	elif Input.is_action_just_released("ataque1"):
+	if Input.is_action_just_released("ataque1"):
 		personaje.detener_shot();
+		load_movimiento_automatico()
+		
+func load_movimiento_automatico():
+	personaje.auto_movimiento.y = -float(mapa.velocidad) / 100

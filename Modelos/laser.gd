@@ -1,5 +1,8 @@
 extends Node2D
 
+func _ready() -> void:
+	$AnimationPlayer.play("laser")	
+	
 func _process(delta):
 	var space_state = get_world_2d().direct_space_state
 	var area_shape = $Area2D/CollisionShape2D.shape  # La forma de colisión del Area2D
@@ -25,16 +28,19 @@ func _process(delta):
 				tilemap.erase_cell(cell_pos)
 				queue_free()
 
+	
 func _physics_process(delta: float) -> void:
-	position.x += 150 *delta
+	var direccion = Vector2.from_angle(rotation)
+	position += direccion* 150 *delta
+	
 	#print(position.x)
 
+	
+	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()
 	pass
 
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemigo"):
 		queue_free()
-		
