@@ -28,6 +28,7 @@ func _process(delta):
 
 				# Destruir el tile en esa posición
 				tilemap.erase_cell(cell_pos)
+				#print("desaparece laser contra tile")
 				queue_free()
 
 	
@@ -40,9 +41,14 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	#if is_in_group("laser_p"):
+	#	print("desaparece laser fuera pantalla")
 	queue_free()
 	pass
 
+'''
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("enemigo"):
+		print("desaparece laser contra enemigo")
 		queue_free()
+'''

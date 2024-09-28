@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=4 uid="uid://cwqohrojyjh0e"]
 
-[ext_resource type="Script" path="res://escenas/mapa.gd" id="1_7jlg3"]
 [ext_resource type="TileSet" uid="uid://bckp2sxh4p8hk" path="res://Recursos/chilling runestres.tres" id="1_yrs0c"]
 [ext_resource type="Script" path="res://Escenas/tilemapdestruible.gd" id="2_mg4f6"]
+[ext_resource type="PackedScene" uid="uid://0lxppsmhbjx0" path="res://Modelos/horda_slime.tscn" id="3_0df50"]
 [ext_resource type="Texture2D" uid="uid://dtt1858mwjbes" path="res://icon.svg" id="3_e1j5k"]
 [ext_resource type="Texture2D" uid="uid://cvntdgdrsegdl" path="res://Recursos/hearts.png" id="4_661y6"]
 
@@ -17,7 +17,9 @@ shadow_color = Color(0.509804, 0.509804, 0.615686, 0)
 [node name="mapa" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 1
-script = ExtResource("1_7jlg3")
+
+[node name="horda_slime" parent="." instance=ExtResource("3_0df50")]
+position = Vector2(230, 279)
 
 [node name="suelo" type="TileMapLayer" parent="."]
 z_index = -18

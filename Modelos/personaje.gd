@@ -70,7 +70,7 @@ func calcular_movimiento(direccion_normalizada: Vector2,delta: float) -> Vector2
 	return movimiento;
 
 func dar_golpe(body: Node2D = null) -> void:
-	if muerto:
+	if muerto or recibio_daño():
 		return;
 	if body!=null:
 		$Sprite2D/direccion.set_direccion(body.global_position - global_position)
@@ -80,12 +80,14 @@ func dar_golpe(body: Node2D = null) -> void:
 		$Sprite2D.dar_golpe();
 
 func shot(ataque: int = 1):
-	if muerto:
+	if muerto or recibio_daño():
 		return;
 	if disparo and magia_lista:
 		var laser = pre_laser.instantiate()
 		get_parent().add_child(laser)
 		var antena = get_antena_disparo($Sprite2D/direccion.get_angulo())
+		if is_in_group("personaje"):
+			laser.add_to_group("laser_p")
 		laser.global_position = antena.global_position
 		laser.rotation = antena.rotation 
 		disparo = false
@@ -93,14 +95,17 @@ func shot(ataque: int = 1):
 		disparo = true
 
 func preparar_shot(ataque: int = 1):
+	if muerto or recibio_daño():
+		return
 	$Sprite2D.shot(ataque)
 
 func set_magia_lista():
 	magia_lista = true;
 
 func detener_shot():
-	$Sprite2D.detener_shot();
-	magia_lista = false;
+	if not (muerto or recibio_daño()):
+		$Sprite2D.detener_shot();
+		magia_lista = false;
 
 var antenas_disparo = {}
 

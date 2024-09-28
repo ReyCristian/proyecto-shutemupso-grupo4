@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcagwrjfmm1hg"]
+
+[ext_resource type="Script" path="res://Escenas/generador_enemigos.gd" id="1_7f25p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2wrqx"]
+size = Vector2(340, 12.25)
+
+[node name="generador_enemigos" type="Area2D"]
+position = Vector2(241, 308)
+script = ExtResource("1_7f25p")
+skin = 19
+direccion = Vector2(0, -1)
+isCorriendo = true
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2wrqx")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

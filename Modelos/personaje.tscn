@@ -1,7 +1,7 @@
 [gd_scene load_steps=55 format=3 uid="uid://bp3b1wcfik24s"]
 
 [ext_resource type="Script" path="res://Modelos/personaje.gd" id="1_k874c"]
-[ext_resource type="Texture2D" uid="uid://c5qejwby1ymym" path="res://Recursos/personajes/Slime.png" id="2_0rf0h"]
+[ext_resource type="Texture2D" uid="uid://dew3ymwtde0hq" path="res://Recursos/personajes/Character-Base.png" id="2_xo7b6"]
 [ext_resource type="Script" path="res://Modelos/skins.gd" id="3_c85e1"]
 [ext_resource type="Script" path="res://Modelos/direccion.gd" id="3_yhpdf"]
 [ext_resource type="Script" path="res://Modelos/animacion.gd" id="4_644rf"]
@@ -1045,7 +1045,7 @@ skin = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_0rf0h")
+texture = ExtResource("2_xo7b6")
 hframes = 24
 region_enabled = true
 region_rect = Rect2(0, 0, 768, 32)
