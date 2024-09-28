@@ -26,6 +26,7 @@ size = Vector2(340, 12.25)
 [node name="Nivel1" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ay07l")
+velocidad = 0
 
 [node name="mapa" parent="." instance=ExtResource("1_2r6gf")]
 
@@ -66,9 +67,11 @@ metadata/_edit_use_anchors_ = true
 [node name="Generadores" type="CanvasLayer" parent="."]
 
 [node name="generador_enemigos" type="Area2D" parent="Generadores"]
-position = Vector2(233, -28)
+position = Vector2(241, 308)
 script = ExtResource("5_togga")
-skin = 11
+skin = 19
+direccion = Vector2(0, -1)
+isCorriendo = true
 
 [node name="Timer" type="Timer" parent="Generadores/generador_enemigos"]
 autostart = true

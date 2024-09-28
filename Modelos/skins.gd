@@ -30,7 +30,8 @@ var skin_texturas = {
 	ListasTexturas.texturas_personaje.SOLDIER_RED: "res://Recursos/personajes/Soldier-Red.png",
 	ListasTexturas.texturas_personaje.SOLDIER_YELLOW: "res://Recursos/personajes/Soldier-Yellow.png",
 	ListasTexturas.texturas_personaje.WARRIOR_BLUE: "res://Recursos/personajes/Warrior-Blue.png",
-	ListasTexturas.texturas_personaje.WARRIOR_RED: "res://Recursos/personajes/Warrior-Red.png"
+	ListasTexturas.texturas_personaje.WARRIOR_RED: "res://Recursos/personajes/Warrior-Red.png",
+	ListasTexturas.texturas_personaje.SLIME: "res://Recursos/personajes/Slime.png"
 }
 
 func cargar_skin() -> void:
@@ -39,6 +40,7 @@ func cargar_skin() -> void:
 		#Carga las animaciones de la skin
 		$Animacion.active = false;
 		$Animacion2.active = false;
+		$Animacion3.active = false;
 		reproductor_animaciones = get_animation_player_skin();
 		reproductor_animaciones.active = true;
 
@@ -55,10 +57,14 @@ const lista_texturas_animacion2 = [
 	ListasTexturas.texturas_personaje.MAGE_RED
 	];
 
+const lista_texturas_animacion3 = [ListasTexturas.texturas_personaje.SLIME]
+
 func get_animation_player_skin() -> AnimationPlayer:
 	if (personaje.skin in lista_texturas_animacion2):
 		return $Animacion2;
-	else:
+	elif (personaje.skin in lista_texturas_animacion3):
+		return $Animacion3;
+	else :
 		return $Animacion;
 	
 

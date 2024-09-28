@@ -19,5 +19,6 @@ enum texturas_personaje {
 	SOLDIER_RED,
 	SOLDIER_YELLOW,
 	WARRIOR_BLUE,
-	WARRIOR_RED
+	WARRIOR_RED,
+	SLIME
 }

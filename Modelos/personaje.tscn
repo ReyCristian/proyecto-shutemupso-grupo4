@@ -1,7 +1,7 @@
-[gd_scene load_steps=46 format=3 uid="uid://bp3b1wcfik24s"]
+[gd_scene load_steps=55 format=3 uid="uid://bp3b1wcfik24s"]
 
 [ext_resource type="Script" path="res://Modelos/personaje.gd" id="1_k874c"]
-[ext_resource type="Texture2D" uid="uid://cjbbfhcehiy55" path="res://Recursos/personajes/Human-Soldier-Cyan.png" id="2_537m2"]
+[ext_resource type="Texture2D" uid="uid://c5qejwby1ymym" path="res://Recursos/personajes/Slime.png" id="2_0rf0h"]
 [ext_resource type="Script" path="res://Modelos/skins.gd" id="3_c85e1"]
 [ext_resource type="Script" path="res://Modelos/direccion.gd" id="3_yhpdf"]
 [ext_resource type="Script" path="res://Modelos/animacion.gd" id="4_644rf"]
@@ -167,7 +167,7 @@ _data = {
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -583,7 +583,7 @@ _data = {
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
@@ -849,6 +849,181 @@ _data = {
 "muerte": SubResource("Animation_5xkqp")
 }
 
+[sub_resource type="Animation" id="Animation_qff4w"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w41r0"]
+resource_name = "caminar"
+length = 0.8
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.11, 0.16, 0.38, 0.6, 0.64, 0.68, 0.71, 0.74),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_jaj2o"]
+resource_name = "correr"
+length = 0.4
+loop_mode = 1
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.01, 0.02, 0.04, 0.06, 0.175, 0.31, 0.33, 0.35, 0.36, 0.37),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 4, 3, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_synuo"]
+resource_name = "daño"
+length = 1.2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 6, 7, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2f23q"]
+resource_name = "daño2"
+length = 0.6
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [7, 10, 8]
+}
+
+[sub_resource type="Animation" id="Animation_ao5dt"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 1, 0]
+}
+
+[sub_resource type="Animation" id="Animation_c4m4w"]
+resource_name = "muerte"
+length = 1.1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_pniyr"]
+resource_name = "espada"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [7, 10, 9, 8]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hacer_daño"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bnpb7"]
+_data = {
+"RESET": SubResource("Animation_qff4w"),
+"caminar": SubResource("Animation_w41r0"),
+"correr": SubResource("Animation_jaj2o"),
+"daño": SubResource("Animation_synuo"),
+"daño2": SubResource("Animation_2f23q"),
+"espada": SubResource("Animation_pniyr"),
+"idle": SubResource("Animation_ao5dt"),
+"muerte": SubResource("Animation_c4m4w")
+}
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jor17"]
 radius = 4.0
 height = 8.0
@@ -870,9 +1045,8 @@ skin = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_537m2")
+texture = ExtResource("2_0rf0h")
 hframes = 24
-frame = 15
 region_enabled = true
 region_rect = Rect2(0, 0, 768, 32)
 script = ExtResource("3_c85e1")
@@ -894,6 +1068,12 @@ script = ExtResource("4_644rf")
 [node name="Animacion2" type="AnimationPlayer" parent="Sprite2D"]
 libraries = {
 "": SubResource("AnimationLibrary_s7h2q")
+}
+script = ExtResource("4_644rf")
+
+[node name="Animacion3" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_bnpb7")
 }
 script = ExtResource("4_644rf")
 
@@ -963,6 +1143,7 @@ position = Vector2(7, 0)
 rotation = -0.785398
 
 [connection signal="animation_finished" from="Sprite2D/Animacion" to="." method="_on_animacion_animation_finished"]
+[connection signal="animation_finished" from="Sprite2D/Animacion3" to="." method="_on_animacion_animation_finished"]
 [connection signal="body_entered" from="hostilidad" to="." method="_on_cuerpo_entra_zona_hostilidad"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
 [connection signal="area_entered" from="hitbox" to="." method="_on_area_entra_hitbox"]

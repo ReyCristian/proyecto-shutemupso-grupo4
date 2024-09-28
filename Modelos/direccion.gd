@@ -27,6 +27,8 @@ func angulo_simplificado(angulo_en_grados: float) -> int:
 	
 
 func set_direccion(direccion:Vector2):
+	if personaje.skin == ListasTexturas.texturas_personaje.SLIME:
+		return
 	var angulo_en_grados = int(rad_to_deg(direccion.angle()));
 	apuntar(angulo_en_grados);
 	
