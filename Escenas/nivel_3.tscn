@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://bhl62w7fx7fjy"]
+
+[ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_h4yy4"]
+[ext_resource type="PackedScene" uid="uid://rbwgx4girsgb" path="res://Escenas/mapa_3.tscn" id="2_t371e"]
+[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="3_vhrdn"]
+[ext_resource type="Script" path="res://Herramientas/controles.gd" id="4_qp0dj"]
+[ext_resource type="PackedScene" uid="uid://dcagwrjfmm1hg" path="res://Herramientas/generador_enemigos.tscn" id="5_p7gas"]
+
+[node name="nivel_3" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_h4yy4")
+Fin_del_mapa = 10000
+
+[node name="mapa 3" parent="." instance=ExtResource("2_t371e")]
+
+[node name="personaje" parent="." groups=["personaje"] instance=ExtResource("3_vhrdn")]
+position = Vector2(256, 218)
+skin = 3
+
+[node name="Control" type="Control" parent="personaje"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("4_qp0dj")
+personaje_principal = NodePath("..")
+mapa_nivel = NodePath("../..")
+isCorriendo = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Generadores" type="CanvasLayer" parent="."]
+
+[node name="generador_slimes" parent="Generadores" instance=ExtResource("5_p7gas")]
+vida = 10
+
+[node name="generador_peones" parent="Generadores" instance=ExtResource("5_p7gas")]
+position = Vector2(241, -34)
+skin = 11
+direccion = Vector2(0, 1)
+isCorriendo = false

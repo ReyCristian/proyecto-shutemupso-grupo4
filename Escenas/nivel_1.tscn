@@ -51,6 +51,7 @@ curve = SubResource("Curve2D_ahint")
 
 [node name="personaje" parent="." groups=["personaje"] instance=ExtResource("3_jnqyg")]
 position = Vector2(256, 218)
+auto_apuntado = -90.0
 skin = 3
 
 [node name="Control" type="Node" parent="personaje"]

@@ -8,6 +8,8 @@ extends CharacterBody2D;
 @export var en_demo:bool = false;
 
 @export var auto_movimiento = Vector2(0,0);
+@export var auto_apuntado :float = 360;
+
 
 @export var isCorriendo: bool = false;
 @export var esperando: bool  = false;
@@ -15,6 +17,7 @@ extends CharacterBody2D;
 
 var disparo:bool = true;
 var magia_lista:bool = false;
+var magia_lanzada:bool = false;
 var pre_laser:Resource = preload("res://Modelos/laser.tscn");
 var antena_superior:bool = true;
 
@@ -83,13 +86,19 @@ func shot(ataque: int = 1):
 	if muerto or recibio_daño():
 		return;
 	if disparo and magia_lista:
+		magia_lanzada = false;
+		auto_apuntar()
 		var laser = pre_laser.instantiate()
 		get_parent().add_child(laser)
 		var antena = get_antena_disparo($Sprite2D/direccion.get_angulo())
 		if is_in_group("personaje"):
 			laser.add_to_group("laser_p")
 		laser.global_position = antena.global_position
-		laser.rotation = antena.rotation 
+		if auto_apuntado == 360:
+			laser.rotation = antena.rotation 
+		else:
+			print(auto_apuntado)
+			laser.rotation = deg_to_rad(auto_apuntado);
 		disparo = false
 		await get_tree().create_timer(0 if ataque==1 else 0.5).timeout
 		disparo = true
@@ -97,10 +106,14 @@ func shot(ataque: int = 1):
 func preparar_shot(ataque: int = 1):
 	if muerto or recibio_daño():
 		return
+	auto_apuntar()
 	$Sprite2D.shot(ataque)
 
 func set_magia_lista():
 	magia_lista = true;
+	
+func set_magia_lanzada():
+	magia_lanzada = true;
 
 func detener_shot():
 	if not (muerto or recibio_daño()):
@@ -156,7 +169,7 @@ func _on_cuerpo_entra_zona_hostilidad(body: Node2D) -> void:
 
 
 func _on_area_entra_hitbox(area: Area2D) -> void:
-	if area.is_in_group("laser"):
+	if area.is_in_group("laser") and not (area.get_parent().is_in_group("laser_p") and self.is_in_group("personaje")):
 		tomar_daño();
 		area.get_parent().queue_free();
 
@@ -174,3 +187,8 @@ func hacer_daño():
 			golpeado.tomar_daño()
 		if golpeado.is_in_group("TileMapDestruible"):
 			golpeado.romper_posicion_global(global_position + direccion.normalized() * 8)
+
+func auto_apuntar():
+	if auto_apuntado != 360:
+		$Sprite2D/direccion.auto_apuntar(auto_apuntado)
+	pass

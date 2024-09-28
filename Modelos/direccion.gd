@@ -8,7 +8,7 @@ var angulo : int = 0;
 func _process(_delta: float) -> void:
 	if personaje.en_demo:
 		return;
-	if sprite.esta_ocupado() and not sprite.esta_atacando():
+	if sprite.esta_ocupado() and not sprite.esta_preparando_ataque() or sprite.esta_atacando():
 		return;
 	var direccion = (personaje.direccion + personaje.auto_movimiento)
 	
@@ -53,3 +53,7 @@ func apuntar(angulo_en_grados:int):
 			self.play("abajo_izquierda");
 		_:
 			self.play("arriba");
+
+func auto_apuntar(angulo_en_grados:int):
+	var resultante = Vector2.RIGHT.rotated(deg_to_rad(angulo_en_grados)) + personaje.direccion
+	apuntar(rad_to_deg(resultante.angle()));

@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://bj223svbntw7t"]
+[gd_scene load_steps=4 format=4 uid="uid://bj223svbntw7t"]
 
 [ext_resource type="TileSet" uid="uid://bckp2sxh4p8hk" path="res://Recursos/chilling runestres.tres" id="1_tqcx8"]
 [ext_resource type="Texture2D" uid="uid://dtt1858mwjbes" path="res://icon.svg" id="2_xhkqa"]
+[ext_resource type="PackedScene" uid="uid://0lxppsmhbjx0" path="res://Modelos/horda_slime.tscn" id="3_7nhmn"]
 
 [node name="mapa2" type="Node2D"]
 y_sort_enabled = true
@@ -49,3 +50,5 @@ texture = ExtResource("2_xhkqa")
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAANAKj/AAAQAAEAAAAYAEv/AAAQAAEAAAAHAOH/AAANAAYAAAAFAOH/AAANAAYAABAGAOH/AAARAAAAAAAXANb/AAAOAAgAAAAYANb/AAANAAgAAAAZANP/AAAQAAEAAAA=")
 tile_set = ExtResource("1_tqcx8")
+
+[node name="horda_slime" parent="." instance=ExtResource("3_7nhmn")]

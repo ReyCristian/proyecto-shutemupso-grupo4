@@ -112,7 +112,7 @@ func dar_golpe_espada():
 	reproducir("espada");
 
 func shot(ataque: int = 1) -> void:
-	if not esta_atacando():
+	if not esta_preparando_ataque():
 		if ataque == 1:
 			reproducir("casteo_magia");
 			reproducir_queue("magia");
@@ -122,8 +122,11 @@ func shot(ataque: int = 1) -> void:
 func detener_shot() -> void:
 	reproducir("RESET")
 
-func esta_atacando() -> bool:
+func esta_preparando_ataque() -> bool:
 	return reproductor_animaciones.current_animation in ["magia","casteo_magia"];
+
+func esta_atacando() -> bool:
+	return personaje.magia_lista and not personaje.magia_lanzada
 	
 func tomar_daño():
 	reproducir("daño");

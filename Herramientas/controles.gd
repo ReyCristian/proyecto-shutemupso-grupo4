@@ -47,10 +47,16 @@ func check_shot():
 	#Prepara ataque
 	if Input.is_action_just_pressed("ataque1") or Input.is_action_just_pressed("ataque2"):
 		personaje.preparar_shot(1 if Input.is_action_just_pressed("ataque1") else 2);
-		personaje.auto_movimiento = Vector2.ZERO
+		personaje.auto_movimiento = Vector2.ZERO;
+		
 	#Lanza ataque
-	if Input.is_action_pressed("ataque1") or Input.is_action_pressed("ataque2"):
-		personaje.shot(2 if Input.is_action_pressed("ataque2") else 1);
+	if Input.is_action_pressed("ataque1"):
+		personaje.shot(1);
+		personaje.direccion = Vector2.ZERO
+		
+	if Input.is_action_pressed("ataque2"):
+		personaje.shot(2);
+
 	#Termina bucle de animacion de disparo
 	if Input.is_action_just_released("ataque1") or Input.is_action_just_released("ataque2"):
 		personaje.detener_shot();
