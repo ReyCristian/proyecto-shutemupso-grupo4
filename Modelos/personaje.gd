@@ -79,7 +79,7 @@ func dar_golpe(body: Node2D = null) -> void:
 	else:
 		$Sprite2D.dar_golpe();
 
-func shot():
+func shot(ataque: int = 1):
 	if muerto:
 		return;
 	if disparo and magia_lista:
@@ -87,14 +87,13 @@ func shot():
 		get_parent().add_child(laser)
 		var antena = get_antena_disparo($Sprite2D/direccion.get_angulo())
 		laser.global_position = antena.global_position
-		#laser.rotation = antena.rotation 
-		laser.rotation = deg_to_rad($Sprite2D/direccion.get_angulo())
+		laser.rotation = antena.rotation 
 		disparo = false
-		await get_tree().create_timer(0,5).timeout
+		await get_tree().create_timer(0 if ataque==1 else 0.5).timeout
 		disparo = true
 
-func preparar_shot():
-	$Sprite2D.shot()
+func preparar_shot(ataque: int = 1):
+	$Sprite2D.shot(ataque)
 
 func set_magia_lista():
 	magia_lista = true;
@@ -152,7 +151,7 @@ func _on_cuerpo_entra_zona_hostilidad(body: Node2D) -> void:
 
 
 func _on_area_entra_hitbox(area: Area2D) -> void:
-	if self.is_in_group("enemigo") and area.is_in_group("laser"):
+	if area.is_in_group("laser"):
 		tomar_daño();
 		area.get_parent().queue_free();
 

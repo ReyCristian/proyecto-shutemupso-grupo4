@@ -18,6 +18,8 @@ func _process(_delta: float) -> void:
 	pass
 
 func get_angulo() -> int:
+	if angulo == -180:
+		angulo = 180
 	return angulo
 
 func angulo_simplificado(angulo_en_grados: float) -> int:

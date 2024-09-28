@@ -105,10 +105,13 @@ func dar_golpe():
 func dar_golpe_espada():
 	reproducir("espada");
 
-func shot() -> void:
+func shot(ataque: int = 1) -> void:
 	if not esta_atacando():
-		reproducir("casteo_magia")
-		reproducir_queue("magia");
+		if ataque == 1:
+			reproducir("casteo_magia");
+			reproducir_queue("magia");
+		else:
+			reproducir("magia");
 		
 func detener_shot() -> void:
 	reproducir("RESET")
