@@ -14,7 +14,7 @@ Fin_del_mapa = 10000
 [node name="mapa 3" parent="." instance=ExtResource("2_t371e")]
 
 [node name="personaje" parent="." groups=["personaje"] instance=ExtResource("3_vhrdn")]
-position = Vector2(256, 218)
+position = Vector2(246, 236)
 skin = 3
 
 [node name="Control" type="Control" parent="personaje"]
