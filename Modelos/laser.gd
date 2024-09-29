@@ -16,7 +16,7 @@ func seleccionar_laser(color: int):
 			$LaserAzul.visible = true;
 		
 
-func _process(delta):
+func _process(_delta):
 	var space_state = get_world_2d().direct_space_state
 	var area_shape = $Area2D/CollisionShape2D.shape  # La forma de colisión del Area2D
 

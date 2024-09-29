@@ -1,20 +1,22 @@
-[gd_scene load_steps=8 format=3 uid="uid://72k80u106hb3"]
+[gd_scene load_steps=9 format=3 uid="uid://72k80u106hb3"]
 
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_3eoju"]
 [ext_resource type="AudioStream" uid="uid://dusljr07jmqhw" path="res://Recursos/musica/Gran Batalla.mp3" id="2_crg08"]
 [ext_resource type="PackedScene" uid="uid://bj223svbntw7t" path="res://Escenas/mapa_2.tscn" id="2_qpulv"]
 [ext_resource type="PackedScene" uid="uid://bxol1wke3w5o7" path="res://Modelos/heroe.tscn" id="3_crm0t"]
 [ext_resource type="PackedScene" uid="uid://b6x52ibsxqpxd" path="res://Modelos/slime_sube.tscn" id="3_hosxh"]
+[ext_resource type="Script" path="res://Escenas/musica_bucle.gd" id="3_wyt4u"]
 [ext_resource type="PackedScene" uid="uid://dcagwrjfmm1hg" path="res://Herramientas/generador_enemigos.tscn" id="5_gaii1"]
 [ext_resource type="PackedScene" uid="uid://bgprqpts3o4x1" path="res://Modelos/peon.tscn" id="7_5pva7"]
 
-[node name="nivel_2" type="Node2D"]
+[node name="nivel_2" type="Node2D" groups=["nivel"]]
 y_sort_enabled = true
 script = ExtResource("1_3eoju")
 
 [node name="GranBatalla" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_crg08")
 bus = &"Musica"
+script = ExtResource("3_wyt4u")
 
 [node name="mapa2" parent="." instance=ExtResource("2_qpulv")]
 
@@ -25,6 +27,7 @@ visible = false
 
 [node name="generador_slimes" parent="Generadores" instance=ExtResource("5_gaii1")]
 vida = 10
+tiene_espada = false
 
 [node name="generador_peones" parent="Generadores" instance=ExtResource("5_gaii1")]
 position = Vector2(241, -34)

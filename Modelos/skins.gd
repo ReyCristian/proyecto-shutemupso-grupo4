@@ -108,6 +108,9 @@ func reproducir_queue(animacion: String):
 func dar_golpe():
 	reproducir("golpe");
 	
+func preparar_golpe_espada():
+	reproducir("preparar_espada");
+	
 func dar_golpe_espada():
 	reproducir("espada");
 
@@ -127,7 +130,10 @@ func esta_preparando_ataque() -> bool:
 
 func esta_atacando() -> bool:
 	return personaje.magia_lista and not personaje.magia_lanzada
-	
+
+func golpe_preparado() -> bool:
+	return reproductor_animaciones.current_animation in ["golpe","preparar_espada"];
+
 func tomar_daño():
 	reproducir("daño");
 

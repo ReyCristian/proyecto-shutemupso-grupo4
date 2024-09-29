@@ -8,16 +8,14 @@ func _ready() -> void:
 	$Enemigo/Timer.wait_time = espera_disparo;
 	
 
-func _physics_process(delta: float) -> void:
-	if get_child_count() == 0:
-		queue_free()
-		return
-	$Enemigo.direccion = direccion;
-	if $Enemigo.magia_lista:
-		$Enemigo.shot(ataque)
-		await get_tree().create_timer(0.3).timeout
+func _physics_process(_delta: float) -> void:
+	if is_instance_valid($Enemigo):
+		$Enemigo.direccion = direccion;
 		if $Enemigo.magia_lista:
-			$Enemigo.detener_shot()
+			$Enemigo.shot(ataque)
+			await get_tree().create_timer(0.3).timeout
+			if is_instance_valid($Enemigo) and $Enemigo.magia_lista:
+				$Enemigo.detener_shot()
 
 func _on_timer_timeout() -> void:
 	$Enemigo.preparar_shot()

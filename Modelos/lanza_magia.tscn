@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="1_wayak"]
 [ext_resource type="Script" path="res://Escenas/ataque_enemigo.gd" id="2_30a3r"]
 
-[node name="Lanza_magia" type="Node2D"]
+[node name="Lanza_magia" type="Node2D" groups=["liberar_al_morir"]]
 script = ExtResource("2_30a3r")
 
 [node name="Enemigo" parent="." groups=["enemigo"] instance=ExtResource("1_wayak")]

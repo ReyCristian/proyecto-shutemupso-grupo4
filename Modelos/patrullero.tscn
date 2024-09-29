@@ -8,7 +8,7 @@ _data = {
 }
 point_count = 3
 
-[node name="Patrullero" type="Path2D"]
+[node name="Patrullero" type="Path2D" groups=["liberar_al_morir"]]
 position = Vector2(300, -284)
 curve = SubResource("Curve2D_p3w8d")
 

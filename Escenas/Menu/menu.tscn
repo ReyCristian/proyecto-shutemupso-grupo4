@@ -3,10 +3,10 @@
 [ext_resource type="Script" path="res://Escenas/Menu/menuGeneral.gd" id="1_3e75f"]
 [ext_resource type="Script" path="res://Escenas/Menu/MenuVertical.gd" id="2_8h68a"]
 [ext_resource type="AudioStream" uid="uid://d0o0frnnr2f7v" path="res://Recursos/musica/Enchanted Festival.mp3" id="2_jn71k"]
+[ext_resource type="Script" path="res://Escenas/musica_bucle.gd" id="3_rk5o6"]
 [ext_resource type="Script" path="res://Escenas/Menu/NivelesMenu.gd" id="3_uxdpq"]
 [ext_resource type="Script" path="res://Escenas/Menu/AbrirMenu.gd" id="4_wgcfc"]
 [ext_resource type="Script" path="res://Escenas/Menu/MenuPrincipal.gd" id="5_ar7oj"]
-[ext_resource type="Script" path="res://Escenas/Menu/menu_opciones.gd" id="5_wk70w"]
 [ext_resource type="Script" path="res://Escenas/Menu/menu_opciones_musica.gd" id="6_pod8n"]
 [ext_resource type="Script" path="res://Escenas/Menu/slider_sonido.gd" id="8_5xxt5"]
 
@@ -27,6 +27,7 @@ volume_db = -8.0
 autoplay = true
 bus = &"Musica"
 parameters/looping = false
+script = ExtResource("3_rk5o6")
 
 [node name="Principal" type="VBoxContainer" parent="Menu"]
 layout_mode = 0
@@ -98,7 +99,6 @@ menu = NodePath("../../OpcionesSonido")
 
 [node name="Control" type="Control" parent="Menu/Opciones"]
 layout_mode = 2
-script = ExtResource("5_wk70w")
 
 [node name="OpcionesSonido" type="VBoxContainer" parent="Menu"]
 layout_mode = 2

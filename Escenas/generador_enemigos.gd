@@ -5,6 +5,7 @@ const pre_enemigo = preload("res://Modelos/personaje.tscn")
 @export var vida: int = 1
 @export var direccion :Vector2 = Vector2(0,1);
 @export var isCorriendo :bool = false;
+@export var tiene_espada :bool = true;
 
 func _on_timer_timeout() -> void:
 	
@@ -18,6 +19,7 @@ func _on_timer_timeout() -> void:
 	enemigo.skin = skin;
 	enemigo.vida = vida;
 	enemigo.isCorriendo = isCorriendo;
+	enemigo.tiene_espada = tiene_espada;
 	enemigo.add_to_group("enemigo")
 	get_parent().get_parent().add_child(enemigo);
 	enemigo.global_position.x = punto_aleatorio.x;

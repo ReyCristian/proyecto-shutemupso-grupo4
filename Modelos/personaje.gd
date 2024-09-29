@@ -78,7 +78,7 @@ func dar_golpe(body: Node2D = null) -> void:
 	if body!=null:
 		$Sprite2D/direccion.set_direccion(body.global_position - global_position)
 	if tiene_espada:
-		$Sprite2D.dar_golpe_espada();
+		$Sprite2D.preparar_golpe_espada();
 	else:
 		$Sprite2D.dar_golpe();
 
@@ -89,7 +89,7 @@ func shot(ataque: int = 1):
 		magia_lanzada = false;
 		auto_apuntar()
 		var laser = pre_laser.instantiate()
-		get_parent().add_child(laser)
+		get_tree().get_nodes_in_group("nivel")[0].add_child(laser)
 		var antena = get_antena_disparo($Sprite2D/direccion.get_angulo())
 		if is_in_group("heroe"):
 			laser.add_to_group("laser_p")
@@ -101,7 +101,7 @@ func shot(ataque: int = 1):
 		else:
 			laser.rotation = deg_to_rad(auto_apuntado);
 		disparo = false
-		await get_tree().create_timer(0 if ataque==1 else 0.5).timeout
+		await get_tree().create_timer(0.0 if ataque==1 else 0.5).timeout
 		disparo = true
 
 func preparar_shot(ataque: int = 1):
@@ -161,7 +161,8 @@ func recibio_daño() -> bool:
 	return $Sprite2D.recibio_daño()
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free()
+	queue_free();
+	liberar_padre();
 	pass # Replace with function body.
 
 func _on_cuerpo_entra_zona_hostilidad(body: Node2D) -> void:
@@ -180,16 +181,44 @@ func _on_animacion_animation_finished(anim_name: StringName) -> void:
 		return;
 	if anim_name == "muerte" and muerto and limpiar_cadaver:
 		queue_free()
+		liberar_padre()
 	pass # Replace with function body.
 
+func liberar_padre():
+	var parent = get_parent()
+	while parent != null:
+		if parent.is_in_group("liberar_al_morir"):
+			parent.queue_free()
+			break
+		parent = parent.get_parent()
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if $Sprite2D.golpe_preparado() and not tiene_espada:
+		hacer_daño();
+	pass
+
 func hacer_daño():
-	for golpeado in $area_espada.get_overlapping_bodies():
+	var golpeados;
+	if tiene_espada:
+		golpeados = $area_espada.get_overlapping_bodies()
+	else:
+		golpeados = $hitbox.get_overlapping_bodies()
+	for golpeado in golpeados:
 		if golpeado.is_in_group("vivo") and golpeado != self:
 			golpeado.tomar_daño()
 		if golpeado.is_in_group("TileMapDestruible"):
 			golpeado.romper_posicion_global(global_position + direccion.normalized() * 8)
 
+
+
 func auto_apuntar():
 	if auto_apuntado != 360:
 		$Sprite2D/direccion.auto_apuntar(auto_apuntado)
 	pass
+	
+
+func _on_area_espada_body_entered_o_exited(body: Node2D) -> void:
+	if $Sprite2D.golpe_preparado() and tiene_espada:
+		$Sprite2D.dar_golpe_espada();
+	pass # Replace with function body.

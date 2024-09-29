@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Modelos/peon.gd" id="1_lasyx"]
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="2_jrv7s"]
 
-[node name="peon" type="Node2D"]
+[node name="peon" type="Node2D" groups=["liberar_al_morir"]]
 script = ExtResource("1_lasyx")
 metadata/_edit_group_ = true
 

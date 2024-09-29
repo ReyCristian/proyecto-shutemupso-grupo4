@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Escenas/slime_sube.gd" id="1_0uamt"]
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="2_qtjwf"]
 
-[node name="slime_sube" type="Node2D"]
+[node name="slime_sube" type="Node2D" groups=["liberar_al_morir"]]
 script = ExtResource("1_0uamt")
 metadata/_edit_group_ = true
 
