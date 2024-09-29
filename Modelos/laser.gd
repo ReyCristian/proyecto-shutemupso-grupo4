@@ -1,10 +1,21 @@
 extends Node2D
 
 func _ready() -> void:
-	var game_time = float(Time.get_ticks_msec() % 1000)/1000
 	$AnimationPlayer.play("laser")
+	$AnimationPlayer2.play("recorte")
+	var game_time = float(Time.get_ticks_msec() % 1000)/1000
 	$AnimationPlayer.seek(1-game_time, true)
 	
+func seleccionar_laser(color: int):
+	match color:
+		1:
+			$LaserRojo.visible = true;
+			$LaserAzul.visible = false;
+		2:
+			$LaserRojo.visible = false;
+			$LaserAzul.visible = true;
+		
+
 func _process(delta):
 	var space_state = get_world_2d().direct_space_state
 	var area_shape = $Area2D/CollisionShape2D.shape  # La forma de colisión del Area2D

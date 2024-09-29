@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgprqpts3o4x1"]
+
+[ext_resource type="Script" path="res://Modelos/peon.gd" id="1_lasyx"]
+[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="2_jrv7s"]
+
+[node name="peon" type="Node2D"]
+script = ExtResource("1_lasyx")
+metadata/_edit_group_ = true
+
+[node name="personaje" parent="." groups=["enemigo"] instance=ExtResource("2_jrv7s")]
+process_mode = 4
+position = Vector2(-1, 0)
+direccion = Vector2(0, 1)
+skin = 11
+vida = 1
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="personaje"]

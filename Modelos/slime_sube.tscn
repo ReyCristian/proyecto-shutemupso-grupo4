@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6x52ibsxqpxd"]
+
+[ext_resource type="Script" path="res://Escenas/slime_sube.gd" id="1_0uamt"]
+[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="2_qtjwf"]
+
+[node name="slime_sube" type="Node2D"]
+script = ExtResource("1_0uamt")
+metadata/_edit_group_ = true
+
+[node name="personaje" parent="." groups=["enemigo"] instance=ExtResource("2_qtjwf")]
+process_mode = 4
+visible = false
+position = Vector2(-1, 0)
+direccion = Vector2(0, -1)
+tiene_espada = false
+isCorriendo = true
+skin = 19
+vida = 20
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

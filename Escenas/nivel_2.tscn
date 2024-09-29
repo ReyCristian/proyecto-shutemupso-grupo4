@@ -1,33 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://72k80u106hb3"]
+[gd_scene load_steps=8 format=3 uid="uid://72k80u106hb3"]
 
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_3eoju"]
+[ext_resource type="AudioStream" uid="uid://dusljr07jmqhw" path="res://Recursos/musica/Gran Batalla.mp3" id="2_crg08"]
 [ext_resource type="PackedScene" uid="uid://bj223svbntw7t" path="res://Escenas/mapa_2.tscn" id="2_qpulv"]
-[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="3_w1ild"]
-[ext_resource type="Script" path="res://Herramientas/controles.gd" id="4_xdoaj"]
+[ext_resource type="PackedScene" uid="uid://bxol1wke3w5o7" path="res://Modelos/heroe.tscn" id="3_crm0t"]
+[ext_resource type="PackedScene" uid="uid://b6x52ibsxqpxd" path="res://Modelos/slime_sube.tscn" id="3_hosxh"]
 [ext_resource type="PackedScene" uid="uid://dcagwrjfmm1hg" path="res://Herramientas/generador_enemigos.tscn" id="5_gaii1"]
+[ext_resource type="PackedScene" uid="uid://bgprqpts3o4x1" path="res://Modelos/peon.tscn" id="7_5pva7"]
 
 [node name="nivel_2" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_3eoju")
 
+[node name="GranBatalla" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_crg08")
+bus = &"Musica"
+
 [node name="mapa2" parent="." instance=ExtResource("2_qpulv")]
 
-[node name="personaje" parent="." groups=["personaje"] instance=ExtResource("3_w1ild")]
-position = Vector2(256, 218)
-skin = 3
-
-[node name="Control" type="Control" parent="personaje"]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_xdoaj")
-personaje_principal = NodePath("..")
-mapa_nivel = NodePath("../..")
-isCorriendo = true
-metadata/_edit_use_anchors_ = true
+[node name="Personaje_principal" parent="." instance=ExtResource("3_crm0t")]
 
 [node name="Generadores" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="generador_slimes" parent="Generadores" instance=ExtResource("5_gaii1")]
 vida = 10
@@ -37,3 +31,22 @@ position = Vector2(241, -34)
 skin = 11
 direccion = Vector2(0, 1)
 isCorriendo = false
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Generadores"]
+position = Vector2(237, 122)
+
+[node name="Peones" type="Node2D" parent="."]
+
+[node name="peon" parent="Peones" instance=ExtResource("7_5pva7")]
+position = Vector2(305, -33)
+
+[node name="peon2" parent="Peones" instance=ExtResource("7_5pva7")]
+position = Vector2(140, -63)
+
+[node name="peon3" parent="Peones" instance=ExtResource("7_5pva7")]
+position = Vector2(235, -128)
+
+[node name="Slimes" type="Node2D" parent="."]
+
+[node name="slime_sube" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(201, 95)

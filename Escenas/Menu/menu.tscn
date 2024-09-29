@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://4ho5db3vcuki"]
+[gd_scene load_steps=10 format=3 uid="uid://4ho5db3vcuki"]
 
 [ext_resource type="Script" path="res://Escenas/Menu/menuGeneral.gd" id="1_3e75f"]
 [ext_resource type="Script" path="res://Escenas/Menu/MenuVertical.gd" id="2_8h68a"]
+[ext_resource type="AudioStream" uid="uid://d0o0frnnr2f7v" path="res://Recursos/musica/Enchanted Festival.mp3" id="2_jn71k"]
 [ext_resource type="Script" path="res://Escenas/Menu/NivelesMenu.gd" id="3_uxdpq"]
 [ext_resource type="Script" path="res://Escenas/Menu/AbrirMenu.gd" id="4_wgcfc"]
 [ext_resource type="Script" path="res://Escenas/Menu/MenuPrincipal.gd" id="5_ar7oj"]
+[ext_resource type="Script" path="res://Escenas/Menu/menu_opciones.gd" id="5_wk70w"]
+[ext_resource type="Script" path="res://Escenas/Menu/menu_opciones_musica.gd" id="6_pod8n"]
+[ext_resource type="Script" path="res://Escenas/Menu/slider_sonido.gd" id="8_5xxt5"]
 
 [node name="Menu Hub" type="CanvasLayer"]
 layer = 100
@@ -16,6 +20,42 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("1_3e75f")
+
+[node name="EnchantedFestival" type="AudioStreamPlayer" parent="Menu"]
+stream = ExtResource("2_jn71k")
+volume_db = -8.0
+autoplay = true
+bus = &"Musica"
+parameters/looping = false
+
+[node name="Principal" type="VBoxContainer" parent="Menu"]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 50.0
+offset_right = 426.0
+offset_bottom = 606.0
+script = ExtResource("2_8h68a")
+isShowed = true
+
+[node name="Niveles" type="Button" parent="Menu/Principal" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+text = "Niveles"
+script = ExtResource("4_wgcfc")
+menu = NodePath("../../Niveles")
+
+[node name="Opciones" type="Button" parent="Menu/Principal" node_paths=PackedStringArray("menu")]
+layout_mode = 2
+text = "Opciones"
+script = ExtResource("4_wgcfc")
+menu = NodePath("../../Opciones")
+
+[node name="Salir" type="Button" parent="Menu/Principal"]
+layout_mode = 2
+text = "Salir"
+
+[node name="Control" type="Control" parent="Menu/Principal"]
+layout_mode = 2
+script = ExtResource("5_ar7oj")
 
 [node name="Niveles" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
@@ -42,31 +82,84 @@ text = "Nivel 3"
 layout_mode = 2
 script = ExtResource("3_uxdpq")
 
-[node name="Principal" type="VBoxContainer" parent="Menu"]
-layout_mode = 0
+[node name="Opciones" type="VBoxContainer" parent="Menu"]
+layout_mode = 2
 offset_left = 55.0
-offset_top = 50.0
+offset_top = 51.0
 offset_right = 426.0
-offset_bottom = 606.0
+offset_bottom = 589.0
 script = ExtResource("2_8h68a")
-isShowed = true
 
-[node name="Niveles" type="Button" parent="Menu/Principal" node_paths=PackedStringArray("menu")]
+[node name="Sonidos" type="Button" parent="Menu/Opciones" node_paths=PackedStringArray("menu")]
 layout_mode = 2
-text = "Niveles"
+text = "Sonidos"
 script = ExtResource("4_wgcfc")
-menu = NodePath("../../Niveles")
+menu = NodePath("../../OpcionesSonido")
 
-[node name="Salir" type="Button" parent="Menu/Principal"]
+[node name="Control" type="Control" parent="Menu/Opciones"]
 layout_mode = 2
-text = "Salir"
+script = ExtResource("5_wk70w")
 
-[node name="Control" type="Control" parent="Menu/Principal"]
+[node name="OpcionesSonido" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
-script = ExtResource("5_ar7oj")
+offset_left = 55.0
+offset_top = 51.0
+offset_right = 426.0
+offset_bottom = 589.0
+script = ExtResource("2_8h68a")
 
+[node name="Label" type="Label" parent="Menu/OpcionesSonido"]
+layout_mode = 2
+text = "Sonido General
+"
+
+[node name="General" type="HSlider" parent="Menu/OpcionesSonido"]
+layout_mode = 2
+value = 100.0
+script = ExtResource("8_5xxt5")
+
+[node name="Label2" type="Label" parent="Menu/OpcionesSonido"]
+layout_mode = 2
+text = "Musica"
+
+[node name="Musica" type="HSlider" parent="Menu/OpcionesSonido"]
+layout_mode = 2
+value = 50.0
+script = ExtResource("8_5xxt5")
+bus = 1
+
+[node name="Label3" type="Label" parent="Menu/OpcionesSonido"]
+layout_mode = 2
+text = "Efectos"
+
+[node name="Efectos" type="HSlider" parent="Menu/OpcionesSonido"]
+layout_mode = 2
+value = 50.0
+script = ExtResource("8_5xxt5")
+bus = 2
+
+[node name="Control" type="Control" parent="Menu/OpcionesSonido"]
+layout_mode = 2
+script = ExtResource("6_pod8n")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Menu/OpcionesSonido"]
+layout_mode = 2
+
+[node name="CheckButton" type="CheckButton" parent="Menu/OpcionesSonido/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Menu/OpcionesSonido/HBoxContainer"]
+layout_mode = 2
+text = "Silencio"
+
+[connection signal="pressed" from="Menu/Principal/Niveles" to="Menu/Principal/Niveles" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Principal/Opciones" to="Menu/Principal/Opciones" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Principal/Salir" to="Menu/Principal/Control" method="_on_salir_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl1" to="Menu/Niveles/Control" method="_on_lvl_1_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl2" to="Menu/Niveles/Control" method="_on_lvl_2_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl3" to="Menu/Niveles/Control" method="_on_lvl_3_pressed"]
-[connection signal="pressed" from="Menu/Principal/Niveles" to="Menu/Principal/Niveles" method="_on_pressed"]
-[connection signal="pressed" from="Menu/Principal/Salir" to="Menu/Principal/Control" method="_on_salir_pressed"]
+[connection signal="pressed" from="Menu/Opciones/Sonidos" to="Menu/Opciones/Sonidos" method="_on_pressed"]
+[connection signal="value_changed" from="Menu/OpcionesSonido/General" to="Menu/OpcionesSonido/General" method="_on_value_changed"]
+[connection signal="value_changed" from="Menu/OpcionesSonido/Musica" to="Menu/OpcionesSonido/Musica" method="_on_value_changed"]
+[connection signal="value_changed" from="Menu/OpcionesSonido/Efectos" to="Menu/OpcionesSonido/Efectos" method="_on_value_changed"]
+[connection signal="toggled" from="Menu/OpcionesSonido/HBoxContainer/CheckButton" to="Menu/OpcionesSonido/Control" method="_on_check_button_toggled"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxol1wke3w5o7"]
+
+[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="1_12x6o"]
+[ext_resource type="Script" path="res://Herramientas/controles.gd" id="2_811h6"]
+
+[node name="Personaje_principal" type="Node2D"]
+y_sort_enabled = true
+
+[node name="heroe" parent="." groups=["heroe"] instance=ExtResource("1_12x6o")]
+position = Vector2(256, 218)
+auto_apuntado = -90.0
+skin = 3
+
+[node name="AudioListener2D" type="AudioListener2D" parent="heroe"]
+position = Vector2(-256, -218)
+
+[node name="Control" type="Node" parent="heroe"]
+script = ExtResource("2_811h6")
+personaje_principal = NodePath("..")
+mapa_nivel = NodePath("../../..")
+isCorriendo = true
+metadata/_edit_use_anchors_ = true

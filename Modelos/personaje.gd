@@ -91,13 +91,14 @@ func shot(ataque: int = 1):
 		var laser = pre_laser.instantiate()
 		get_parent().add_child(laser)
 		var antena = get_antena_disparo($Sprite2D/direccion.get_angulo())
-		if is_in_group("personaje"):
+		if is_in_group("heroe"):
 			laser.add_to_group("laser_p")
+		else:
+			laser.seleccionar_laser(2);
 		laser.global_position = antena.global_position
 		if auto_apuntado == 360:
 			laser.rotation = antena.rotation 
 		else:
-			print(auto_apuntado)
 			laser.rotation = deg_to_rad(auto_apuntado);
 		disparo = false
 		await get_tree().create_timer(0 if ataque==1 else 0.5).timeout
@@ -164,12 +165,12 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	pass # Replace with function body.
 
 func _on_cuerpo_entra_zona_hostilidad(body: Node2D) -> void:
-	if self.is_in_group("enemigo") and body.is_in_group("personaje"):
+	if self.is_in_group("enemigo") and body.is_in_group("heroe"):
 		dar_golpe(body);
 
 
 func _on_area_entra_hitbox(area: Area2D) -> void:
-	if area.is_in_group("laser") and not (area.get_parent().is_in_group("laser_p") and self.is_in_group("personaje")):
+	if area.is_in_group("laser") and not (area.get_parent().is_in_group("laser_p") and self.is_in_group("heroe")):
 		tomar_daño();
 		area.get_parent().queue_free();
 

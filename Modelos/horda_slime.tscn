@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://0lxppsmhbjx0"]
+[gd_scene load_steps=12 format=3 uid="uid://0lxppsmhbjx0"]
 
 [ext_resource type="Script" path="res://Escenas/horda_slime.gd" id="1_3rraf"]
 [ext_resource type="Texture2D" uid="uid://c5qejwby1ymym" path="res://Recursos/personajes/Slime.png" id="2_r6u0u"]
+[ext_resource type="Script" path="res://Modelos/slime_de_horda.gd" id="3_b0bpo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3dryr"]
 atlas = ExtResource("2_r6u0u")
@@ -65,7 +66,8 @@ script = ExtResource("1_3rraf")
 modulate = Color(1, 0.509804, 0.666667, 0.882353)
 position = Vector2(-1, -3)
 sprite_frames = SubResource("SpriteFrames_aabs4")
+script = ExtResource("3_b0bpo")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7, -12)
+position = Vector2(8, 1)
 shape = SubResource("RectangleShape2D_r5ig1")

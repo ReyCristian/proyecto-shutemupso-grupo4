@@ -15,6 +15,7 @@ func _process(_delta: float) -> void:
 		menu_principal.hideMenu();
 		if not isMenuOpened:
 			get_parent().showMenu();
+			$"../../EnchantedFestival".stream_paused = false;
 			if not es_menu_principal():
 				get_tree().paused = true
 	pass

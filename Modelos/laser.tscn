@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dduqxbbxae6nt"]
+[gd_scene load_steps=11 format=3 uid="uid://dduqxbbxae6nt"]
 
 [ext_resource type="Texture2D" uid="uid://di4iyoydia6eb" path="res://Recursos/laser naranja.png" id="1_31ue5"]
 [ext_resource type="Script" path="res://Modelos/laser.gd" id="1_ktpwn"]
+[ext_resource type="Texture2D" uid="uid://cbn284ubmjsfb" path="res://Recursos/laser azul.png" id="3_1usak"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrv4y"]
 size = Vector2(42.5, 20)
@@ -11,7 +12,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("LaserRojo:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -28,7 +29,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/path = NodePath("LaserRojo:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -44,15 +45,78 @@ _data = {
 "laser": SubResource("Animation_qvaes")
 }
 
+[sub_resource type="Animation" id="Animation_245s0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserRojo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 210, 92)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserRojo:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(36, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fpavt"]
+resource_name = "recorte"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LaserRojo:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Rect2(97, 0, 89, 92), Rect2(0, 0, 210, 92)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LaserRojo:offset")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(36, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_oqxst"]
+_data = {
+"RESET": SubResource("Animation_245s0"),
+"recorte": SubResource("Animation_fpavt")
+}
+
 [node name="Laser" type="Node2D" groups=["laser"]]
 scale = Vector2(0.1, 0.25)
 script = ExtResource("1_ktpwn")
-metadata/_edit_group_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="LaserRojo" type="Sprite2D" parent="."]
 position = Vector2(-15, 2)
 scale = Vector2(1, -1)
 texture = ExtResource("1_31ue5")
+offset = Vector2(36, 0)
+region_enabled = true
+region_rect = Rect2(0, 0, 210, 92)
 
 [node name="Area2D" type="Area2D" parent="." groups=["laser"]]
 position = Vector2(66, 2)
@@ -69,7 +133,18 @@ libraries = {
 "": SubResource("AnimationLibrary_0xxjx")
 }
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_oqxst")
+}
+
 [node name="Timer" type="Timer" parent="."]
+
+[node name="LaserAzul" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-10, 0)
+scale = Vector2(1, 0.888889)
+texture = ExtResource("3_1usak")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
