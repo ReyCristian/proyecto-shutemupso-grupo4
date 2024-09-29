@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://4ho5db3vcuki"]
+[gd_scene load_steps=10 format=3 uid="uid://4ho5db3vcuki"]
 
 [ext_resource type="Script" path="res://Escenas/Menu/menuGeneral.gd" id="1_3e75f"]
 [ext_resource type="Script" path="res://Escenas/Menu/MenuVertical.gd" id="2_8h68a"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Escenas/Menu/NivelesMenu.gd" id="3_uxdpq"]
 [ext_resource type="Script" path="res://Escenas/Menu/AbrirMenu.gd" id="4_wgcfc"]
 [ext_resource type="Script" path="res://Escenas/Menu/MenuPrincipal.gd" id="5_ar7oj"]
+[ext_resource type="Script" path="res://Escenas/Menu/pantalla_completa.gd" id="7_qicod"]
 [ext_resource type="Script" path="res://Escenas/Menu/slider_sonido.gd" id="8_5xxt5"]
 [ext_resource type="Script" path="res://Escenas/Menu/opcion_mute.gd" id="9_4k8xh"]
 
@@ -94,8 +95,11 @@ text = "Sonidos"
 script = ExtResource("4_wgcfc")
 menu = NodePath("../../OpcionesSonido")
 
-[node name="Control" type="Control" parent="Menu/Opciones"]
+[node name="pantalla_completa" type="CheckButton" parent="Menu/Opciones"]
 layout_mode = 2
+text = "Pantalla Completa"
+flat = true
+script = ExtResource("7_qicod")
 
 [node name="OpcionesSonido" type="VBoxContainer" parent="Menu"]
 layout_mode = 2
@@ -135,16 +139,10 @@ value = 50.0
 script = ExtResource("8_5xxt5")
 bus = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Menu/OpcionesSonido"]
-layout_mode = 2
-
-[node name="CheckButton" type="CheckButton" parent="Menu/OpcionesSonido/HBoxContainer"]
-layout_mode = 2
-script = ExtResource("9_4k8xh")
-
-[node name="Label" type="Label" parent="Menu/OpcionesSonido/HBoxContainer"]
+[node name="Silencio" type="CheckButton" parent="Menu/OpcionesSonido"]
 layout_mode = 2
 text = "Silencio"
+script = ExtResource("9_4k8xh")
 
 [connection signal="pressed" from="Menu/Principal/Niveles" to="Menu/Principal/Niveles" method="_on_pressed"]
 [connection signal="pressed" from="Menu/Principal/Opciones" to="Menu/Principal/Opciones" method="_on_pressed"]
@@ -153,7 +151,8 @@ text = "Silencio"
 [connection signal="pressed" from="Menu/Niveles/Lvl2" to="Menu/Niveles/Control" method="_on_lvl_2_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl3" to="Menu/Niveles/Control" method="_on_lvl_3_pressed"]
 [connection signal="pressed" from="Menu/Opciones/Sonidos" to="Menu/Opciones/Sonidos" method="_on_pressed"]
+[connection signal="toggled" from="Menu/Opciones/pantalla_completa" to="Menu/Opciones/pantalla_completa" method="_on_toggled"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/General" to="Menu/OpcionesSonido/General" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/Musica" to="Menu/OpcionesSonido/Musica" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/Efectos" to="Menu/OpcionesSonido/Efectos" method="_on_value_changed"]
-[connection signal="toggled" from="Menu/OpcionesSonido/HBoxContainer/CheckButton" to="Menu/OpcionesSonido/HBoxContainer/CheckButton" method="_on_toggled"]
+[connection signal="toggled" from="Menu/OpcionesSonido/Silencio" to="Menu/OpcionesSonido/Silencio" method="_on_toggled"]
