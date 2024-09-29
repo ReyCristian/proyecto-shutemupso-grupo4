@@ -44,6 +44,7 @@ position = Vector2(235, -49)
 espera_disparo = 1.0
 
 [node name="Patrullero" parent="." instance=ExtResource("4_t2y3p")]
+position = Vector2(304, -285)
 
 [node name="Patrullero2" parent="." instance=ExtResource("4_t2y3p")]
 position = Vector2(209, -467)
@@ -54,6 +55,7 @@ position = Vector2(230, -180)
 curve = SubResource("Curve2D_ahint")
 
 [node name="Personaje_principal" parent="." instance=ExtResource("5_w4cmt")]
+position = Vector2(228, 215)
 
 [node name="Generadores" type="CanvasLayer" parent="."]
 layer = 0

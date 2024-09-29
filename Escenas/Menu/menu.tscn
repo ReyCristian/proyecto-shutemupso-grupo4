@@ -57,6 +57,7 @@ layout_mode = 2
 script = ExtResource("5_ar7oj")
 
 [node name="Niveles" type="VBoxContainer" parent="Menu"]
+visible = false
 layout_mode = 2
 offset_left = 55.0
 offset_top = 51.0
@@ -82,6 +83,7 @@ layout_mode = 2
 script = ExtResource("3_uxdpq")
 
 [node name="Opciones" type="VBoxContainer" parent="Menu"]
+visible = false
 layout_mode = 2
 offset_left = 55.0
 offset_top = 51.0
@@ -102,6 +104,7 @@ flat = true
 script = ExtResource("7_qicod")
 
 [node name="OpcionesSonido" type="VBoxContainer" parent="Menu"]
+visible = false
 layout_mode = 2
 offset_left = 55.0
 offset_top = 51.0
