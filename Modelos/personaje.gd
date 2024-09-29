@@ -19,19 +19,14 @@ var disparo:bool = true;
 var magia_lista:bool = false;
 var magia_lanzada:bool = false;
 var pre_laser:Resource = preload("res://Modelos/laser.tscn");
-var antena_superior:bool = true;
 
 @export var vida: int = 3;
 var muerto:bool = false;
 var limpiar_cadaver:bool = true;
 
-func _ready() -> void:		
-	if self.is_in_group("enemigo"):
-		self.set_collision_layer(1);
-		self.set_collision_mask(0);
-		
+func _ready() -> void:
+	deshabilitar_colisiones_enemigo();
 	guardar_antenas_disparo();
-	
 
 func _physics_process(delta: float) -> void:
 	#Si esta en espera no hace nada
@@ -76,11 +71,22 @@ func dar_golpe(body: Node2D = null) -> void:
 	if muerto or recibio_daño():
 		return;
 	if body!=null:
-		$Sprite2D/direccion.set_direccion(body.global_position - global_position)
+		$Sprite2D/direccion.poner_direccion(body.global_position - global_position)
 	if tiene_espada:
 		$Sprite2D.preparar_golpe_espada();
 	else:
 		$Sprite2D.dar_golpe();
+
+#Esta funcion se llama desde el controlador del personaje
+func preparar_shot(ataque: int = 1):
+	if muerto or recibio_daño():
+		return
+	auto_apuntar()
+	$Sprite2D.shot(ataque)
+
+#Esta funcion la llama la animacion cuando esta lista para lanzar poderes
+func set_magia_lista():
+	magia_lista = true;
 
 func shot(ataque: int = 1):
 	if muerto or recibio_daño():
@@ -90,7 +96,7 @@ func shot(ataque: int = 1):
 		auto_apuntar()
 		var laser = pre_laser.instantiate()
 		get_tree().get_nodes_in_group("nivel")[0].add_child(laser)
-		var antena = get_antena_disparo($Sprite2D/direccion.get_angulo())
+		var antena = get_antena_disparo($Sprite2D/direccion.dame_angulo())
 		if is_in_group("heroe"):
 			laser.add_to_group("laser_p")
 		else:
@@ -103,15 +109,6 @@ func shot(ataque: int = 1):
 		disparo = false
 		await get_tree().create_timer(0.0 if ataque==1 else 0.5).timeout
 		disparo = true
-
-func preparar_shot(ataque: int = 1):
-	if muerto or recibio_daño():
-		return
-	auto_apuntar()
-	$Sprite2D.shot(ataque)
-
-func set_magia_lista():
-	magia_lista = true;
 	
 func set_magia_lanzada():
 	magia_lanzada = true;
@@ -192,33 +189,37 @@ func liberar_padre():
 			break
 		parent = parent.get_parent()
 
-
 func _on_hitbox_body_entered(body: Node2D) -> void:
-	if $Sprite2D.golpe_preparado() and not tiene_espada:
+	if self.is_in_group("enemigo") and body.is_in_group("heroe") and $Sprite2D.golpe_preparado() and not tiene_espada:
 		hacer_daño();
-	pass
+
+func _on_area_espada_body_entered_o_exited(body: Node2D) -> void:
+	if self.is_in_group("enemigo") and body.is_in_group("heroe") and $Sprite2D.golpe_preparado() and tiene_espada:
+		$Sprite2D.dar_golpe_espada();
 
 func hacer_daño():
-	var golpeados;
-	if tiene_espada:
-		golpeados = $area_espada.get_overlapping_bodies()
-	else:
-		golpeados = $hitbox.get_overlapping_bodies()
+	var golpeados = get_cuerpos_en_rango();
 	for golpeado in golpeados:
 		if golpeado.is_in_group("vivo") and golpeado != self:
 			golpeado.tomar_daño()
 		if golpeado.is_in_group("TileMapDestruible"):
-			golpeado.romper_posicion_global(global_position + direccion.normalized() * 8)
+			romper_objeto_de_mapa(golpeado);
 
+func get_cuerpos_en_rango(): 
+	if tiene_espada:
+		return $area_espada.get_overlapping_bodies()
+	else:
+		return $hitbox.get_overlapping_bodies()
 
+func romper_objeto_de_mapa(golpeado):
+	golpeado.romper_posicion_global(global_position + direccion.normalized() * 8)
 
 func auto_apuntar():
 	if auto_apuntado != 360:
 		$Sprite2D/direccion.auto_apuntar(auto_apuntado)
 	pass
-	
 
-func _on_area_espada_body_entered_o_exited(body: Node2D) -> void:
-	if $Sprite2D.golpe_preparado() and tiene_espada:
-		$Sprite2D.dar_golpe_espada();
-	pass # Replace with function body.
+func deshabilitar_colisiones_enemigo():
+	if self.is_in_group("enemigo"):
+		self.set_collision_layer(1);
+		self.set_collision_mask(0);

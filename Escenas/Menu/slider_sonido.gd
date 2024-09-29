@@ -15,7 +15,7 @@ const bus_name = {
 }
 
 func _ready() -> void:
-	cambiar_volumen(value,bus_name[bus])
+	cambiar_volumen(int(value),bus_name[bus])
 
 
 func _on_value_changed(value: int) -> void:
