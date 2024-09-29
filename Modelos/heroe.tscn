@@ -7,7 +7,7 @@
 y_sort_enabled = true
 
 [node name="heroe" parent="." groups=["heroe"] instance=ExtResource("1_12x6o")]
-position = Vector2(256, 218)
+position = Vector2(0, 0)
 auto_apuntado = -90.0
 skin = 3
 

@@ -20,6 +20,7 @@ bus = &"Musica"
 [node name="mapa2" parent="." instance=ExtResource("2_qpulv")]
 
 [node name="Personaje_principal" parent="." instance=ExtResource("3_crm0t")]
+position = Vector2(242, 166)
 
 [node name="Generadores" type="CanvasLayer" parent="."]
 visible = false
