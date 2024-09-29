@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Enchanted Festival.mp3-2cba6eba3e40ffc4e118f8
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

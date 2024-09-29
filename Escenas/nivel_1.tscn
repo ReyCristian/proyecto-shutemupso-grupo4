@@ -1,10 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://dx4378fg2vya0"]
+[gd_scene load_steps=10 format=3 uid="uid://dx4378fg2vya0"]
 
 [ext_resource type="PackedScene" uid="uid://cwqohrojyjh0e" path="res://Escenas/mapa.tscn" id="1_2r6gf"]
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_ay07l"]
 [ext_resource type="AudioStream" uid="uid://dusljr07jmqhw" path="res://Recursos/musica/Gran Batalla.mp3" id="2_haftl"]
 [ext_resource type="PackedScene" uid="uid://ct7nwbden0no0" path="res://Modelos/lanza_magia.tscn" id="3_8dqa0"]
-[ext_resource type="Script" path="res://Escenas/musica_bucle.gd" id="3_okeev"]
 [ext_resource type="PackedScene" uid="uid://dgecw6xfucsoi" path="res://Modelos/patrullero.tscn" id="4_t2y3p"]
 [ext_resource type="PackedScene" uid="uid://bxol1wke3w5o7" path="res://Modelos/heroe.tscn" id="5_w4cmt"]
 [ext_resource type="PackedScene" uid="uid://dcagwrjfmm1hg" path="res://Herramientas/generador_enemigos.tscn" id="7_nyqyn"]
@@ -27,11 +26,8 @@ script = ExtResource("1_ay07l")
 
 [node name="GranBatalla" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_haftl")
-volume_db = -12.0
 autoplay = true
 bus = &"Musica"
-parameters/looping = false
-script = ExtResource("3_okeev")
 
 [node name="mapa" parent="." instance=ExtResource("1_2r6gf")]
 

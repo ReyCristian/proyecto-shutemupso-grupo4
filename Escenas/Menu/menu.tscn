@@ -1,14 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://4ho5db3vcuki"]
+[gd_scene load_steps=9 format=3 uid="uid://4ho5db3vcuki"]
 
 [ext_resource type="Script" path="res://Escenas/Menu/menuGeneral.gd" id="1_3e75f"]
 [ext_resource type="Script" path="res://Escenas/Menu/MenuVertical.gd" id="2_8h68a"]
 [ext_resource type="AudioStream" uid="uid://d0o0frnnr2f7v" path="res://Recursos/musica/Enchanted Festival.mp3" id="2_jn71k"]
-[ext_resource type="Script" path="res://Escenas/musica_bucle.gd" id="3_rk5o6"]
 [ext_resource type="Script" path="res://Escenas/Menu/NivelesMenu.gd" id="3_uxdpq"]
 [ext_resource type="Script" path="res://Escenas/Menu/AbrirMenu.gd" id="4_wgcfc"]
 [ext_resource type="Script" path="res://Escenas/Menu/MenuPrincipal.gd" id="5_ar7oj"]
-[ext_resource type="Script" path="res://Escenas/Menu/menu_opciones_musica.gd" id="6_pod8n"]
 [ext_resource type="Script" path="res://Escenas/Menu/slider_sonido.gd" id="8_5xxt5"]
+[ext_resource type="Script" path="res://Escenas/Menu/opcion_mute.gd" id="9_4k8xh"]
 
 [node name="Menu Hub" type="CanvasLayer"]
 layer = 100
@@ -26,8 +25,6 @@ stream = ExtResource("2_jn71k")
 volume_db = -8.0
 autoplay = true
 bus = &"Musica"
-parameters/looping = false
-script = ExtResource("3_rk5o6")
 
 [node name="Principal" type="VBoxContainer" parent="Menu"]
 layout_mode = 0
@@ -138,15 +135,12 @@ value = 50.0
 script = ExtResource("8_5xxt5")
 bus = 2
 
-[node name="Control" type="Control" parent="Menu/OpcionesSonido"]
-layout_mode = 2
-script = ExtResource("6_pod8n")
-
 [node name="HBoxContainer" type="HBoxContainer" parent="Menu/OpcionesSonido"]
 layout_mode = 2
 
 [node name="CheckButton" type="CheckButton" parent="Menu/OpcionesSonido/HBoxContainer"]
 layout_mode = 2
+script = ExtResource("9_4k8xh")
 
 [node name="Label" type="Label" parent="Menu/OpcionesSonido/HBoxContainer"]
 layout_mode = 2
@@ -162,4 +156,4 @@ text = "Silencio"
 [connection signal="value_changed" from="Menu/OpcionesSonido/General" to="Menu/OpcionesSonido/General" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/Musica" to="Menu/OpcionesSonido/Musica" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/Efectos" to="Menu/OpcionesSonido/Efectos" method="_on_value_changed"]
-[connection signal="toggled" from="Menu/OpcionesSonido/HBoxContainer/CheckButton" to="Menu/OpcionesSonido/Control" method="_on_check_button_toggled"]
+[connection signal="toggled" from="Menu/OpcionesSonido/HBoxContainer/CheckButton" to="Menu/OpcionesSonido/HBoxContainer/CheckButton" method="_on_toggled"]
