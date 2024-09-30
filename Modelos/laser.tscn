@@ -111,6 +111,7 @@ scale = Vector2(0.1, 0.25)
 script = ExtResource("1_ktpwn")
 
 [node name="LaserRojo" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-15, 2)
 scale = Vector2(1, -1)
 texture = ExtResource("1_31ue5")
@@ -141,8 +142,7 @@ libraries = {
 [node name="Timer" type="Timer" parent="."]
 
 [node name="LaserAzul" type="Sprite2D" parent="."]
-visible = false
-modulate = Color(0.662745, 1, 0.258824, 1)
+modulate = Color(0.0666667, 0.415686, 1, 0.886275)
 position = Vector2(-10, 0)
 scale = Vector2(1, 0.888889)
 texture = ExtResource("3_1usak")

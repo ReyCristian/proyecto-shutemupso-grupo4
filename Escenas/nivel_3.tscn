@@ -9,14 +9,16 @@
 
 [node name="nivel_3" type="Node2D" groups=["nivel"]]
 y_sort_enabled = true
-position = Vector2(0, 2959)
+position = Vector2(0, -2)
 script = ExtResource("1_h4yy4")
 Fin_del_mapa = 10000
 
 [node name="mapa 3" parent="." instance=ExtResource("2_t371e")]
+y_sort_enabled = true
+position = Vector2(0, 16)
 
 [node name="Personaje_principal" parent="." instance=ExtResource("3_4tdhs")]
-position = Vector2(242, -2751)
+position = Vector2(236, 220)
 
 [node name="Generadores" type="CanvasLayer" parent="."]
 
