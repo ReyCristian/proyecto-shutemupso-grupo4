@@ -4,17 +4,20 @@ var personaje: CharacterBody2D;
 var sprite: Sprite2D;
 
 #lista de animaciones para el demo mode
-const animations = ["RESET", "idle", "caminar", "correr","espada","golpe","casteo_magia","magia","arco","daño","muerte"]  
+#const animations = ["RESET", "idle", "caminar", "correr","espada","golpe","casteo_magia","magia","arco","daño","muerte"]  
+const animations = ["RESET", "idle", "correr","preparar_espada","espada","casteo_magia","magia"]  
 const direcciones = ["abajo","arriba","abajo_derecha","izquierda","arriba_derecha","abajo_izquierda","derecha","arriba_izquierda"]
 var current_animation = 0;
 
+var timer;
 
 func lanzar(_personaje):
 	personaje = _personaje;
-	personaje.en_demo = true;
 	sprite = personaje.get_node("Sprite2D")
-	sprite.scale = Vector2(10,10);
-	var timer = Timer.new();
+	if not personaje.en_demo:
+		sprite.scale = Vector2(10,10);
+	personaje.en_demo = true;
+	timer = Timer.new();
 	sprite.add_child(timer);
 	timer.wait_time = 3.0 ;
 	timer.connect("timeout", Callable(self, "_on_timeout"));
@@ -30,9 +33,11 @@ func _on_timeout():
 	siguiente_animacion_ciclo()
 
 func carga_skin_aleatoria_al_terminar_ciclo_animacion():
+	if personaje.is_in_group("heroe"):
+		return;
 	if current_animation % animations.size() == 0 && current_animation > 0:
 		personaje.skin = dame_skin_aleatoria()
-		personaje.Sprite2D.cargar_skin();
+		sprite.cargar_skin();
 		
 func dame_skin_aleatoria():
 	var indice_aleatorio = randi_range(0, ListasTexturas.texturas_personaje.size() - 1);

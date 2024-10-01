@@ -1,0 +1,63 @@
+[gd_scene load_steps=4 format=3 uid="uid://duw1o1fvbjioa"]
+
+[ext_resource type="Texture2D" uid="uid://cvntdgdrsegdl" path="res://Recursos/hearts.png" id="1_7axam"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xx56d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gwcm2"]
+font_size = 20
+font_color = Color(0.442919, 0.337827, 0.490696, 1)
+outline_size = 4
+shadow_color = Color(0.509804, 0.509804, 0.615686, 0)
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -51.0
+offset_bottom = -63.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.1017, 1.42687)
+theme_override_styles/panel = SubResource("StyleBoxTexture_xx56d")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 0.907685
+offset_top = -2.1025
+offset_right = 477.908
+offset_bottom = 262.897
+text = "Pepito"
+label_settings = SubResource("LabelSettings_gwcm2")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel"]
+layout_direction = 1
+layout_mode = 0
+offset_left = -0.907685
+offset_top = 23.1275
+offset_right = 61.0923
+offset_bottom = 53.1275
+scale = Vector2(1.04427, 0.849703)
+
+[node name="TextureRect" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.24
+texture = ExtResource("1_7axam")
+stretch_mode = 3
+
+[node name="TextureRect5" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.24
+texture = ExtResource("1_7axam")
+stretch_mode = 3
+
+[node name="TextureRect4" type="TextureRect" parent="Panel/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_stretch_ratio = 0.24
+texture = ExtResource("1_7axam")
+stretch_mode = 3

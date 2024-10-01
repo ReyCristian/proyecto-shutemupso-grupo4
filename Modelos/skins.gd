@@ -10,7 +10,7 @@ func _ready() -> void:
 	reproductor_animaciones.play("RESET");
 	
 	#Activa el modo demo, es para pruebas y para el menu
-	if get_tree().current_scene.name == "personaje":
+	if get_tree().current_scene.name == "personaje" or personaje.en_demo and personaje.vida > 0:
 		demo_mode.lanzar(personaje);
 
 func cargar_skin() -> void:

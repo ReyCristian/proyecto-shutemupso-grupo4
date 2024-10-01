@@ -1,9 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbwgu8t2732k3"]
+[gd_scene load_steps=4 format=3 uid="uid://dbwgu8t2732k3"]
 
 [ext_resource type="Script" path="res://Escenas/principal.gd" id="1_2i6um"]
 [ext_resource type="PackedScene" uid="uid://4ho5db3vcuki" path="res://Escenas/Menu/menu.tscn" id="2_7umk0"]
+[ext_resource type="PackedScene" uid="uid://brygv2bn5pgdm" path="res://Escenas/inicio_nivel.tscn" id="3_metkr"]
 
-[node name="Principal" type="Node2D"]
+[node name="Principal" type="Node2D" groups=["principal"]]
 script = ExtResource("1_2i6um")
 
 [node name="Menu_Hub" parent="." instance=ExtResource("2_7umk0")]
+
+[node name="InicioNivel" parent="." instance=ExtResource("3_metkr")]
+layer = 99
+visible = false

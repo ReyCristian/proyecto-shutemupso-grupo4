@@ -27,6 +27,9 @@ var limpiar_cadaver:bool = true;
 func _ready() -> void:
 	deshabilitar_colisiones_enemigo();
 	guardar_antenas_disparo();
+	$Sprite2D/direccion.poner_direccion(direccion);
+	if vida <=0:
+		morir()
 
 func _physics_process(delta: float) -> void:
 	#Si esta en espera no hace nada
@@ -158,9 +161,9 @@ func recibio_daño() -> bool:
 	return $Sprite2D.recibio_daño()
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	queue_free();
-	liberar_padre();
-	pass # Replace with function body.
+	if not is_in_group("demo"):
+		queue_free();
+		liberar_padre();
 
 func _on_cuerpo_entra_zona_hostilidad(body: Node2D) -> void:
 	if self.is_in_group("enemigo") and body.is_in_group("heroe"):
@@ -175,10 +178,13 @@ func _on_area_entra_hitbox(area: Area2D) -> void:
 
 func _on_animacion_animation_finished(anim_name: StringName) -> void:
 	if en_demo:
+		$Sprite2D.visible = true;
 		return;
 	if anim_name == "muerte" and muerto and limpiar_cadaver:
 		queue_free()
 		liberar_padre()
+		if is_in_group("heroe"):
+			get_tree().get_nodes_in_group("principal")[0].derrota();
 	pass # Replace with function body.
 
 func liberar_padre():

@@ -16,6 +16,9 @@ func pause_off() -> bool:
 	for menu in menus:
 		if menu.visible:
 			return false;
-	get_tree().paused = false;
 	$EnchantedFestival.stream_paused = true;
+	if principal.get_node("InicioNivel").visible:
+		principal.ver_pantalla_inicio_nivel()
+		return false;
+	get_tree().paused = false;
 	return true;

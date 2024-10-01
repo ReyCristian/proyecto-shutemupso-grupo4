@@ -33,6 +33,7 @@ enemigo=""
 heroe=""
 nivel=""
 liberar_al_morir=""
+demo=""
 
 [input]
 

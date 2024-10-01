@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready() -> void:
 	$AnimationPlayer.play("laser")
-	$AnimationPlayer2.play("recorte")
+	$AnimationPlayer2.play("recorte") 
 	rotar_fase_laser();
 	
 func rotar_fase_laser():

@@ -1,0 +1,175 @@
+[gd_scene load_steps=5 format=3 uid="uid://brygv2bn5pgdm"]
+
+[ext_resource type="Script" path="res://Escenas/inicio_nivel.gd" id="1_m2p0h"]
+[ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="1_q06pq"]
+[ext_resource type="AudioStream" uid="uid://16tsfldx7uql" path="res://Recursos/musica/Intense.mp3" id="2_vyrbl"]
+
+[sub_resource type="Curve2D" id="Curve2D_n8vrc"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 50, 0, 0, 0, 0, 50, 50, 0, 0, 0, 0, 50, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="InicioNivel" type="CanvasLayer"]
+process_mode = 2
+script = ExtResource("1_m2p0h")
+
+[node name="Intense" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_vyrbl")
+volume_db = -10.0
+autoplay = true
+bus = &"Musica"
+parameters/looping = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="personaje" parent="ColorRect" groups=["demo", "heroe"] instance=ExtResource("1_q06pq")]
+position = Vector2(97, 97)
+scale = Vector2(6, 6)
+up_direction = Vector2(0, 1)
+direccion = Vector2(0, 1)
+en_demo = true
+esperando = true
+skin = 3
+
+[node name="listo" type="Button" parent="ColorRect"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 179.0
+offset_right = 109.0
+offset_bottom = 210.0
+scale = Vector2(1.5, 1.5)
+focus_neighbor_left = NodePath(".")
+focus_neighbor_top = NodePath(".")
+focus_neighbor_right = NodePath(".")
+focus_neighbor_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+text = "LISTO"
+
+[node name="Tutorial_controles" type="Node2D" parent="ColorRect"]
+
+[node name="Path2D" type="Path2D" parent="ColorRect/Tutorial_controles"]
+position = Vector2(290, 34)
+curve = SubResource("Curve2D_n8vrc")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ColorRect/Tutorial_controles/Path2D"]
+rotation = 1.5708
+
+[node name="personaje2" parent="ColorRect/Tutorial_controles/Path2D/PathFollow2D" groups=["heroe"] instance=ExtResource("1_q06pq")]
+position = Vector2(0, 0)
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 0
+direccion = Vector2(0, 1)
+skin = 3
+
+[node name="personaje3" parent="ColorRect/Tutorial_controles" groups=["demo", "heroe"] instance=ExtResource("1_q06pq")]
+position = Vector2(340, 134)
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 0
+esperando = true
+skin = 3
+
+[node name="suelo_para_disparos" type="Node2D" parent="ColorRect/Tutorial_controles" groups=["nivel"]]
+position = Vector2(349, 134)
+scale = Vector2(2, 2)
+
+[node name="personaje4" parent="ColorRect/Tutorial_controles" groups=["demo", "heroe"] instance=ExtResource("1_q06pq")]
+position = Vector2(340, 204)
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 0
+direccion = Vector2(0, 1)
+esperando = true
+skin = 3
+
+[node name="personaje5" parent="ColorRect/Tutorial_controles" groups=["demo", "heroe"] instance=ExtResource("1_q06pq")]
+position = Vector2(290, 204)
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 0
+direccion = Vector2(0, 1)
+esperando = true
+skin = 3
+
+[node name="Timer" type="Timer" parent="ColorRect/Tutorial_controles"]
+wait_time = 2.0
+autostart = true
+
+[node name="W" type="Button" parent="ColorRect/Tutorial_controles"]
+offset_left = 408.0
+offset_top = 40.0
+offset_right = 440.0
+offset_bottom = 72.0
+rotation = -1.5708
+text = "➤"
+
+[node name="A" type="Button" parent="ColorRect/Tutorial_controles"]
+offset_left = 404.0
+offset_top = 77.0
+offset_right = 436.0
+offset_bottom = 109.0
+rotation = 3.14159
+text = "➤"
+
+[node name="S" type="Button" parent="ColorRect/Tutorial_controles"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 440.0
+offset_top = 45.0
+offset_right = 472.0
+offset_bottom = 77.0
+rotation = 1.5708
+text = "➤"
+
+[node name="D" type="Button" parent="ColorRect/Tutorial_controles"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 444.0
+offset_top = 45.0
+offset_right = 476.0
+offset_bottom = 77.0
+text = "➤"
+
+[node name="Z" type="Button" parent="ColorRect/Tutorial_controles"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 428.0
+offset_top = 177.0
+offset_right = 460.0
+offset_bottom = 209.0
+text = "Z"
+
+[node name="X" type="Button" parent="ColorRect/Tutorial_controles"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 391.0
+offset_top = 177.0
+offset_right = 423.0
+offset_bottom = 209.0
+text = "X"
+
+[node name="SPACE" type="Button" parent="ColorRect/Tutorial_controles"]
+custom_minimum_size = Vector2(32, 32)
+offset_left = 382.0
+offset_top = 109.0
+offset_right = 468.0
+offset_bottom = 141.0
+text = "SPACE"
+
+[node name="Bloqueo de botones" type="ColorRect" parent="ColorRect/Tutorial_controles"]
+modulate = Color(1, 1, 1, 0)
+offset_left = 258.0
+offset_top = 1.0
+offset_right = 487.0
+offset_bottom = 266.0
+metadata/_edit_lock_ = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="ColorRect"]
+
+[connection signal="pressed" from="ColorRect/listo" to="." method="_on_listo_pressed"]
+[connection signal="timeout" from="ColorRect/Tutorial_controles/Timer" to="." method="_on_timer_timeout"]
