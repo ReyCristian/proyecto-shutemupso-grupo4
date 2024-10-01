@@ -1,11 +1,71 @@
-[gd_scene load_steps=4 format=4 uid="uid://bj223svbntw7t"]
+[gd_scene load_steps=7 format=4 uid="uid://bj223svbntw7t"]
 
 [ext_resource type="TileSet" uid="uid://bckp2sxh4p8hk" path="res://Recursos/chilling runestres.tres" id="1_tqcx8"]
 [ext_resource type="Texture2D" uid="uid://dtt1858mwjbes" path="res://icon.svg" id="2_xhkqa"]
 [ext_resource type="PackedScene" uid="uid://0lxppsmhbjx0" path="res://Modelos/horda_slime.tscn" id="3_7nhmn"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wnfca"]
+size = Vector2(93, 1709)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ut6m4"]
+size = Vector2(91, 1432)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vlm0c"]
+size = Vector2(20, 518)
+
 [node name="mapa2" type="Node2D"]
 y_sort_enabled = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+z_index = 2
+position = Vector2(22.5, -560.5)
+shape = SubResource("RectangleShape2D_wnfca")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+z_index = 2
+position = Vector2(458, -560)
+shape = SubResource("RectangleShape2D_wnfca")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+z_index = 2
+position = Vector2(23, -2257)
+shape = SubResource("RectangleShape2D_ut6m4")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+z_index = 2
+position = Vector2(458, -2257)
+shape = SubResource("RectangleShape2D_ut6m4")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+z_index = 2
+position = Vector2(488, -3232)
+shape = SubResource("RectangleShape2D_vlm0c")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+z_index = 2
+position = Vector2(424, -3469)
+shape = SubResource("RectangleShape2D_vlm0c")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+z_index = 2
+position = Vector2(59, -3469)
+shape = SubResource("RectangleShape2D_vlm0c")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D"]
+visible = false
+z_index = 2
+position = Vector2(-8, -3232)
+shape = SubResource("RectangleShape2D_vlm0c")
 
 [node name="Cofre" type="TileMapLayer" parent="."]
 y_sort_enabled = true
