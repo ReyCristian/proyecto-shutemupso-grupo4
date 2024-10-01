@@ -43,7 +43,6 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(58.5625, -1313.44)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wlxc3")
 
 [node name="CollisionShape2D7" type="CollisionShape2D" parent="muro invisible"]
@@ -52,7 +51,6 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(473, -2236)
 rotation = -0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wlxc3")
 
 [node name="CollisionShape2D9" type="CollisionShape2D" parent="muro invisible"]
@@ -61,7 +59,6 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(412, -2090)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wlxc3")
 
 [node name="CollisionShape2D10" type="CollisionShape2D" parent="muro invisible"]
@@ -70,7 +67,6 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(68, -2091)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wlxc3")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="muro invisible"]
@@ -79,7 +75,6 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(188, -1834)
 rotation = 1.5708
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wlxc3")
 
 [node name="CollisionShape2D8" type="CollisionShape2D" parent="muro invisible"]
@@ -88,7 +83,6 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(6.99991, -2236)
 rotation = 0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wlxc3")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="muro invisible"]
@@ -121,7 +115,6 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(419.125, -1311.13)
 rotation = -0.785398
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_wlxc3")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="muro invisible"]
