@@ -1059,7 +1059,6 @@ height = 12.0
 radius = 19.0
 
 [node name="personaje" type="CharacterBody2D" groups=["vivo"]]
-position = Vector2(239, 139)
 script = ExtResource("1_k874c")
 skin = 2
 
