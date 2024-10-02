@@ -18,8 +18,8 @@ func _ready() -> void:
 	cambiar_volumen(int(value),bus_name[bus])
 
 
-func _on_value_changed(value: int) -> void:
-	cambiar_volumen(value,bus_name[bus])
+func _on_value_changed(valor: int) -> void:
+	cambiar_volumen(valor,bus_name[bus])
 
 func cambiar_volumen(valor:int,nombre_bus:String = "Master"):
 	var valor_adaptado = 0.0001*pow(valor,2)

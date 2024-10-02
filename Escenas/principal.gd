@@ -3,7 +3,7 @@ extends Node2D
 const pre_fondo_menu:PackedScene = preload("res://Escenas/Menu/fondo_menu.tscn");
 var lvl_actual: Node2D = null;
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_focus_next"):
 		ver_pantalla_inicio_nivel();
 

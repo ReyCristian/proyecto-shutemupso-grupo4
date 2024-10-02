@@ -35,6 +35,7 @@ nivel=""
 liberar_al_morir=""
 demo=""
 liberar_al_final=""
+TileMapDestruible=""
 
 [input]
 

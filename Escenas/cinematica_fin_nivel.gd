@@ -34,5 +34,5 @@ func poner_valores_movimiento(heroe,nivel):
 	heroe.direccion = Vector2.ZERO
 	heroe.detener_shot();
 	heroe.auto_movimiento = Vector2.ZERO
-	heroe.auto_movimiento.y = -float(nivel.velocidad) / 100;
+	heroe.auto_movimiento.y = -float(nivel.velocidad*2) / 100;
 	heroe.add_to_group("demo")
