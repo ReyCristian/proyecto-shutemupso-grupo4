@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dx4378fg2vya0"]
+[gd_scene load_steps=11 format=3 uid="uid://dx4378fg2vya0"]
 
 [ext_resource type="PackedScene" uid="uid://cwqohrojyjh0e" path="res://Escenas/mapa.tscn" id="1_2r6gf"]
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_ay07l"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dgecw6xfucsoi" path="res://Modelos/patrullero.tscn" id="4_t2y3p"]
 [ext_resource type="PackedScene" uid="uid://bxol1wke3w5o7" path="res://Modelos/heroe.tscn" id="5_w4cmt"]
 [ext_resource type="PackedScene" uid="uid://dcagwrjfmm1hg" path="res://Herramientas/generador_enemigos.tscn" id="7_nyqyn"]
+[ext_resource type="PackedScene" uid="uid://djscptpq6vn3o" path="res://Herramientas/cinematica_fin_nivel.tscn" id="8_wdq68"]
 
 [sub_resource type="Curve2D" id="Curve2D_vt127"]
 _data = {
@@ -55,9 +56,9 @@ position = Vector2(230, -180)
 curve = SubResource("Curve2D_ahint")
 
 [node name="Personaje_principal" parent="." instance=ExtResource("5_w4cmt")]
-position = Vector2(228, 215)
+position = Vector2(225, 236)
 
-[node name="Generadores" type="CanvasLayer" parent="."]
+[node name="Generadores" type="CanvasLayer" parent="." groups=["liberar_al_final"]]
 layer = 0
 
 [node name="generador_slimes" parent="Generadores" instance=ExtResource("7_nyqyn")]
@@ -69,3 +70,5 @@ position = Vector2(241, -34)
 skin = 11
 direccion = Vector2(0, 1)
 isCorriendo = false
+
+[node name="cinematica_fin_nivel" parent="." instance=ExtResource("8_wdq68")]

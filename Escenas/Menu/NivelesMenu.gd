@@ -1,9 +1,13 @@
 extends Control
 
-const pre_lvl_1:PackedScene = preload("res://Escenas/nivel_1.tscn");
-const pre_lvl_2:PackedScene = preload("res://Escenas/nivel_2.tscn");
-const pre_lvl_3:PackedScene = preload("res://Escenas/nivel_3.tscn");
+var pre_lvl_list =[
+	preload("res://Escenas/Menu/fondo_menu.tscn"),
+	preload("res://Escenas/nivel_1.tscn"),
+	preload("res://Escenas/nivel_2.tscn"),
+	preload("res://Escenas/nivel_3.tscn"),
+]
 
+var nivel_actual_indice = 0;
 var principal: Node2D;
 
 func _ready() -> void:
@@ -11,20 +15,23 @@ func _ready() -> void:
 	randomize()
 
 func _on_lvl_1_pressed() -> void:
-	pre_cargar_lvl(pre_lvl_1);
+	pre_cargar_lvl(pre_lvl_list[1]);
+	nivel_actual_indice = 1;
 	get_parent().hideMenu()
 	principal.ver_pantalla_inicio_nivel()
 	pass;
 
 
 func _on_lvl_2_pressed() -> void:
-	pre_cargar_lvl(pre_lvl_2);
+	pre_cargar_lvl(pre_lvl_list[2]);
+	nivel_actual_indice = 2;
 	get_parent().hideMenu()
 	principal.ver_pantalla_inicio_nivel()
 	pass;
 	
 func _on_lvl_3_pressed() -> void:
-	pre_cargar_lvl(pre_lvl_3);
+	pre_cargar_lvl(pre_lvl_list[3]);
+	nivel_actual_indice = 3;
 	get_parent().hideMenu()
 	principal.ver_pantalla_inicio_nivel()
 	pass # Replace with function body.
@@ -50,3 +57,8 @@ func cargar_lvl(pre_lvl: PackedScene):
 	principal.lvl_actual.set("archivo_escena",pre_lvl);
 	principal.add_child(principal.lvl_actual);
 	pass
+
+func siguiente_nivel():
+	nivel_actual_indice += 1;
+	pre_cargar_lvl(pre_lvl_list[nivel_actual_indice]);
+	

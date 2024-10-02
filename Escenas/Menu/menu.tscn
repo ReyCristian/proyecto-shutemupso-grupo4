@@ -36,6 +36,10 @@ offset_bottom = 606.0
 script = ExtResource("2_8h68a")
 isShowed = true
 
+[node name="Continuar" type="Button" parent="Menu/Principal"]
+layout_mode = 2
+text = "Continuar"
+
 [node name="Niveles" type="Button" parent="Menu/Principal" node_paths=PackedStringArray("menu")]
 layout_mode = 2
 text = "Niveles"
@@ -147,6 +151,7 @@ layout_mode = 2
 text = "Silencio"
 script = ExtResource("9_4k8xh")
 
+[connection signal="pressed" from="Menu/Principal/Continuar" to="Menu/Principal/Control" method="_on_continuar_pressed"]
 [connection signal="pressed" from="Menu/Principal/Niveles" to="Menu/Principal/Niveles" method="_on_pressed"]
 [connection signal="pressed" from="Menu/Principal/Opciones" to="Menu/Principal/Opciones" method="_on_pressed"]
 [connection signal="pressed" from="Menu/Principal/Salir" to="Menu/Principal/Control" method="_on_salir_pressed"]

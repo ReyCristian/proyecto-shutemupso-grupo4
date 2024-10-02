@@ -14,6 +14,9 @@ point_count = 5
 process_mode = 2
 script = ExtResource("1_m2p0h")
 
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+enable_node_path = NodePath("../ColorRect")
+
 [node name="Intense" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_vyrbl")
 volume_db = -10.0
@@ -62,7 +65,7 @@ curve = SubResource("Curve2D_n8vrc")
 [node name="PathFollow2D" type="PathFollow2D" parent="ColorRect/Tutorial_controles/Path2D"]
 rotation = 1.5708
 
-[node name="personaje2" parent="ColorRect/Tutorial_controles/Path2D/PathFollow2D" groups=["heroe"] instance=ExtResource("1_q06pq")]
+[node name="personaje2" parent="ColorRect/Tutorial_controles/Path2D/PathFollow2D" groups=["demo", "heroe"] instance=ExtResource("1_q06pq")]
 position = Vector2(0, 0)
 scale = Vector2(3, 3)
 collision_layer = 0
@@ -168,8 +171,6 @@ offset_top = 1.0
 offset_right = 487.0
 offset_bottom = 266.0
 metadata/_edit_lock_ = true
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="ColorRect"]
 
 [connection signal="pressed" from="ColorRect/listo" to="." method="_on_listo_pressed"]
 [connection signal="timeout" from="ColorRect/Tutorial_controles/Timer" to="." method="_on_timer_timeout"]

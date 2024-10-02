@@ -35,7 +35,6 @@ func _physics_process(delta: float) -> void:
 	#Si esta en espera no hace nada
 	if esperando || muerto:
 		return;
-		
 	var direccion_normalizada = self.direccion.normalized();
 	var direccion_automatica = auto_mover(direccion_normalizada);
 	var movimiento=calcular_movimiento(direccion_automatica,delta);
@@ -52,6 +51,8 @@ func seguir_camino(movimiento:Vector2):
 	direccion = Vector2.RIGHT.rotated(get_parent().rotation) * direccion.length()
 
 func auto_mover(direccion_normalizada) -> Vector2:
+	if $hitbox.get_overlapping_bodies().size() > 1:
+		return direccion_normalizada;
 	if direccion_normalizada.x == 0:
 		direccion_normalizada.x = auto_movimiento.x;
 		
@@ -79,6 +80,9 @@ func dar_golpe(body: Node2D = null) -> void:
 		$Sprite2D.preparar_golpe_espada();
 	else:
 		$Sprite2D.dar_golpe();
+
+func dar_golpe_espada():
+	$Sprite2D.dar_golpe_espada();
 
 #Esta funcion se llama desde el controlador del personaje
 func preparar_shot(ataque: int = 1):
@@ -151,19 +155,26 @@ func tomar_daño():
 		$Sprite2D.tomar_daño()
 
 func morir():
+	if muerto:
+		return;
 	muerto = true;
 	$Sprite2D.morir();
-	$hitbox.queue_free();
-	$hostilidad.queue_free();
-	$CollisionShape2D.queue_free();
+	if not en_demo:
+		$hitbox.queue_free();
+		$hostilidad.queue_free();
+		$CollisionShape2D.queue_free();
 	
 func recibio_daño() -> bool:
 	return $Sprite2D.recibio_daño()
 	
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
-	if not is_in_group("demo"):
-		queue_free();
-		liberar_padre();
+	if is_in_group("demo") or en_demo:
+		return
+	if is_in_group("heroe"):
+		morir();
+		return
+	queue_free();
+	liberar_padre();
 
 func _on_cuerpo_entra_zona_hostilidad(body: Node2D) -> void:
 	if self.is_in_group("enemigo") and body.is_in_group("heroe"):
@@ -201,7 +212,7 @@ func _on_hitbox_body_entered(body: Node2D) -> void:
 
 func _on_area_espada_body_entered_o_exited(body: Node2D) -> void:
 	if self.is_in_group("enemigo") and body.is_in_group("heroe") and $Sprite2D.golpe_preparado() and tiene_espada:
-		$Sprite2D.dar_golpe_espada();
+		dar_golpe_espada();
 
 func hacer_daño():
 	var golpeados = get_cuerpos_en_rango();

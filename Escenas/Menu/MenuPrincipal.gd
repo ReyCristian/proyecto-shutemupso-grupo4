@@ -8,6 +8,7 @@ func _ready() -> void:
 	principal = get_tree().current_scene;
 	
 func _process(_delta: float) -> void:
+	$"../Continuar".visible = $"../../Niveles/Control".nivel_actual_indice > 0 
 	var isMenuOpened = get_parent().isShowed
 	if es_menu_principal() and isMenuOpened:
 		return; #El menu principal esta abierto
@@ -27,3 +28,6 @@ func _on_salir_pressed() -> void:
 
 func es_menu_principal() ->bool :
 	return principal.lvl_actual.name == "Fondo_menu"
+
+func _on_continuar_pressed() -> void:
+	menu_principal.hideMenu();

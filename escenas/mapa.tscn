@@ -34,8 +34,7 @@ z_index = 2
 position = Vector2(454, -1628)
 shape = SubResource("RectangleShape2D_lv6p7")
 
-[node name="horda_slime" parent="." instance=ExtResource("3_0df50")]
-position = Vector2(230, 279)
+[node name="horda_slime" parent="." groups=["liberar_al_final"] instance=ExtResource("3_0df50")]
 
 [node name="suelo" type="TileMapLayer" parent="."]
 z_index = -18

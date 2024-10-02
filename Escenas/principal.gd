@@ -1,7 +1,11 @@
 extends Node2D
 
 const pre_fondo_menu:PackedScene = preload("res://Escenas/Menu/fondo_menu.tscn");
-var lvl_actual: Node2D = null; 
+var lvl_actual: Node2D = null;
+
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("ui_focus_next"):
+		ver_pantalla_inicio_nivel();
 
 func _ready() -> void:
 	$Menu_Hub/Menu/Niveles/Control.cargar_lvl(pre_fondo_menu);
@@ -23,3 +27,9 @@ func reiniciar_nivel():
 	lvl_actual = escena.instantiate() as Node2D
 	lvl_actual.set("archivo_escena",escena);
 	add_child(lvl_actual)
+	
+
+func siguiente_nivel():
+	$Menu_Hub/Menu/Niveles/Control.siguiente_nivel();
+	ver_pantalla_inicio_nivel();
+	

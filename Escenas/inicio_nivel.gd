@@ -2,9 +2,10 @@ extends CanvasLayer
 
 var reiniciar:bool = false;
 
-func _process(_delta: float) -> void:
-	$ColorRect/Tutorial_controles/personaje4.shot()
-	$ColorRect/Tutorial_controles/personaje5.shot(2)
+func _physics_process(delta: float) -> void:
+	if $VisibleOnScreenEnabler2D.is_on_screen():
+		$ColorRect/Tutorial_controles/personaje4.shot()
+		$ColorRect/Tutorial_controles/personaje5.shot(2)
 
 func _on_timer_timeout() -> void:
 	if $ColorRect/Tutorial_controles/personaje3/Sprite2D.golpe_preparado():

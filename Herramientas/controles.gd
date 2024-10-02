@@ -42,6 +42,8 @@ func check_corriendo():
 func check_golpe():
 	if Input.is_action_just_pressed("ui_accept"):
 		personaje.dar_golpe();
+	if Input.is_action_just_released("ui_accept"):
+		personaje.dar_golpe_espada();
 
 func check_shot():
 	#Prepara ataque
