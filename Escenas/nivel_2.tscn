@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://72k80u106hb3"]
+[gd_scene load_steps=12 format=3 uid="uid://72k80u106hb3"]
 
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_3eoju"]
 [ext_resource type="AudioStream" uid="uid://dusljr07jmqhw" path="res://Recursos/musica/Gran Batalla.mp3" id="2_crg08"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://damr361d0g16v" path="res://HUD.tscn" id="8_yib4m"]
 [ext_resource type="PackedScene" uid="uid://djscptpq6vn3o" path="res://Herramientas/cinematica_fin_nivel.tscn" id="9_kr5ho"]
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="10_1c0y2"]
+[ext_resource type="PackedScene" uid="uid://ct7nwbden0no0" path="res://Modelos/lanza_magia.tscn" id="11_nery1"]
 
 [node name="nivel_2" type="Node2D" groups=["nivel"]]
 y_sort_enabled = true
@@ -42,20 +43,932 @@ isCorriendo = false
 position = Vector2(237, 122)
 
 [node name="Peones" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Patrulla 1" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(270, -455)
+
+[node name="peon4" parent="Peones/Patrulla 1" instance=ExtResource("7_5pva7")]
+position = Vector2(1, 16)
+
+[node name="peon5" parent="Peones/Patrulla 1" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -6)
+
+[node name="peon6" parent="Peones/Patrulla 1" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 2" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(194, -430)
+
+[node name="peon4" parent="Peones/Patrulla 2" instance=ExtResource("7_5pva7")]
+position = Vector2(1, 16)
+
+[node name="peon5" parent="Peones/Patrulla 2" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -6)
+
+[node name="peon6" parent="Peones/Patrulla 2" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 4" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(92, -224)
+
+[node name="peon4" parent="Peones/Patrulla 4" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 4" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 4" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 4" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 5" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(136, -521)
+
+[node name="peon4" parent="Peones/Patrulla 5" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 5" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 5" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 5" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 7" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(146, -1010)
+
+[node name="peon4" parent="Peones/Patrulla 7" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 7" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 7" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 7" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 8" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(263, -1182)
+
+[node name="peon4" parent="Peones/Patrulla 8" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 8" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 8" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 8" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 9" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(325, -1823)
+
+[node name="peon4" parent="Peones/Patrulla 9" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 9" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 9" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 9" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 10" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(152, -1792)
+
+[node name="peon4" parent="Peones/Patrulla 10" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 10" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 10" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 10" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 11" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(265, -1953)
+
+[node name="peon4" parent="Peones/Patrulla 11" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 11" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 11" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 11" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 13" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(247, -2156)
+
+[node name="peon4" parent="Peones/Patrulla 13" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 13" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 13" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 13" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 14" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(119, -2254)
+
+[node name="peon4" parent="Peones/Patrulla 14" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 14" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 14" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 14" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 15" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(212, -2293)
+
+[node name="peon4" parent="Peones/Patrulla 15" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 15" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 15" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 15" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 16" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(386, -2471)
+
+[node name="peon4" parent="Peones/Patrulla 16" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 16" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 16" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 16" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 17" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(154, -2545)
+
+[node name="peon4" parent="Peones/Patrulla 17" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 17" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 17" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 17" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 18" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(280, -2729)
+
+[node name="peon4" parent="Peones/Patrulla 18" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 18" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 18" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 18" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 19" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(106, -2722)
+
+[node name="peon4" parent="Peones/Patrulla 19" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 19" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 19" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 19" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 20" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(229, -2776)
+
+[node name="peon4" parent="Peones/Patrulla 20" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 20" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 20" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 20" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 21" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(372, -2549)
+
+[node name="peon4" parent="Peones/Patrulla 21" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 21" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 21" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 21" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla 12" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(352, -2076)
+
+[node name="peon4" parent="Peones/Patrulla 12" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+
+[node name="peon7" parent="Peones/Patrulla 12" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -41)
+
+[node name="peon5" parent="Peones/Patrulla 12" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -15)
+
+[node name="peon6" parent="Peones/Patrulla 12" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -28)
+
+[node name="Patrulla Horisontal" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(448, -1069)
+
+[node name="peon4" parent="Peones/Patrulla Horisontal" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+direccion = Vector2(-1, 0)
+
+[node name="peon7" parent="Peones/Patrulla Horisontal" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -2)
+direccion = Vector2(-1, 0)
+
+[node name="peon5" parent="Peones/Patrulla Horisontal" instance=ExtResource("7_5pva7")]
+position = Vector2(15, -2)
+direccion = Vector2(-1, 0)
+
+[node name="peon6" parent="Peones/Patrulla Horisontal" instance=ExtResource("7_5pva7")]
+position = Vector2(-30, -2)
+direccion = Vector2(-1, 0)
+
+[node name="Patrulla Horisontal2" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(42, -1069)
+
+[node name="peon4" parent="Peones/Patrulla Horisontal2" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+direccion = Vector2(1, 0)
+
+[node name="peon7" parent="Peones/Patrulla Horisontal2" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -2)
+direccion = Vector2(1, 0)
+
+[node name="peon5" parent="Peones/Patrulla Horisontal2" instance=ExtResource("7_5pva7")]
+position = Vector2(15, -2)
+direccion = Vector2(1, 0)
+
+[node name="peon6" parent="Peones/Patrulla Horisontal2" instance=ExtResource("7_5pva7")]
+position = Vector2(-30, -2)
+direccion = Vector2(1, 0)
+
+[node name="Patrulla Horisontal3" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(51, -1725)
+
+[node name="peon4" parent="Peones/Patrulla Horisontal3" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+direccion = Vector2(1, 0)
+
+[node name="peon7" parent="Peones/Patrulla Horisontal3" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -2)
+direccion = Vector2(1, 0)
+
+[node name="peon5" parent="Peones/Patrulla Horisontal3" instance=ExtResource("7_5pva7")]
+position = Vector2(15, -2)
+direccion = Vector2(1, 0)
+
+[node name="peon6" parent="Peones/Patrulla Horisontal3" instance=ExtResource("7_5pva7")]
+position = Vector2(-30, -2)
+direccion = Vector2(1, 0)
+
+[node name="Patrulla Horisontal4" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(448, -1725)
+
+[node name="peon4" parent="Peones/Patrulla Horisontal4" instance=ExtResource("7_5pva7")]
+position = Vector2(0, -2)
+direccion = Vector2(-1, 0)
+
+[node name="peon7" parent="Peones/Patrulla Horisontal4" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -2)
+direccion = Vector2(-1, 0)
+
+[node name="peon5" parent="Peones/Patrulla Horisontal4" instance=ExtResource("7_5pva7")]
+position = Vector2(15, -2)
+direccion = Vector2(-1, 0)
+
+[node name="peon6" parent="Peones/Patrulla Horisontal4" instance=ExtResource("7_5pva7")]
+position = Vector2(-30, -2)
+direccion = Vector2(-1, 0)
+
+[node name="Patrulla Horisontal5" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(446, -2658)
+
+[node name="peon4" parent="Peones/Patrulla Horisontal5" instance=ExtResource("7_5pva7")]
+position = Vector2(1, -3)
+direccion = Vector2(-1, 0)
+
+[node name="peon7" parent="Peones/Patrulla Horisontal5" instance=ExtResource("7_5pva7")]
+position = Vector2(-14, -3)
+direccion = Vector2(-1, 0)
+
+[node name="peon5" parent="Peones/Patrulla Horisontal5" instance=ExtResource("7_5pva7")]
+position = Vector2(16, -3)
+direccion = Vector2(-1, 0)
+
+[node name="peon6" parent="Peones/Patrulla Horisontal5" instance=ExtResource("7_5pva7")]
+position = Vector2(-29, -3)
+direccion = Vector2(-1, 0)
+
+[node name="Patrulla Horisontal6" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(54, -2606)
+
+[node name="peon4" parent="Peones/Patrulla Horisontal6" instance=ExtResource("7_5pva7")]
+position = Vector2(1, -3)
+direccion = Vector2(1, 0)
+
+[node name="peon7" parent="Peones/Patrulla Horisontal6" instance=ExtResource("7_5pva7")]
+position = Vector2(-14, -3)
+direccion = Vector2(1, 0)
+
+[node name="peon5" parent="Peones/Patrulla Horisontal6" instance=ExtResource("7_5pva7")]
+position = Vector2(16, -3)
+direccion = Vector2(1, 0)
+
+[node name="peon6" parent="Peones/Patrulla Horisontal6" instance=ExtResource("7_5pva7")]
+position = Vector2(-29, -3)
+direccion = Vector2(1, 0)
+
+[node name="Patrulla Horisontal7" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(51, -2329)
+
+[node name="peon4" parent="Peones/Patrulla Horisontal7" instance=ExtResource("7_5pva7")]
+position = Vector2(1, -3)
+direccion = Vector2(1, 0)
+
+[node name="peon7" parent="Peones/Patrulla Horisontal7" instance=ExtResource("7_5pva7")]
+position = Vector2(-14, -3)
+direccion = Vector2(1, 0)
+
+[node name="peon5" parent="Peones/Patrulla Horisontal7" instance=ExtResource("7_5pva7")]
+position = Vector2(16, -3)
+direccion = Vector2(1, 0)
+
+[node name="peon6" parent="Peones/Patrulla Horisontal7" instance=ExtResource("7_5pva7")]
+position = Vector2(-29, -3)
+direccion = Vector2(1, 0)
+
+[node name="Patrulla diagonal izquierda" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(325, -652)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda6" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(431, -2010)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda6" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda6" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda6" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda6" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda2" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(439, -1131)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda2" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda2" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda2" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda2" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda3" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(429, -1391)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda3" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda3" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda3" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda3" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda4" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(246, -1555)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda4" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda4" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda4" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda4" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda5" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(437, -1601)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda5" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda5" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda5" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda5" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda7" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(206, -2141)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda7" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda7" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda7" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda7" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda8" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(436, -2321)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda8" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda8" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda8" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda8" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda9" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(396, -3185)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda9" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda9" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda9" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda9" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal izquierda10" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(232, -3085)
+
+[node name="peon4" parent="Peones/Patrulla diagonal izquierda10" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(-1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal izquierda10" instance=ExtResource("7_5pva7")]
+position = Vector2(-18, 4)
+direccion = Vector2(-1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal izquierda10" instance=ExtResource("7_5pva7")]
+position = Vector2(10, -15)
+direccion = Vector2(-1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal izquierda10" instance=ExtResource("7_5pva7")]
+position = Vector2(22, -26)
+direccion = Vector2(-1, 1)
+
+[node name="Patrulla diagonal derecha" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(156, -860)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
+
+[node name="Patrulla diagonal derecha6" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(60, -1997)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha6" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha6" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha6" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha6" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
+
+[node name="Patrulla diagonal derecha2" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(68, -1393)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha2" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha2" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha2" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha2" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
+
+[node name="Patrulla diagonal derecha4" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(242, -1555)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha4" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha4" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha4" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha4" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
+
+[node name="Patrulla diagonal derecha5" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(58, -1605)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha5" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha5" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha5" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha5" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
+
+[node name="Patrulla diagonal derecha7" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(138, -2370)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha7" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha7" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha7" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha7" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
+
+[node name="Patrulla diagonal derecha8" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(79, -3185)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha8" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha8" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha8" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha8" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
+
+[node name="Patrulla diagonal derecha9" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(251, -3083)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha9" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha9" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha9" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha9" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
+
+[node name="Patrulla diagonal derecha3" type="Node2D" parent="Peones"]
+y_sort_enabled = true
+position = Vector2(53, -1119)
+
+[node name="peon4" parent="Peones/Patrulla diagonal derecha3" instance=ExtResource("7_5pva7")]
+position = Vector2(-4, -5)
+direccion = Vector2(1, 1)
+
+[node name="peon7" parent="Peones/Patrulla diagonal derecha3" instance=ExtResource("7_5pva7")]
+position = Vector2(7, 4)
+direccion = Vector2(1, 1)
+
+[node name="peon5" parent="Peones/Patrulla diagonal derecha3" instance=ExtResource("7_5pva7")]
+position = Vector2(-15, -15)
+direccion = Vector2(1, 1)
+
+[node name="peon6" parent="Peones/Patrulla diagonal derecha3" instance=ExtResource("7_5pva7")]
+position = Vector2(-26, -27)
+direccion = Vector2(1, 1)
 
 [node name="peon" parent="Peones" instance=ExtResource("7_5pva7")]
+y_sort_enabled = true
 position = Vector2(305, -33)
 
 [node name="peon2" parent="Peones" instance=ExtResource("7_5pva7")]
+y_sort_enabled = true
 position = Vector2(140, -63)
 
 [node name="peon3" parent="Peones" instance=ExtResource("7_5pva7")]
+y_sort_enabled = true
 position = Vector2(235, -128)
 
 [node name="Slimes" type="Node2D" parent="."]
 
 [node name="slime_sube" parent="Slimes" instance=ExtResource("3_hosxh")]
 position = Vector2(201, 95)
+
+[node name="slime_sube2" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(348, -2914)
+
+[node name="slime_sube3" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(125, -2918)
+
+[node name="slime_sube4" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(183, -2278)
+
+[node name="slime_sube6" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(165, -2278)
+
+[node name="slime_sube7" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(175, -2293)
+
+[node name="slime_sube8" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(353, -2171)
+
+[node name="slime_sube9" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(340, -2152)
+
+[node name="slime_sube10" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(363, -2152)
+
+[node name="slime_sube11" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(102, -2061)
+
+[node name="slime_sube12" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(127, -2062)
+
+[node name="slime_sube13" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(114, -2072)
+
+[node name="slime_sube5" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(391, -2282)
+
+[node name="slime_sube16" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(282, -1573)
+
+[node name="slime_sube17" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(191, -1570)
+
+[node name="slime_sube18" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(192, -1591)
+
+[node name="slime_sube19" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(285, -1589)
+
+[node name="slime_sube20" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(299, -1421)
+
+[node name="slime_sube21" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(186, -1414)
+
+[node name="slime_sube22" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(175, -1104)
+
+[node name="slime_sube23" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(176, -1094)
+
+[node name="slime_sube24" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(175, -1083)
+
+[node name="slime_sube25" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(280, -1038)
+
+[node name="slime_sube26" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(281, -1048)
+
+[node name="slime_sube27" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(280, -1028)
+
+[node name="slime_sube28" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(153, -628)
+
+[node name="slime_sube29" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(169, -633)
+
+[node name="slime_sube30" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(158, -640)
+
+[node name="slime_sube31" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(171, -650)
+
+[node name="slime_sube14" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(186, -3071)
+
+[node name="slime_sube15" parent="Slimes" instance=ExtResource("3_hosxh")]
+position = Vector2(286, -3067)
 
 [node name="HUD" parent="." instance=ExtResource("8_yib4m")]
 
@@ -66,3 +979,154 @@ position = Vector2(241, -3267)
 position = Vector2(61, -3258)
 esperando = true
 skin = 11
+
+[node name="Magos" type="Node2D" parent="."]
+y_sort_enabled = true
+position = Vector2(74, -734)
+
+[node name="Lanza_magia" parent="Magos" instance=ExtResource("11_nery1")]
+direccion = Vector2(1, 0)
+
+[node name="Lanza_magia10" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(-29, -41)
+direccion = Vector2(1, 0)
+
+[node name="Lanza_magia2" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(159, 672)
+
+[node name="Lanza_magia3" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(270, 367)
+
+[node name="Lanza_magia9" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(142, 239)
+
+[node name="Lanza_magia5" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(140, 416)
+
+[node name="Lanza_magia6" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(95, 479)
+
+[node name="Lanza_magia7" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(313, 464)
+direccion = Vector2(-1, 0)
+
+[node name="Lanza_magia8" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(329, 514)
+direccion = Vector2(-1, 0)
+
+[node name="Lanza_magia4" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(239, 333)
+
+[node name="Lanza_magia11" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(347, -587)
+direccion = Vector2(-1, 0)
+
+[node name="Lanza_magia35" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(109, -244)
+
+[node name="Lanza_magia36" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(237, -434)
+
+[node name="Lanza_magia37" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(-14, -589)
+direccion = Vector2(1, 1)
+
+[node name="Lanza_magia38" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(345, -604)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia39" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(345, -571)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia40" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(141, -1218)
+
+[node name="Lanza_magia12" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(-13, -569)
+direccion = Vector2(1, 0)
+
+[node name="Lanza_magia13" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(-13, -607)
+direccion = Vector2(1, 0)
+
+[node name="Lanza_magia14" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(166, -681)
+
+[node name="Lanza_magia15" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(332, -1450)
+direccion = Vector2(-1, 0)
+
+[node name="Lanza_magia16" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(331, -1481)
+direccion = Vector2(-1, 0)
+
+[node name="Lanza_magia17" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(330, -1514)
+direccion = Vector2(-1, 0)
+
+[node name="Lanza_magia18" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(4, -1674)
+direccion = Vector2(1, 0)
+
+[node name="Lanza_magia19" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(3, -1705)
+direccion = Vector2(1, 0)
+
+[node name="Lanza_magia20" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(2, -1738)
+direccion = Vector2(1, 0)
+
+[node name="Lanza_magia31" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(304, -1314)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia32" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(96, -1345)
+
+[node name="Lanza_magia33" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(224, -1379)
+
+[node name="Lanza_magia34" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(323, -1633)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia21" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(319, -1983)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia25" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(262, -2142)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia29" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(380, -2316)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia30" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(330, -2347)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia26" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(303, -2110)
+direccion = Vector2(-1, 1)
+
+[node name="Lanza_magia22" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(124, -1825)
+direccion = Vector2(1, 1)
+
+[node name="Lanza_magia23" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(70, -2142)
+direccion = Vector2(1, 1)
+
+[node name="Lanza_magia27" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(-50, -2320)
+direccion = Vector2(1, 1)
+
+[node name="Lanza_magia28" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(0, -2340)
+direccion = Vector2(1, 1)
+
+[node name="Lanza_magia24" parent="Magos" instance=ExtResource("11_nery1")]
+position = Vector2(31, -2092)
+direccion = Vector2(1, 1)

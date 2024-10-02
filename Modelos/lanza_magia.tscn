@@ -7,7 +7,6 @@
 script = ExtResource("2_30a3r")
 
 [node name="Enemigo" parent="." groups=["enemigo"] instance=ExtResource("1_wayak")]
-position = Vector2(0, 0)
 direccion = Vector2(0, 1)
 esperando = true
 skin = 13
