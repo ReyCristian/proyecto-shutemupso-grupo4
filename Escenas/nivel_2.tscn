@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://72k80u106hb3"]
+[gd_scene load_steps=9 format=3 uid="uid://72k80u106hb3"]
 
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_3eoju"]
 [ext_resource type="AudioStream" uid="uid://dusljr07jmqhw" path="res://Recursos/musica/Gran Batalla.mp3" id="2_crg08"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b6x52ibsxqpxd" path="res://Modelos/slime_sube.tscn" id="3_hosxh"]
 [ext_resource type="PackedScene" uid="uid://dcagwrjfmm1hg" path="res://Herramientas/generador_enemigos.tscn" id="5_gaii1"]
 [ext_resource type="PackedScene" uid="uid://bgprqpts3o4x1" path="res://Modelos/peon.tscn" id="7_5pva7"]
+[ext_resource type="PackedScene" uid="uid://damr361d0g16v" path="res://HUD.tscn" id="8_yib4m"]
 
 [node name="nivel_2" type="Node2D" groups=["nivel"]]
 y_sort_enabled = true
@@ -53,3 +54,5 @@ position = Vector2(235, -128)
 
 [node name="slime_sube" parent="Slimes" instance=ExtResource("3_hosxh")]
 position = Vector2(201, 95)
+
+[node name="HUD" parent="." instance=ExtResource("8_yib4m")]

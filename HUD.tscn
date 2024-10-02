@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://damr361d0g16v"]
+
+[ext_resource type="PackedScene" uid="uid://el0be1c72b6w" path="res://Corazon.tscn" id="1_4rf4u"]
+[ext_resource type="Script" path="res://corazones.gd" id="1_jox7g"]
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="Corazones" type="Node2D" parent="."]
+position = Vector2(30, 24)
+script = ExtResource("1_jox7g")
+metadata/_edit_group_ = true
+
+[node name="Corazon 1" parent="Corazones" instance=ExtResource("1_4rf4u")]
+
+[node name="Corazon 2" parent="Corazones" instance=ExtResource("1_4rf4u")]
+position = Vector2(15, 0)
+
+[node name="Corazon 3" parent="Corazones" instance=ExtResource("1_4rf4u")]
+position = Vector2(30, 0)
