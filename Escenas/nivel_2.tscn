@@ -876,6 +876,7 @@ y_sort_enabled = true
 position = Vector2(235, -128)
 
 [node name="Slimes" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="slime_sube" parent="Slimes" instance=ExtResource("3_hosxh")]
 position = Vector2(201, 95)

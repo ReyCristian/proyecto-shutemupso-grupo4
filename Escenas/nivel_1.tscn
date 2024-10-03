@@ -3,12 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://cwqohrojyjh0e" path="res://Escenas/mapa.tscn" id="1_2r6gf"]
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_ay07l"]
 [ext_resource type="AudioStream" uid="uid://dusljr07jmqhw" path="res://Recursos/musica/Gran Batalla.mp3" id="2_haftl"]
-[ext_resource type="PackedScene" uid="uid://ct7nwbden0no0" path="res://Modelos/lanza_magia.tscn" id="3_8dqa0"]
 [ext_resource type="PackedScene" uid="uid://dgecw6xfucsoi" path="res://Modelos/patrullero.tscn" id="4_t2y3p"]
 [ext_resource type="PackedScene" uid="uid://bxol1wke3w5o7" path="res://Modelos/heroe.tscn" id="5_w4cmt"]
-[ext_resource type="PackedScene" uid="uid://dcagwrjfmm1hg" path="res://Herramientas/generador_enemigos.tscn" id="7_nyqyn"]
+[ext_resource type="PackedScene" uid="uid://bgprqpts3o4x1" path="res://Modelos/peon.tscn" id="8_v04jj"]
 [ext_resource type="PackedScene" uid="uid://djscptpq6vn3o" path="res://Herramientas/cinematica_fin_nivel.tscn" id="8_wdq68"]
 [ext_resource type="PackedScene" uid="uid://damr361d0g16v" path="res://HUD.tscn" id="9_7m18o"]
+[ext_resource type="PackedScene" uid="uid://b6x52ibsxqpxd" path="res://Modelos/slime_sube.tscn" id="9_io8xs"]
 
 [sub_resource type="Curve2D" id="Curve2D_vt127"]
 _data = {
@@ -33,44 +33,834 @@ bus = &"Musica"
 
 [node name="mapa" parent="." instance=ExtResource("1_2r6gf")]
 
-[node name="Lanza_magia" parent="." instance=ExtResource("3_8dqa0")]
-position = Vector2(274, 150)
-direccion = Vector2(-1, -1)
-
-[node name="Lanza_magia2" parent="." instance=ExtResource("3_8dqa0")]
-position = Vector2(261, -55)
-espera_disparo = 1.0
-
-[node name="Lanza_magia3" parent="." instance=ExtResource("3_8dqa0")]
-position = Vector2(235, -49)
-espera_disparo = 1.0
-
-[node name="Patrullero" parent="." instance=ExtResource("4_t2y3p")]
-position = Vector2(304, -285)
-
-[node name="Patrullero2" parent="." instance=ExtResource("4_t2y3p")]
-position = Vector2(209, -467)
-curve = SubResource("Curve2D_vt127")
-
-[node name="Patrullero3" parent="." instance=ExtResource("4_t2y3p")]
-position = Vector2(230, -180)
-curve = SubResource("Curve2D_ahint")
-
 [node name="Personaje_principal" parent="." instance=ExtResource("5_w4cmt")]
 position = Vector2(225, 236)
-
-[node name="Generadores" type="CanvasLayer" parent="." groups=["liberar_al_final"]]
-layer = 0
-
-[node name="generador_slimes" parent="Generadores" instance=ExtResource("7_nyqyn")]
-tiene_espada = false
-
-[node name="generador_peones" parent="Generadores" instance=ExtResource("7_nyqyn")]
-position = Vector2(241, -34)
-skin = 11
-direccion = Vector2(0, 1)
-isCorriendo = false
 
 [node name="cinematica_fin_nivel" parent="." instance=ExtResource("8_wdq68")]
 
 [node name="HUD" parent="." instance=ExtResource("9_7m18o")]
+
+[node name="Patrulleros" type="Node2D" parent="."]
+
+[node name="Patrullero" parent="Patrulleros" instance=ExtResource("4_t2y3p")]
+position = Vector2(304, -285)
+
+[node name="Patrullero2" parent="Patrulleros" instance=ExtResource("4_t2y3p")]
+position = Vector2(209, -467)
+curve = SubResource("Curve2D_vt127")
+
+[node name="Patrullero3" parent="Patrulleros" instance=ExtResource("4_t2y3p")]
+position = Vector2(230, -180)
+curve = SubResource("Curve2D_ahint")
+
+[node name="Peones" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Horizontal2" type="Node2D" parent="Peones"]
+position = Vector2(18, -55)
+
+[node name="peon" parent="Peones/Horizontal2" instance=ExtResource("8_v04jj")]
+direccion = Vector2(1, 0)
+
+[node name="peon2" parent="Peones/Horizontal2" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon3" parent="Peones/Horizontal2" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon4" parent="Peones/Horizontal2" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 0)
+
+[node name="Diagonal derecha" type="Node2D" parent="Peones"]
+position = Vector2(18, -893)
+
+[node name="peon" parent="Peones/Diagonal derecha" instance=ExtResource("8_v04jj")]
+position = Vector2(0, -36)
+direccion = Vector2(1, 1)
+
+[node name="peon2" parent="Peones/Diagonal derecha" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -24)
+direccion = Vector2(1, 1)
+
+[node name="peon3" parent="Peones/Diagonal derecha" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -13)
+direccion = Vector2(1, 1)
+
+[node name="peon4" parent="Peones/Diagonal derecha" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 1)
+
+[node name="Diagonal derecha2" type="Node2D" parent="Peones"]
+position = Vector2(12, -494)
+
+[node name="peon" parent="Peones/Diagonal derecha2" instance=ExtResource("8_v04jj")]
+position = Vector2(0, -36)
+direccion = Vector2(1, 1)
+
+[node name="peon2" parent="Peones/Diagonal derecha2" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -24)
+direccion = Vector2(1, 1)
+
+[node name="peon3" parent="Peones/Diagonal derecha2" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -13)
+direccion = Vector2(1, 1)
+
+[node name="peon4" parent="Peones/Diagonal derecha2" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 1)
+
+[node name="Diagonal derecha3" type="Node2D" parent="Peones"]
+position = Vector2(26, -1597)
+
+[node name="peon" parent="Peones/Diagonal derecha3" instance=ExtResource("8_v04jj")]
+position = Vector2(0, -36)
+direccion = Vector2(1, 1)
+
+[node name="peon2" parent="Peones/Diagonal derecha3" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -24)
+direccion = Vector2(1, 1)
+
+[node name="peon3" parent="Peones/Diagonal derecha3" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -13)
+direccion = Vector2(1, 1)
+
+[node name="peon4" parent="Peones/Diagonal derecha3" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 1)
+
+[node name="Diagonal derecha4" type="Node2D" parent="Peones"]
+position = Vector2(19, -1898)
+
+[node name="peon" parent="Peones/Diagonal derecha4" instance=ExtResource("8_v04jj")]
+position = Vector2(0, -36)
+direccion = Vector2(1, 1)
+
+[node name="peon2" parent="Peones/Diagonal derecha4" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -24)
+direccion = Vector2(1, 1)
+
+[node name="peon3" parent="Peones/Diagonal derecha4" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -13)
+direccion = Vector2(1, 1)
+
+[node name="peon4" parent="Peones/Diagonal derecha4" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 1)
+
+[node name="Diagonal derecha5" type="Node2D" parent="Peones"]
+position = Vector2(11, -2507)
+
+[node name="peon" parent="Peones/Diagonal derecha5" instance=ExtResource("8_v04jj")]
+position = Vector2(0, -36)
+direccion = Vector2(1, 1)
+
+[node name="peon2" parent="Peones/Diagonal derecha5" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -24)
+direccion = Vector2(1, 1)
+
+[node name="peon3" parent="Peones/Diagonal derecha5" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -13)
+direccion = Vector2(1, 1)
+
+[node name="peon4" parent="Peones/Diagonal derecha5" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 1)
+
+[node name="Diagonal derecha6" type="Node2D" parent="Peones"]
+position = Vector2(71, -2937)
+
+[node name="peon" parent="Peones/Diagonal derecha6" instance=ExtResource("8_v04jj")]
+position = Vector2(0, -36)
+direccion = Vector2(1, 1)
+
+[node name="peon2" parent="Peones/Diagonal derecha6" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -24)
+direccion = Vector2(1, 1)
+
+[node name="peon3" parent="Peones/Diagonal derecha6" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -13)
+direccion = Vector2(1, 1)
+
+[node name="peon4" parent="Peones/Diagonal derecha6" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 1)
+
+[node name="Diagonal derecha7" type="Node2D" parent="Peones"]
+position = Vector2(21, -2886)
+
+[node name="peon" parent="Peones/Diagonal derecha7" instance=ExtResource("8_v04jj")]
+position = Vector2(0, -36)
+direccion = Vector2(1, 1)
+
+[node name="peon2" parent="Peones/Diagonal derecha7" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -24)
+direccion = Vector2(1, 1)
+
+[node name="peon3" parent="Peones/Diagonal derecha7" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -13)
+direccion = Vector2(1, 1)
+
+[node name="peon4" parent="Peones/Diagonal derecha7" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 1)
+
+[node name="Diagonal derecha8" type="Node2D" parent="Peones"]
+position = Vector2(15, -2786)
+
+[node name="peon" parent="Peones/Diagonal derecha8" instance=ExtResource("8_v04jj")]
+position = Vector2(0, -36)
+direccion = Vector2(1, 1)
+
+[node name="peon2" parent="Peones/Diagonal derecha8" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -24)
+direccion = Vector2(1, 1)
+
+[node name="peon3" parent="Peones/Diagonal derecha8" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -13)
+direccion = Vector2(1, 1)
+
+[node name="peon4" parent="Peones/Diagonal derecha8" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 1)
+
+[node name="Horizontal10" type="Node2D" parent="Peones"]
+position = Vector2(22, -993)
+
+[node name="peon" parent="Peones/Horizontal10" instance=ExtResource("8_v04jj")]
+direccion = Vector2(1, 0)
+
+[node name="peon2" parent="Peones/Horizontal10" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon3" parent="Peones/Horizontal10" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon4" parent="Peones/Horizontal10" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 0)
+
+[node name="Horizontal11" type="Node2D" parent="Peones"]
+position = Vector2(30, -1636)
+
+[node name="peon" parent="Peones/Horizontal11" instance=ExtResource("8_v04jj")]
+direccion = Vector2(1, 0)
+
+[node name="peon2" parent="Peones/Horizontal11" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon3" parent="Peones/Horizontal11" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon4" parent="Peones/Horizontal11" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 0)
+
+[node name="Horizontal12" type="Node2D" parent="Peones"]
+position = Vector2(40, -1959)
+
+[node name="peon" parent="Peones/Horizontal12" instance=ExtResource("8_v04jj")]
+direccion = Vector2(1, 0)
+
+[node name="peon2" parent="Peones/Horizontal12" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon3" parent="Peones/Horizontal12" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon4" parent="Peones/Horizontal12" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 0)
+
+[node name="Horizontal13" type="Node2D" parent="Peones"]
+position = Vector2(41, -2619)
+
+[node name="peon" parent="Peones/Horizontal13" instance=ExtResource("8_v04jj")]
+direccion = Vector2(1, 0)
+
+[node name="peon2" parent="Peones/Horizontal13" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon3" parent="Peones/Horizontal13" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(1, 0)
+
+[node name="peon4" parent="Peones/Horizontal13" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(1, 0)
+
+[node name="Horizontal" type="Node2D" parent="Peones"]
+position = Vector2(317, -198)
+
+[node name="peon" parent="Peones/Horizontal" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 0)
+
+[node name="peon2" parent="Peones/Horizontal" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon3" parent="Peones/Horizontal" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon4" parent="Peones/Horizontal" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(-1, 0)
+
+[node name="Horizontal3" type="Node2D" parent="Peones"]
+position = Vector2(426, -665)
+
+[node name="peon" parent="Peones/Horizontal3" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 0)
+
+[node name="peon2" parent="Peones/Horizontal3" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon3" parent="Peones/Horizontal3" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon4" parent="Peones/Horizontal3" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(-1, 0)
+
+[node name="Horizontal4" type="Node2D" parent="Peones"]
+position = Vector2(413, -915)
+
+[node name="peon" parent="Peones/Horizontal4" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 0)
+
+[node name="peon2" parent="Peones/Horizontal4" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon3" parent="Peones/Horizontal4" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon4" parent="Peones/Horizontal4" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(-1, 0)
+
+[node name="Horizontal5" type="Node2D" parent="Peones"]
+position = Vector2(417, -1112)
+
+[node name="peon" parent="Peones/Horizontal5" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 0)
+
+[node name="peon2" parent="Peones/Horizontal5" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon3" parent="Peones/Horizontal5" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon4" parent="Peones/Horizontal5" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(-1, 0)
+
+[node name="Horizontal6" type="Node2D" parent="Peones"]
+position = Vector2(413, -1300)
+
+[node name="peon" parent="Peones/Horizontal6" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 0)
+
+[node name="peon2" parent="Peones/Horizontal6" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon3" parent="Peones/Horizontal6" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon4" parent="Peones/Horizontal6" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(-1, 0)
+
+[node name="Horizontal7" type="Node2D" parent="Peones"]
+position = Vector2(413, -1491)
+
+[node name="peon" parent="Peones/Horizontal7" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 0)
+
+[node name="peon2" parent="Peones/Horizontal7" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon3" parent="Peones/Horizontal7" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon4" parent="Peones/Horizontal7" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(-1, 0)
+
+[node name="Horizontal8" type="Node2D" parent="Peones"]
+position = Vector2(415, -2294)
+
+[node name="peon" parent="Peones/Horizontal8" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 0)
+
+[node name="peon2" parent="Peones/Horizontal8" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon3" parent="Peones/Horizontal8" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon4" parent="Peones/Horizontal8" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(-1, 0)
+
+[node name="Horizontal9" type="Node2D" parent="Peones"]
+position = Vector2(415, -2525)
+
+[node name="peon" parent="Peones/Horizontal9" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 0)
+
+[node name="peon2" parent="Peones/Horizontal9" instance=ExtResource("8_v04jj")]
+position = Vector2(13, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon3" parent="Peones/Horizontal9" instance=ExtResource("8_v04jj")]
+position = Vector2(26, 0)
+direccion = Vector2(-1, 0)
+
+[node name="peon4" parent="Peones/Horizontal9" instance=ExtResource("8_v04jj")]
+position = Vector2(42, 0)
+direccion = Vector2(-1, 0)
+
+[node name="Diagonal izquierda" type="Node2D" parent="Peones"]
+position = Vector2(428, -2443)
+
+[node name="peon" parent="Peones/Diagonal izquierda" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 1)
+
+[node name="peon2" parent="Peones/Diagonal izquierda" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -9)
+direccion = Vector2(-1, 1)
+
+[node name="peon3" parent="Peones/Diagonal izquierda" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -19)
+direccion = Vector2(-1, 1)
+
+[node name="peon4" parent="Peones/Diagonal izquierda" instance=ExtResource("8_v04jj")]
+position = Vector2(42, -28)
+direccion = Vector2(-1, 1)
+
+[node name="Diagonal izquierda2" type="Node2D" parent="Peones"]
+position = Vector2(425, -2176)
+
+[node name="peon" parent="Peones/Diagonal izquierda2" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 1)
+
+[node name="peon2" parent="Peones/Diagonal izquierda2" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -9)
+direccion = Vector2(-1, 1)
+
+[node name="peon3" parent="Peones/Diagonal izquierda2" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -19)
+direccion = Vector2(-1, 1)
+
+[node name="peon4" parent="Peones/Diagonal izquierda2" instance=ExtResource("8_v04jj")]
+position = Vector2(42, -28)
+direccion = Vector2(-1, 1)
+
+[node name="Diagonal izquierda3" type="Node2D" parent="Peones"]
+position = Vector2(410, -1462)
+
+[node name="peon" parent="Peones/Diagonal izquierda3" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 1)
+
+[node name="peon2" parent="Peones/Diagonal izquierda3" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -9)
+direccion = Vector2(-1, 1)
+
+[node name="peon3" parent="Peones/Diagonal izquierda3" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -19)
+direccion = Vector2(-1, 1)
+
+[node name="peon4" parent="Peones/Diagonal izquierda3" instance=ExtResource("8_v04jj")]
+position = Vector2(42, -28)
+direccion = Vector2(-1, 1)
+
+[node name="Diagonal izquierda4" type="Node2D" parent="Peones"]
+position = Vector2(417, -1252)
+
+[node name="peon" parent="Peones/Diagonal izquierda4" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 1)
+
+[node name="peon2" parent="Peones/Diagonal izquierda4" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -9)
+direccion = Vector2(-1, 1)
+
+[node name="peon3" parent="Peones/Diagonal izquierda4" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -19)
+direccion = Vector2(-1, 1)
+
+[node name="peon4" parent="Peones/Diagonal izquierda4" instance=ExtResource("8_v04jj")]
+position = Vector2(42, -28)
+direccion = Vector2(-1, 1)
+
+[node name="Diagonal izquierda5" type="Node2D" parent="Peones"]
+position = Vector2(421, -1064)
+
+[node name="peon" parent="Peones/Diagonal izquierda5" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 1)
+
+[node name="peon2" parent="Peones/Diagonal izquierda5" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -9)
+direccion = Vector2(-1, 1)
+
+[node name="peon3" parent="Peones/Diagonal izquierda5" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -19)
+direccion = Vector2(-1, 1)
+
+[node name="peon4" parent="Peones/Diagonal izquierda5" instance=ExtResource("8_v04jj")]
+position = Vector2(42, -28)
+direccion = Vector2(-1, 1)
+
+[node name="Diagonal izquierda6" type="Node2D" parent="Peones"]
+position = Vector2(413, -877)
+
+[node name="peon" parent="Peones/Diagonal izquierda6" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 1)
+
+[node name="peon2" parent="Peones/Diagonal izquierda6" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -9)
+direccion = Vector2(-1, 1)
+
+[node name="peon3" parent="Peones/Diagonal izquierda6" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -19)
+direccion = Vector2(-1, 1)
+
+[node name="peon4" parent="Peones/Diagonal izquierda6" instance=ExtResource("8_v04jj")]
+position = Vector2(42, -28)
+direccion = Vector2(-1, 1)
+
+[node name="Diagonal izquierda7" type="Node2D" parent="Peones"]
+position = Vector2(404, -2801)
+
+[node name="peon" parent="Peones/Diagonal izquierda7" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 1)
+
+[node name="peon2" parent="Peones/Diagonal izquierda7" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -9)
+direccion = Vector2(-1, 1)
+
+[node name="peon3" parent="Peones/Diagonal izquierda7" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -19)
+direccion = Vector2(-1, 1)
+
+[node name="peon4" parent="Peones/Diagonal izquierda7" instance=ExtResource("8_v04jj")]
+position = Vector2(42, -28)
+direccion = Vector2(-1, 1)
+
+[node name="Diagonal izquierda8" type="Node2D" parent="Peones"]
+position = Vector2(400, -2962)
+
+[node name="peon" parent="Peones/Diagonal izquierda8" instance=ExtResource("8_v04jj")]
+direccion = Vector2(-1, 1)
+
+[node name="peon2" parent="Peones/Diagonal izquierda8" instance=ExtResource("8_v04jj")]
+position = Vector2(13, -9)
+direccion = Vector2(-1, 1)
+
+[node name="peon3" parent="Peones/Diagonal izquierda8" instance=ExtResource("8_v04jj")]
+position = Vector2(26, -19)
+direccion = Vector2(-1, 1)
+
+[node name="peon4" parent="Peones/Diagonal izquierda8" instance=ExtResource("8_v04jj")]
+position = Vector2(42, -28)
+direccion = Vector2(-1, 1)
+
+[node name="slimes" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="slime_sube" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(139, -1382)
+
+[node name="slime_sube32" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(304, -1400)
+
+[node name="slime_sube33" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(304, -1410)
+
+[node name="slime_sube34" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(220, -1637)
+
+[node name="slime_sube35" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(212, -1658)
+
+[node name="slime_sube36" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(181, -1677)
+
+[node name="slime_sube37" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(198, -1685)
+
+[node name="slime_sube38" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(295, -1740)
+
+[node name="slime_sube39" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(288, -1728)
+
+[node name="slime_sube40" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(328, -1784)
+
+[node name="slime_sube41" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(338, -1778)
+
+[node name="slime_sube42" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(231, -1919)
+
+[node name="slime_sube43" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(239, -1929)
+
+[node name="slime_sube44" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(251, -1913)
+
+[node name="slime_sube45" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(361, -1997)
+
+[node name="slime_sube46" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(371, -1987)
+
+[node name="slime_sube47" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(273, -2131)
+
+[node name="slime_sube48" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(266, -2119)
+
+[node name="slime_sube49" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(141, -2198)
+
+[node name="slime_sube51" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(328, -2194)
+
+[node name="slime_sube52" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(210, -2351)
+
+[node name="slime_sube54" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(378, -2300)
+
+[node name="slime_sube55" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(122, -2394)
+
+[node name="slime_sube56" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(348, -2544)
+
+[node name="slime_sube57" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(366, -2555)
+
+[node name="slime_sube58" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(121, -2618)
+
+[node name="slime_sube59" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(125, -2603)
+
+[node name="slime_sube60" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(302, -2659)
+
+[node name="slime_sube61" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(312, -2641)
+
+[node name="slime_sube62" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(264, -2786)
+
+[node name="slime_sube63" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(230, -2787)
+
+[node name="slime_sube64" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(89, -2940)
+
+[node name="slime_sube65" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(125, -2955)
+
+[node name="slime_sube66" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(358, -2950)
+
+[node name="slime_sube67" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(393, -2933)
+
+[node name="slime_sube68" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(213, -2906)
+
+[node name="slime_sube69" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(224, -2965)
+
+[node name="slime_sube53" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(222, -2336)
+
+[node name="slime_sube50" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(152, -2185)
+
+[node name="slime_sube2" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(154, -1367)
+
+[node name="slime_sube3" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(142, -1359)
+
+[node name="slime_sube4" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(249, -1165)
+
+[node name="slime_sube5" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(259, -1150)
+
+[node name="slime_sube6" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(238, -1150)
+
+[node name="slime_sube7" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(229, -701)
+
+[node name="slime_sube8" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(213, -685)
+
+[node name="slime_sube9" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(229, -678)
+
+[node name="slime_sube10" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(217, -664)
+
+[node name="slime_sube11" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(229, -655)
+
+[node name="slime_sube12" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(344, -700)
+
+[node name="slime_sube13" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(333, -688)
+
+[node name="slime_sube14" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(349, -687)
+
+[node name="slime_sube15" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(138, -342)
+
+[node name="slime_sube16" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(150, -329)
+
+[node name="slime_sube17" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(162, -299)
+
+[node name="slime_sube18" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(169, -283)
+
+[node name="slime_sube19" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(352, -374)
+
+[node name="slime_sube20" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(345, -361)
+
+[node name="slime_sube21" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(358, -351)
+
+[node name="slime_sube22" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(321, -229)
+
+[node name="slime_sube23" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(312, -214)
+
+[node name="slime_sube24" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(331, -203)
+
+[node name="slime_sube25" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(347, -187)
+
+[node name="slime_sube26" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(161, -34)
+
+[node name="slime_sube27" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(169, -20)
+
+[node name="slime_sube28" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(153, -18)
+
+[node name="slime_sube29" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(289, 40)
+
+[node name="slime_sube30" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(281, 52)
+
+[node name="slime_sube31" parent="slimes" instance=ExtResource("9_io8xs")]
+y_sort_enabled = true
+position = Vector2(292, 60)
