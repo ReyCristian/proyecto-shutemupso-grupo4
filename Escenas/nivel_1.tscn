@@ -63,7 +63,6 @@ position = Vector2(225, 236)
 layer = 0
 
 [node name="generador_slimes" parent="Generadores" instance=ExtResource("7_nyqyn")]
-vida = 10
 tiene_espada = false
 
 [node name="generador_peones" parent="Generadores" instance=ExtResource("7_nyqyn")]

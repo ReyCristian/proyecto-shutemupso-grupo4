@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://brygv2bn5pgdm"]
+[gd_scene load_steps=6 format=3 uid="uid://brygv2bn5pgdm"]
 
 [ext_resource type="Script" path="res://Escenas/inicio_nivel.gd" id="1_m2p0h"]
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="1_q06pq"]
 [ext_resource type="AudioStream" uid="uid://16tsfldx7uql" path="res://Recursos/musica/Intense.mp3" id="2_vyrbl"]
+[ext_resource type="TileSet" uid="uid://bckp2sxh4p8hk" path="res://Recursos/chilling runestres.tres" id="4_42fe7"]
 
 [sub_resource type="Curve2D" id="Curve2D_n8vrc"]
 _data = {
@@ -35,6 +36,8 @@ color = Color(0, 0, 0, 1)
 [node name="personaje" parent="ColorRect" groups=["demo", "heroe"] instance=ExtResource("1_q06pq")]
 position = Vector2(97, 97)
 scale = Vector2(6, 6)
+collision_layer = 0
+collision_mask = 0
 up_direction = Vector2(0, 1)
 direccion = Vector2(0, 1)
 en_demo = true
@@ -43,11 +46,12 @@ skin = 3
 
 [node name="listo" type="Button" parent="ColorRect"]
 layout_mode = 0
-offset_left = 56.0
+offset_left = 71.0
 offset_top = 179.0
-offset_right = 109.0
-offset_bottom = 210.0
+offset_right = 125.0
+offset_bottom = 211.0
 scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(27, 0)
 focus_neighbor_left = NodePath(".")
 focus_neighbor_top = NodePath(".")
 focus_neighbor_right = NodePath(".")
@@ -57,6 +61,7 @@ focus_previous = NodePath(".")
 text = "LISTO"
 
 [node name="Tutorial_controles" type="Node2D" parent="ColorRect"]
+visible = false
 
 [node name="Path2D" type="Path2D" parent="ColorRect/Tutorial_controles"]
 position = Vector2(290, 34)
@@ -66,7 +71,6 @@ curve = SubResource("Curve2D_n8vrc")
 rotation = 1.5708
 
 [node name="personaje2" parent="ColorRect/Tutorial_controles/Path2D/PathFollow2D" groups=["demo", "heroe"] instance=ExtResource("1_q06pq")]
-position = Vector2(0, 0)
 scale = Vector2(3, 3)
 collision_layer = 0
 collision_mask = 0
@@ -171,6 +175,178 @@ offset_top = 1.0
 offset_right = 487.0
 offset_bottom = 266.0
 metadata/_edit_lock_ = true
+
+[node name="puntajes" type="Node2D" parent="ColorRect"]
+position = Vector2(208, 0)
+scale = Vector2(2, 2)
+
+[node name="enemigos" type="Node2D" parent="ColorRect/puntajes"]
+
+[node name="peon" parent="ColorRect/puntajes/enemigos" groups=["demo"] instance=ExtResource("1_q06pq")]
+position = Vector2(-11, 15)
+collision_layer = 0
+collision_mask = 0
+skin = 11
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/puntajes/enemigos/peon"]
+offset_left = 8.5
+offset_top = -0.5
+offset_right = 127.5
+offset_bottom = 22.5
+scale = Vector2(0.3, 0.3)
+
+[node name="contador" type="Label" parent="ColorRect/puntajes/enemigos/peon/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+
+[node name="puntaje" type="Label" parent="ColorRect/puntajes/enemigos/peon/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+
+[node name="subtotal" type="Label" parent="ColorRect/puntajes/enemigos/peon/HBoxContainer"]
+layout_mode = 2
+text = "=100
+"
+
+[node name="patrulla" parent="ColorRect/puntajes/enemigos" groups=["demo"] instance=ExtResource("1_q06pq")]
+position = Vector2(-11, 36.3333)
+collision_layer = 0
+collision_mask = 0
+skin = 9
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/puntajes/enemigos/patrulla"]
+offset_left = 8.5
+offset_top = -0.5
+offset_right = 127.5
+offset_bottom = 22.5
+scale = Vector2(0.3, 0.3)
+
+[node name="contador" type="Label" parent="ColorRect/puntajes/enemigos/patrulla/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+
+[node name="puntaje" type="Label" parent="ColorRect/puntajes/enemigos/patrulla/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+
+[node name="subtotal" type="Label" parent="ColorRect/puntajes/enemigos/patrulla/HBoxContainer"]
+layout_mode = 2
+text = "=100
+"
+
+[node name="mago" parent="ColorRect/puntajes/enemigos" groups=["demo"] instance=ExtResource("1_q06pq")]
+position = Vector2(-11, 57.6667)
+collision_layer = 0
+collision_mask = 0
+skin = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/puntajes/enemigos/mago"]
+offset_left = 8.5
+offset_top = -0.5
+offset_right = 127.5
+offset_bottom = 22.5
+scale = Vector2(0.3, 0.3)
+
+[node name="contador" type="Label" parent="ColorRect/puntajes/enemigos/mago/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+
+[node name="puntaje" type="Label" parent="ColorRect/puntajes/enemigos/mago/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+
+[node name="subtotal" type="Label" parent="ColorRect/puntajes/enemigos/mago/HBoxContainer"]
+layout_mode = 2
+text = "=100
+"
+
+[node name="slime" parent="ColorRect/puntajes/enemigos" groups=["demo"] instance=ExtResource("1_q06pq")]
+position = Vector2(-10.6667, 79.3333)
+collision_layer = 0
+collision_mask = 0
+skin = 19
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/puntajes/enemigos/slime"]
+offset_left = 8.5
+offset_top = -0.5
+offset_right = 127.5
+offset_bottom = 22.5
+scale = Vector2(0.3, 0.3)
+
+[node name="contador" type="Label" parent="ColorRect/puntajes/enemigos/slime/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+
+[node name="puntaje" type="Label" parent="ColorRect/puntajes/enemigos/slime/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+
+[node name="subtotal" type="Label" parent="ColorRect/puntajes/enemigos/slime/HBoxContainer"]
+layout_mode = 2
+text = "=100
+"
+
+[node name="total" type="Label" parent="ColorRect/puntajes"]
+layout_direction = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -133.5
+offset_top = 107.5
+offset_right = -78.5
+offset_bottom = 130.5
+grow_horizontal = 0
+grow_vertical = 2
+pivot_offset = Vector2(40, 0)
+text = "100000"
+horizontal_alignment = 2
+
+[node name="destruibles" type="TileMapLayer" parent="ColorRect/puntajes"]
+position = Vector2(0, 8)
+tile_map_data = PackedByteArray(0, 0, 4, 0, 0, 0, 0, 0, 13, 0, 8, 0, 0, 0, 4, 0, 1, 0, 0, 0, 16, 0, 1, 0, 0, 0)
+tile_set = ExtResource("4_42fe7")
+collision_enabled = false
+
+[node name="arbusto" type="HBoxContainer" parent="ColorRect/puntajes/destruibles"]
+offset_left = 83.5
+offset_top = 9.5
+offset_right = 202.5
+offset_bottom = 32.5
+scale = Vector2(0.3, 0.3)
+
+[node name="contador" type="Label" parent="ColorRect/puntajes/destruibles/arbusto"]
+layout_mode = 2
+text = "x100"
+
+[node name="puntaje" type="Label" parent="ColorRect/puntajes/destruibles/arbusto"]
+layout_mode = 2
+text = "x100"
+
+[node name="subtotal" type="Label" parent="ColorRect/puntajes/destruibles/arbusto"]
+layout_mode = 2
+text = "=100
+"
+
+[node name="cofre" type="HBoxContainer" parent="ColorRect/puntajes/destruibles"]
+offset_left = 83.5
+offset_top = 23.5
+offset_right = 202.5
+offset_bottom = 46.5
+scale = Vector2(0.3, 0.3)
+
+[node name="contador" type="Label" parent="ColorRect/puntajes/destruibles/cofre"]
+layout_mode = 2
+text = "x100"
+
+[node name="puntaje" type="Label" parent="ColorRect/puntajes/destruibles/cofre"]
+layout_mode = 2
+text = "x100"
+
+[node name="subtotal" type="Label" parent="ColorRect/puntajes/destruibles/cofre"]
+layout_mode = 2
+text = "=100
+"
 
 [connection signal="pressed" from="ColorRect/listo" to="." method="_on_listo_pressed"]
 [connection signal="timeout" from="ColorRect/Tutorial_controles/Timer" to="." method="_on_timer_timeout"]

@@ -15,7 +15,7 @@ direccion = Vector2(0, -1)
 tiene_espada = false
 isCorriendo = true
 skin = 19
-vida = 20
+vida = 1
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 

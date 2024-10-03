@@ -1,0 +1,118 @@
+[gd_scene load_steps=9 format=3 uid="uid://6qhf3rloqbw"]
+
+[ext_resource type="Texture2D" uid="uid://dnuoe83axcev8" path="res://Recursos/Creditos/Creditos 01.png" id="2_yc8ts"]
+[ext_resource type="Texture2D" uid="uid://dk8qww5clgsu4" path="res://Recursos/Creditos/Creditos 02.png" id="3_ajc0w"]
+[ext_resource type="Texture2D" uid="uid://bpxit6ob8yo8n" path="res://Recursos/Creditos/Creditos 03.png" id="4_tec0v"]
+[ext_resource type="Texture2D" uid="uid://cquvhyapwrjv6" path="res://Recursos/UPSO-isologotipos-07.png" id="5_ivrn6"]
+[ext_resource type="Script" path="res://Escenas/creditos.gd" id="6_le5b4"]
+
+[sub_resource type="Animation" id="Animation_2hp7j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(22, 283)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Upso-isologotipos-07:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cvmal"]
+resource_name = "animacion creditos"
+length = 26.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect/VBoxContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 26),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(22, 283), Vector2(22, -951)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect/Upso-isologotipos-07:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 22, 26),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yp5vq"]
+_data = {
+"RESET": SubResource("Animation_2hp7j"),
+"animacion creditos": SubResource("Animation_cvmal")
+}
+
+[node name="Creditos1" type="CanvasLayer"]
+layer = 102
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorRect"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 283.0
+offset_right = 62.0
+offset_bottom = 323.0
+
+[node name="Secuencia01_imagenFija001" type="Sprite2D" parent="ColorRect/VBoxContainer"]
+scale = Vector2(0.307407, 0.307407)
+texture = ExtResource("2_yc8ts")
+centered = false
+
+[node name="Secuencia01_imagenFija002" type="Sprite2D" parent="ColorRect/VBoxContainer"]
+position = Vector2(0, 298)
+scale = Vector2(0.307, 0.307)
+texture = ExtResource("3_ajc0w")
+centered = false
+
+[node name="Secuencia01_imagenFija003" type="Sprite2D" parent="ColorRect/VBoxContainer"]
+position = Vector2(0, 612)
+scale = Vector2(0.307, 0.307)
+texture = ExtResource("4_tec0v")
+centered = false
+
+[node name="Upso-isologotipos-07" type="Sprite2D" parent="ColorRect"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(52, 52)
+scale = Vector2(0.270238, 0.270238)
+texture = ExtResource("5_ivrn6")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_yp5vq")
+}
+script = ExtResource("6_le5b4")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="AnimationPlayer" method="_on_animation_finished"]

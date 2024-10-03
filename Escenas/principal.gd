@@ -18,7 +18,9 @@ func detener_pantalla_inicio_nivel():
 	$InicioNivel.detener();
 
 func derrota():
-	$InicioNivel.ver_pantalla_derrota();
+	var puntaje = dame_contador_puntaje();
+	var referencia = dame_referencia_puntaje()
+	$InicioNivel.ver_pantalla_derrota(puntaje,referencia);
 
 func reiniciar_nivel():
 	var escena = lvl_actual.get("archivo_escena")
@@ -30,6 +32,33 @@ func reiniciar_nivel():
 	
 
 func siguiente_nivel():
+	var puntaje = dame_contador_puntaje();
+	var referencia = dame_referencia_puntaje()
 	$Menu_Hub/Menu/Niveles/Control.siguiente_nivel();
-	ver_pantalla_inicio_nivel();
+	$InicioNivel.ver_pantalla_puntaje(puntaje,referencia);
 	
+func dame_heroe():
+	var nivel = get_tree().get_first_node_in_group("nivel")
+	var Heroes = get_tree().get_nodes_in_group("heroe")
+	for heroe in Heroes:
+		if nivel.is_ancestor_of(heroe):
+			return heroe;
+			
+func dame_contador_puntaje():
+	return dame_nodo_puntaje().contador
+
+func dame_referencia_puntaje():
+	return dame_nodo_puntaje().puntaje
+
+func dame_nodo_puntaje() -> Node2D:
+	var heroe = dame_heroe();
+	if heroe == null:
+		return null;
+	return dame_heroe().get_node("puntaje");
+
+func _on_enemigo_muere(skin: ListasTexturas.texturas_personaje) -> void:
+	dame_nodo_puntaje()._on_enemigo_muere(skin)
+	
+func _on_obstaculo_roto(id) -> void:
+	print(id)
+	dame_nodo_puntaje()._on_obstaculo_roto(id)

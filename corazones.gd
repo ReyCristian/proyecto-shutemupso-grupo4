@@ -1,6 +1,6 @@
 extends Node2D
 var heroe
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var nivel = get_tree().get_first_node_in_group("nivel")
 	var Heroes = get_tree().get_nodes_in_group("heroe")
 	for _heroe in Heroes:

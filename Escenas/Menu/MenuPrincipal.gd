@@ -31,3 +31,8 @@ func es_menu_principal() ->bool :
 
 func _on_continuar_pressed() -> void:
 	menu_principal.hideMenu();
+
+
+func _on_creditos_pressed() -> void:
+	var creditos = preload("res://Escenas/creditos 1.tscn").instantiate();
+	get_tree().current_scene.add_child(creditos);

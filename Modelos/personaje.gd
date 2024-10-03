@@ -24,8 +24,11 @@ var pre_laser:Resource = preload("res://Modelos/laser.tscn");
 var muerto:bool = false;
 var limpiar_cadaver:bool = true;
 
+signal muerte;
+
 func _ready() -> void:
 	deshabilitar_colisiones_enemigo();
+	conectar_puntaje_enemigos();
 	guardar_antenas_disparo();
 	$Sprite2D/direccion.poner_direccion(direccion);
 	if vida <=0:
@@ -159,6 +162,8 @@ func morir():
 		return;
 	muerto = true;
 	$Sprite2D.morir();
+	if is_in_group("enemigo"):
+		emit_signal("muerte",skin)
 	if not en_demo:
 		$hitbox.queue_free();
 		$hostilidad.queue_free();
@@ -240,3 +245,10 @@ func deshabilitar_colisiones_enemigo():
 	if self.is_in_group("enemigo"):
 		self.set_collision_layer(1);
 		self.set_collision_mask(0);
+
+func conectar_puntaje_enemigos():
+	var principal = get_tree().get_nodes_in_group("principal")[0]
+	if principal != null: 
+		connect("muerte",Callable(principal,"_on_enemigo_muere"))
+	
+	

@@ -52,6 +52,10 @@ text = "Opciones"
 script = ExtResource("4_wgcfc")
 menu = NodePath("../../Opciones")
 
+[node name="Creditos" type="Button" parent="Menu/Principal"]
+layout_mode = 2
+text = "Creditos"
+
 [node name="Salir" type="Button" parent="Menu/Principal"]
 layout_mode = 2
 text = "Salir"
@@ -154,6 +158,7 @@ script = ExtResource("9_4k8xh")
 [connection signal="pressed" from="Menu/Principal/Continuar" to="Menu/Principal/Control" method="_on_continuar_pressed"]
 [connection signal="pressed" from="Menu/Principal/Niveles" to="Menu/Principal/Niveles" method="_on_pressed"]
 [connection signal="pressed" from="Menu/Principal/Opciones" to="Menu/Principal/Opciones" method="_on_pressed"]
+[connection signal="pressed" from="Menu/Principal/Creditos" to="Menu/Principal/Control" method="_on_creditos_pressed"]
 [connection signal="pressed" from="Menu/Principal/Salir" to="Menu/Principal/Control" method="_on_salir_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl1" to="Menu/Niveles/Control" method="_on_lvl_1_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl2" to="Menu/Niveles/Control" method="_on_lvl_2_pressed"]
