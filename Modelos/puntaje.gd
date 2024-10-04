@@ -20,7 +20,7 @@ var contador = {
 const asociacion_puntajes = {
 		ListasTexturas.texturas_personaje.ORC_PEON_RED:"peon",
 		ListasTexturas.texturas_personaje.ORC_GRUNT:"patrulla",
-		ListasTexturas.texturas_personaje.SOLDIER_RED:"mago",
+		ListasTexturas.texturas_personaje.ORC_SOLDIER_RED:"mago",
 		ListasTexturas.texturas_personaje.SLIME:"slime"
 	}
 

@@ -6,6 +6,7 @@ extends Node
 
 func _ready() -> void:
 	$Enemigo/Timer.wait_time = espera_disparo;
+	_on_timer_timeout()
 	
 
 func _physics_process(_delta: float) -> void:
