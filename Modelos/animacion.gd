@@ -9,14 +9,17 @@ func _process(_delta: float) -> void:
 		return;
 	if esta_ocupado():
 		return;
-	elif (personaje.direccion + personaje.auto_movimiento)== Vector2.ZERO || personaje.esperando:
+	elif esta_quieto():
 		self.play("idle");
 	elif personaje.isCorriendo:
 		self.play("correr");
 	else:
 		self.play("caminar");
-		
 	pass
 
 func esta_ocupado() -> bool:
-	return not self.current_animation in animaciones_no_prioritarias;
+	var ocupado = not self.current_animation in animaciones_no_prioritarias;
+	return ocupado;
+
+func esta_quieto() -> bool:
+	return (personaje.direccion + personaje.auto_movimiento)== Vector2.ZERO || personaje.esperando

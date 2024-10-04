@@ -1,7 +1,7 @@
 [gd_scene load_steps=56 format=3 uid="uid://bp3b1wcfik24s"]
 
 [ext_resource type="Script" path="res://Modelos/personaje.gd" id="1_k874c"]
-[ext_resource type="Texture2D" uid="uid://7yvenb6nl1c0" path="res://Recursos/personajes/Orc-Peon-Red.png" id="2_mcsvf"]
+[ext_resource type="Texture2D" uid="uid://c5qejwby1ymym" path="res://Recursos/personajes/Slime.png" id="2_qr588"]
 [ext_resource type="Script" path="res://Modelos/skins.gd" id="3_c85e1"]
 [ext_resource type="Script" path="res://Modelos/direccion.gd" id="3_yhpdf"]
 [ext_resource type="Script" path="res://Modelos/animacion.gd" id="4_644rf"]
@@ -1060,11 +1060,11 @@ radius = 19.0
 
 [node name="personaje" type="CharacterBody2D" groups=["vivo"]]
 script = ExtResource("1_k874c")
-skin = 2
+skin = 19
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_mcsvf")
+texture = ExtResource("2_qr588")
 hframes = 24
 region_enabled = true
 region_rect = Rect2(0, 0, 768, 32)
@@ -1114,7 +1114,6 @@ position = Vector2(3.09944e-06, -3)
 scale = Vector2(0.7, 1)
 
 [node name="hitbox" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, 1)
@@ -1126,36 +1125,36 @@ visible = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="area_espada"]
 shape = SubResource("CircleShape2D_7aq8q")
 
-[node name="antenas_disparo" type="Node2D" parent="."]
+[node name="puntos_disparo" type="Node2D" parent="."]
 
-[node name="Antena 1" type="Node2D" parent="antenas_disparo"]
+[node name="Punto 1" type="Node2D" parent="puntos_disparo"]
 position = Vector2(3, -5)
 rotation = -1.5708
 
-[node name="Antena 2" type="Node2D" parent="antenas_disparo"]
+[node name="Punto 2" type="Node2D" parent="puntos_disparo"]
 position = Vector2(-7, 0)
 rotation = -2.35619
 
-[node name="Antena 3" type="Node2D" parent="antenas_disparo"]
+[node name="Punto 3" type="Node2D" parent="puntos_disparo"]
 position = Vector2(-8, 2)
 rotation = 3.14159
 
-[node name="Antena 4" type="Node2D" parent="antenas_disparo"]
+[node name="Punto 4" type="Node2D" parent="puntos_disparo"]
 position = Vector2(-7, 6)
 rotation = 2.35619
 
-[node name="Antena 5" type="Node2D" parent="antenas_disparo"]
+[node name="Punto 5" type="Node2D" parent="puntos_disparo"]
 position = Vector2(-3, 9)
 rotation = 1.5708
 
-[node name="Antena 6" type="Node2D" parent="antenas_disparo"]
+[node name="Punto 6" type="Node2D" parent="puntos_disparo"]
 position = Vector2(7, 5)
 rotation = 0.785398
 
-[node name="Antena 7" type="Node2D" parent="antenas_disparo"]
+[node name="Punto 7" type="Node2D" parent="puntos_disparo"]
 position = Vector2(8, 2)
 
-[node name="Antena 8" type="Node2D" parent="antenas_disparo"]
+[node name="Punto 8" type="Node2D" parent="puntos_disparo"]
 position = Vector2(7, 0)
 rotation = -0.785398
 

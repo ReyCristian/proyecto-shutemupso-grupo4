@@ -4,5 +4,5 @@ extends Node
 
 func _on_personaje_muere() -> void:
 	var principal = get_tree().get_nodes_in_group("principal")[0]
-	principal.dame_puntaje()[tipo_enemigo] +=1;
-	print(principal.dame_puntaje())
+	principal.obtener_puntaje()[tipo_enemigo] +=1;
+	print(principal.obtener_puntaje())

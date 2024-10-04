@@ -61,7 +61,6 @@ focus_previous = NodePath(".")
 text = "LISTO"
 
 [node name="Tutorial_controles" type="Node2D" parent="ColorRect"]
-visible = false
 
 [node name="Path2D" type="Path2D" parent="ColorRect/Tutorial_controles"]
 position = Vector2(290, 34)
@@ -177,6 +176,7 @@ offset_bottom = 266.0
 metadata/_edit_lock_ = true
 
 [node name="puntajes" type="Node2D" parent="ColorRect"]
+visible = false
 position = Vector2(208, 0)
 scale = Vector2(2, 2)
 
@@ -264,7 +264,6 @@ text = "=100
 position = Vector2(-10.6667, 79.3333)
 collision_layer = 0
 collision_mask = 0
-skin = 19
 
 [node name="HBoxContainer" type="HBoxContainer" parent="ColorRect/puntajes/enemigos/slime"]
 offset_left = 8.5

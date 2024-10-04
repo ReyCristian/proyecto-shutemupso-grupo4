@@ -34,7 +34,7 @@ bus = &"Musica"
 [node name="mapa" parent="." instance=ExtResource("1_2r6gf")]
 
 [node name="Personaje_principal" parent="." instance=ExtResource("5_w4cmt")]
-position = Vector2(225, 236)
+position = Vector2(284, 194)
 
 [node name="cinematica_fin_nivel" parent="." instance=ExtResource("8_wdq68")]
 
@@ -864,3 +864,6 @@ position = Vector2(281, 52)
 [node name="slime_sube31" parent="slimes" instance=ExtResource("9_io8xs")]
 y_sort_enabled = true
 position = Vector2(292, 60)
+
+[node name="slime_sube" parent="." instance=ExtResource("9_io8xs")]
+position = Vector2(283, 244)

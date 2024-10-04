@@ -16,9 +16,11 @@ layer = 100
 [node name="Menu" type="Control" parent="."]
 process_mode = 3
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_3e75f")
 
 [node name="EnchantedFestival" type="AudioStreamPlayer" parent="Menu"]
@@ -28,13 +30,21 @@ autoplay = true
 bus = &"Musica"
 
 [node name="Principal" type="VBoxContainer" parent="Menu"]
-layout_mode = 0
-offset_left = 55.0
-offset_top = 50.0
-offset_right = 426.0
-offset_bottom = 606.0
+custom_minimum_size = Vector2(0, 93)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_8h68a")
-isShowed = true
+esta_abierto = true
 
 [node name="Continuar" type="Button" parent="Menu/Principal"]
 layout_mode = 2
@@ -65,12 +75,18 @@ layout_mode = 2
 script = ExtResource("5_ar7oj")
 
 [node name="Niveles" type="VBoxContainer" parent="Menu"]
-visible = false
-layout_mode = 2
-offset_left = 55.0
-offset_top = 51.0
-offset_right = 426.0
-offset_bottom = 589.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_8h68a")
 
 [node name="Lvl1" type="Button" parent="Menu/Niveles"]
@@ -91,12 +107,18 @@ layout_mode = 2
 script = ExtResource("3_uxdpq")
 
 [node name="Opciones" type="VBoxContainer" parent="Menu"]
-visible = false
-layout_mode = 2
-offset_left = 55.0
-offset_top = 51.0
-offset_right = 426.0
-offset_bottom = 589.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_8h68a")
 
 [node name="Sonidos" type="Button" parent="Menu/Opciones" node_paths=PackedStringArray("menu")]
@@ -112,12 +134,18 @@ flat = true
 script = ExtResource("7_qicod")
 
 [node name="OpcionesSonido" type="VBoxContainer" parent="Menu"]
-visible = false
-layout_mode = 2
-offset_left = 55.0
-offset_top = 51.0
-offset_right = 426.0
-offset_bottom = 589.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -100.0
+offset_right = 200.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("2_8h68a")
 
 [node name="Label" type="Label" parent="Menu/OpcionesSonido"]

@@ -29,7 +29,7 @@ signal muerte;
 func _ready() -> void:
 	deshabilitar_colisiones_enemigo();
 	conectar_puntaje_enemigos();
-	guardar_antenas_disparo();
+	guardar_puntos_disparo();
 	$Sprite2D/direccion.poner_direccion(direccion);
 	if vida <=0:
 		morir()
@@ -41,20 +41,21 @@ func _physics_process(delta: float) -> void:
 	var direccion_normalizada = self.direccion.normalized();
 	var direccion_automatica = auto_mover(direccion_normalizada);
 	var movimiento=calcular_movimiento(direccion_automatica,delta);
-		
-	if get_parent() is PathFollow2D:
-		seguir_camino(movimiento);
-	else:
+	
+	if not verificar_si_esta_en_camino_fijo(movimiento):
 		move_and_collide(movimiento);
 	pass;
 	
 func seguir_camino(movimiento:Vector2):
 	get_parent().progress += movimiento.length()
 	$Sprite2D.rotation = -get_parent().rotation
-	direccion = Vector2.RIGHT.rotated(get_parent().rotation) * direccion.length()
+	direccion = obtener_direccion_camino();
+	
+func obtener_direccion_camino() -> Vector2:
+	return Vector2.RIGHT.rotated(get_parent().rotation) * direccion.length()
 
 func auto_mover(direccion_normalizada) -> Vector2:
-	if $hitbox.get_overlapping_bodies().size() > 1:
+	if esta_chocando():
 		return direccion_normalizada;
 	if direccion_normalizada.x == 0:
 		direccion_normalizada.x = auto_movimiento.x;
@@ -62,6 +63,9 @@ func auto_mover(direccion_normalizada) -> Vector2:
 	if direccion_normalizada.y == 0:
 		direccion_normalizada.y = auto_movimiento.y;
 	return direccion_normalizada;
+
+func esta_chocando():
+	return $hitbox.get_overlapping_bodies().size() > 1
 
 func calcular_movimiento(direccion_normalizada: Vector2,delta: float) -> Vector2:
 	var movimiento;
@@ -106,14 +110,14 @@ func shot(ataque: int = 1):
 		auto_apuntar()
 		var laser = pre_laser.instantiate()
 		get_tree().get_nodes_in_group("nivel")[0].add_child(laser)
-		var antena = get_antena_disparo($Sprite2D/direccion.dame_angulo())
+		var origen_disparo = obtener_origen_disparo($Sprite2D/direccion.obtener_angulo())
 		if is_in_group("heroe"):
 			laser.add_to_group("laser_p")
 		else:
 			laser.seleccionar_laser(2);
-		laser.global_position = antena.global_position
+		laser.global_position = origen_disparo.global_position
 		if auto_apuntado == 360:
-			laser.rotation = antena.rotation 
+			laser.rotation = origen_disparo.rotation 
 		else:
 			laser.rotation = deg_to_rad(auto_apuntado);
 		disparo = false
@@ -128,24 +132,24 @@ func detener_shot():
 		$Sprite2D.detener_shot();
 		magia_lista = false;
 
-var antenas_disparo = {}
+var puntos_disparo = {}
 
-func guardar_antenas_disparo():
-	for antena in $antenas_disparo.get_children():
-		antenas_disparo[int(round(antena.rotation_degrees))] = antena
+func guardar_puntos_disparo():
+	for origen_disparo in $puntos_disparo.get_children():
+		puntos_disparo[int(round(origen_disparo.rotation_degrees))] = origen_disparo
 		
-func get_antena_disparo(angulo_deg: int) -> Node2D:
-	return antenas_disparo[angulo_deg];
+func obtener_origen_disparo(angulo_deg: int) -> Node2D:
+	return puntos_disparo[angulo_deg];
 
-func get_antena_disparo_cercana(angulo_deg: int) -> Node2D:
-	var antena_cercana = $"antenas_disparo/Antena 1"
+func obtener_punto_disparo_cercano(angulo_deg: int) -> Node2D:
+	var punto_disparo_cercano = $"puntos_disparo/Punto 1"
 	var diferencia_minima = 25
-	for angulo in antenas_disparo.keys():
+	for angulo in puntos_disparo.keys():
 		var diferencia = abs(angulo - angulo_deg)
 		if diferencia < diferencia_minima:
 			diferencia_minima = diferencia
-			antena_cercana = antenas_disparo[angulo]
-	return antena_cercana
+			punto_disparo_cercano = puntos_disparo[angulo]
+	return punto_disparo_cercano
 
 func tomar_daño():
 	if muerto or recibio_daño():
@@ -220,14 +224,14 @@ func _on_area_espada_body_entered_o_exited(body: Node2D) -> void:
 		dar_golpe_espada();
 
 func hacer_daño():
-	var golpeados = get_cuerpos_en_rango();
+	var golpeados = obtener_cuerpos_en_rango();
 	for golpeado in golpeados:
 		if golpeado.is_in_group("vivo") and golpeado != self:
 			golpeado.tomar_daño()
 		if golpeado.is_in_group("TileMapDestruible"):
 			romper_objeto_de_mapa(golpeado);
 
-func get_cuerpos_en_rango(): 
+func obtener_cuerpos_en_rango(): 
 	if tiene_espada:
 		return $area_espada.get_overlapping_bodies()
 	else:
@@ -247,8 +251,14 @@ func deshabilitar_colisiones_enemigo():
 		self.set_collision_mask(0);
 
 func conectar_puntaje_enemigos():
-	var principal = get_tree().get_nodes_in_group("principal")[0]
-	if principal != null: 
-		connect("muerte",Callable(principal,"_on_enemigo_muere"))
+	if get_tree().get_nodes_in_group("principal").size() > 0:
+		var principal = get_tree().get_nodes_in_group("principal")[0]
+		if principal != null: 
+			connect("muerte",Callable(principal,"_on_enemigo_muere"))
 	
-	
+func verificar_si_esta_en_camino_fijo(movimiento:Vector2) -> bool:
+	if get_parent() is PathFollow2D:
+		seguir_camino(movimiento);
+		return true;
+	else:
+		return false;

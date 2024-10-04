@@ -4,6 +4,6 @@ extends Button
 
 func _on_pressed() -> void:
 	if menu != null:
-		get_parent().hideMenu();
-		menu.showMenu();
+		get_parent().ocultarMenu();
+		menu.mostrarMenu();
 	pass 

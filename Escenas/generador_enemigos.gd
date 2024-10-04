@@ -9,13 +9,13 @@ const pre_enemigo = preload("res://Modelos/personaje.tscn")
 
 #Esta funcion es llamada al terminarse el tiempo del timer
 func _on_timer_timeout() -> void:
-	var punto_aleatorio = dame_punto_aleatorio_area();
+	var punto_aleatorio = obtener_punto_aleatorio_area();
 	var enemigo = instanciar_enemigo();
 	cargar_configuracion(enemigo);
 	get_parent().get_parent().add_child(enemigo);
 	posicionar(enemigo,punto_aleatorio);
 	
-func dame_punto_aleatorio_area() -> Vector2:
+func obtener_punto_aleatorio_area() -> Vector2:
 	return Vector2(
 		randi_range(int(global_position.x) - tamaño().x / 2, int(global_position.x) + tamaño().x / 2),
 		randi_range(int(global_position.y) - tamaño().y / 2, int(global_position.y) + tamaño().y / 2)

@@ -1,33 +1,41 @@
 extends VBoxContainer
 
-@export var isShowed: bool = false;
+@export var esta_abierto: bool = false;
 
-const showPos = 55;
-const hidePos = -385;
+const pos_visible = 55;
+const pos_oculto = -385;
 
 func _ready() -> void:
-	if isShowed:
-		position.x = showPos;
+	if esta_abierto:
+		position.x = pos_visible;
 	else:
-		position.x = hidePos; 
+		position.x = pos_oculto; 
 	pass 
 
 
 func _process(delta: float) -> void:
-	if isShowed:
-		visible = true;
-		if position.x < showPos:
-			position.x += 1000*delta;		
+	if esta_abierto:
+		desplegar(delta);
 	else:
-		if position.x > hidePos:
-			position.x -= 1500*delta; 
-		elif visible:
-			visible = false;
-			get_parent().pause_off();
+		replegar(delta);
 	pass
 
-func showMenu() -> void:
-	isShowed = true;
+func mostrarMenu() -> void:
+	esta_abierto = true;
 	
-func hideMenu() -> void:
-	isShowed = false;
+func ocultarMenu() -> void:
+	esta_abierto = false;
+	
+func desplegar(delta):
+	visible = true;
+	if position.x < pos_visible:
+		position.x += 1000*delta;
+	else:
+		position.x = pos_visible;
+
+func replegar(delta):
+	if position.x > pos_oculto:
+		position.x -= 1500*delta; 
+	elif visible:
+		visible = false;
+		get_parent().pause_off();

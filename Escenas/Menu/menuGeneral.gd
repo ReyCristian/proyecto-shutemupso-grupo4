@@ -7,9 +7,9 @@ func _ready() -> void:
 
 @onready var menus = [$Principal,$Niveles,$Opciones,$OpcionesSonido]
 
-func hideMenu() -> void:
+func ocultarMenu() -> void:
 	for menu in menus:
-		menu.hideMenu();
+		menu.ocultarMenu();
 	pass
 
 func pause_off() -> bool:

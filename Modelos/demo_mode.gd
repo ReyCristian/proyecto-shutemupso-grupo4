@@ -28,25 +28,25 @@ func lanzar(_personaje):
 # Esta funcion es llamada por el timer demo (se crea en la funcion demo_mode)
 func _on_timeout():
 	carga_skin_aleatoria_al_terminar_ciclo_animacion();
-	sprite.reproducir(dame_animacion_segun_ciclo());
-	sprite.get_node("direccion").play(dame_animacion_giro_segun_ciclo());
+	sprite.reproducir(obtener_animacion_segun_ciclo());
+	sprite.get_node("direccion").play(obtener_animacion_giro_segun_ciclo());
 	siguiente_animacion_ciclo()
 
 func carga_skin_aleatoria_al_terminar_ciclo_animacion():
 	if personaje.is_in_group("heroe"):
 		return;
 	if current_animation % animations.size() == 0 && current_animation > 0:
-		personaje.skin = dame_skin_aleatoria()
+		personaje.skin = obtener_skin_aleatoria()
 		sprite.cargar_skin();
 		
-func dame_skin_aleatoria():
+func obtener_skin_aleatoria():
 	var indice_aleatorio = randi_range(0, ListasTexturas.texturas_personaje.size() - 1);
 	return ListasTexturas.texturas_personaje.values()[indice_aleatorio] ;
 
-func dame_animacion_segun_ciclo():
+func obtener_animacion_segun_ciclo():
 	return animations[current_animation % animations.size()]
 	
-func dame_animacion_giro_segun_ciclo():
+func obtener_animacion_giro_segun_ciclo():
 	return direcciones[current_animation / animations.size()]
 
 func siguiente_animacion_ciclo():

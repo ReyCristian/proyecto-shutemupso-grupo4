@@ -17,7 +17,7 @@ func _ready() -> void:
 func _on_lvl_1_pressed() -> void:
 	pre_cargar_lvl(pre_lvl_list[1]);
 	nivel_actual_indice = 1;
-	get_parent().hideMenu()
+	get_parent().ocultarMenu()
 	principal.ver_pantalla_inicio_nivel()
 	pass;
 
@@ -25,14 +25,14 @@ func _on_lvl_1_pressed() -> void:
 func _on_lvl_2_pressed() -> void:
 	pre_cargar_lvl(pre_lvl_list[2]);
 	nivel_actual_indice = 2;
-	get_parent().hideMenu()
+	get_parent().ocultarMenu()
 	principal.ver_pantalla_inicio_nivel()
 	pass;
 	
 func _on_lvl_3_pressed() -> void:
 	pre_cargar_lvl(pre_lvl_list[3]);
 	nivel_actual_indice = 3;
-	get_parent().hideMenu()
+	get_parent().ocultarMenu()
 	principal.ver_pantalla_inicio_nivel()
 	pass # Replace with function body.
 

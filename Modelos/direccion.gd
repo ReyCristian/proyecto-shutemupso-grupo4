@@ -18,7 +18,7 @@ func _process(_delta: float) -> void:
 	poner_direccion(direccion);
 	pass
 
-func dame_angulo() -> int:
+func obtener_angulo() -> int:
 	if angulo == -180:
 		angulo = 180
 	return angulo
@@ -28,9 +28,10 @@ func angulo_simplificado(angulo_en_grados: float) -> int:
 	
 
 func poner_direccion(direccion:Vector2):
-	if personaje.skin == ListasTexturas.texturas_personaje.SLIME:
-		return
-	var angulo_en_grados = int(rad_to_deg(direccion.angle()));
+	if es_slime():
+		return;
+	var angulo_en_radianes = direccion.angle();
+	var angulo_en_grados = int(rad_to_deg(angulo_en_radianes));
 	apuntar(angulo_en_grados);
 	
 func apuntar(angulo_en_grados:int):
@@ -56,5 +57,12 @@ func apuntar(angulo_en_grados:int):
 			self.play("arriba");
 
 func auto_apuntar(angulo_en_grados:int):
-	var resultante = Vector2.RIGHT.rotated(deg_to_rad(angulo_en_grados)) + personaje.direccion
-	apuntar(rad_to_deg(resultante.angle()));
+	var angulo_en_radianes = deg_to_rad(angulo_en_grados)
+	var direccion_de_auto_apuntado = Vector2.RIGHT.rotated(angulo_en_radianes)
+	var resultante = direccion_de_auto_apuntado + personaje.direccion
+	var nuevo_angulo_en_radianes = resultante.angle()
+	var nuevo_angulo_en_grados = rad_to_deg(nuevo_angulo_en_radianes)
+	apuntar(nuevo_angulo_en_grados);
+
+func es_slime() -> bool:
+	return personaje.skin == ListasTexturas.texturas_personaje.SLIME;

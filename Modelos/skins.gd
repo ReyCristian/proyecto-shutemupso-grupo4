@@ -8,10 +8,7 @@ var demo_mode = preload("res://Modelos/demo_mode.gd").new()
 func _ready() -> void:	
 	cargar_skin()
 	reproductor_animaciones.play("RESET");
-	
-	#Activa el modo demo, es para pruebas y para el menu
-	if get_tree().current_scene.name == "personaje" or personaje.en_demo and personaje.vida > 0:
-		demo_mode.lanzar(personaje);
+	verificar_modo_demo()
 
 func cargar_skin() -> void:
 	if personaje.skin != null:
@@ -20,10 +17,10 @@ func cargar_skin() -> void:
 		$Animacion.active = false;
 		$Animacion2.active = false;
 		$Animacion3.active = false;
-		reproductor_animaciones = dame_reproductor_animaciones_por_skin();
+		reproductor_animaciones = obtener_reproductor_animaciones_por_skin();
 		reproductor_animaciones.active = true;
 
-func dame_reproductor_animaciones_por_skin() -> AnimationPlayer:
+func obtener_reproductor_animaciones_por_skin() -> AnimationPlayer:
 	if (personaje.skin in ListasTexturas.lista_texturas_animacion2):
 		return $Animacion2;
 	elif (personaje.skin in ListasTexturas.lista_texturas_animacion3):
@@ -79,3 +76,7 @@ func morir():
 	
 func esta_ocupado() -> bool:
 	return reproductor_animaciones.esta_ocupado()
+
+func verificar_modo_demo() -> void:
+	if get_tree().current_scene.name == "personaje" or personaje.en_demo and personaje.vida > 0:
+		demo_mode.lanzar(personaje);
