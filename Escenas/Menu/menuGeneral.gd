@@ -18,7 +18,7 @@ func pause_off() -> bool:
 			return false;
 	$EnchantedFestival.stream_paused = true;
 	if principal.get_node("InicioNivel").visible:
-		principal.ver_pantalla_inicio_nivel()
+		#principal.ver_pantalla_inicio_nivel()
 		return false;
 	get_tree().paused = false;
 	return true;

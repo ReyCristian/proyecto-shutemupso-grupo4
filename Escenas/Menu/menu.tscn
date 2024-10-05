@@ -76,6 +76,7 @@ layout_mode = 2
 script = ExtResource("5_ar7oj")
 
 [node name="Niveles" type="VBoxContainer" parent="Menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -103,11 +104,16 @@ text = "Nivel 2
 layout_mode = 2
 text = "Nivel 3"
 
+[node name="jefe" type="Button" parent="Menu/Niveles"]
+layout_mode = 2
+text = "Batalla Final"
+
 [node name="Control" type="Control" parent="Menu/Niveles"]
 layout_mode = 2
 script = ExtResource("3_uxdpq")
 
 [node name="Opciones" type="VBoxContainer" parent="Menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -135,6 +141,7 @@ flat = true
 script = ExtResource("7_qicod")
 
 [node name="OpcionesSonido" type="VBoxContainer" parent="Menu"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -192,6 +199,7 @@ script = ExtResource("9_4k8xh")
 [connection signal="pressed" from="Menu/Niveles/Lvl1" to="Menu/Niveles/Control" method="_on_lvl_1_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl2" to="Menu/Niveles/Control" method="_on_lvl_2_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl3" to="Menu/Niveles/Control" method="_on_lvl_3_pressed"]
+[connection signal="pressed" from="Menu/Niveles/jefe" to="Menu/Niveles/Control" method="_on_jefe_pressed"]
 [connection signal="pressed" from="Menu/Opciones/Sonidos" to="Menu/Opciones/Sonidos" method="_on_pressed"]
 [connection signal="toggled" from="Menu/Opciones/pantalla_completa" to="Menu/Opciones/pantalla_completa" method="_al_cambiar"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/General" to="Menu/OpcionesSonido/General" method="_on_value_changed"]

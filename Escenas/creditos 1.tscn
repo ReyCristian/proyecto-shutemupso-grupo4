@@ -69,8 +69,8 @@ _data = {
 }
 
 [node name="Creditos1" type="CanvasLayer"]
-layer = 102
 process_mode = 3
+layer = 102
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

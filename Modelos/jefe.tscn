@@ -1,10 +1,13 @@
-[gd_scene load_steps=17 format=3 uid="uid://bw88qepir67ra"]
+[gd_scene load_steps=23 format=3 uid="uid://bw88qepir67ra"]
 
 [ext_resource type="Texture2D" uid="uid://dhqbdmcj4s4fc" path="res://Recursos/goru_walk.png" id="1_d5wlg"]
 [ext_resource type="Script" path="res://Modelos/jefe.gd" id="1_lv7bj"]
 [ext_resource type="Script" path="res://Modelos/jefe_animacion.gd" id="2_xhv66"]
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="3_7odty"]
 [ext_resource type="Texture2D" uid="uid://c2id12fquckrk" path="res://Recursos/goru_walk_frente.png" id="4_ooufr"]
+[ext_resource type="Script" path="res://Escenas/ataque_enemigo.gd" id="5_6cvu7"]
+[ext_resource type="Script" path="res://Modelos/barra_vida_boss.gd" id="6_oh7xu"]
+[ext_resource type="Script" path="res://Modelos/area_aleatoria.gd" id="8_brxcu"]
 
 [sub_resource type="Animation" id="Animation_i5dsh"]
 resource_name = "Ataque pared"
@@ -230,7 +233,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.1, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [17, 15, 16]
+"values": [5, 3, 4]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -341,7 +344,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -365,7 +368,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -449,7 +452,7 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [13]
+"values": [1]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
@@ -533,7 +536,7 @@ tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(-2, -1)]
+"values": [Vector2(0, -1)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
@@ -601,6 +604,61 @@ _data = {
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7qu2l"]
 radius = 12.0
 height = 38.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vurwq"]
+radius = 12.0
+height = 38.0
+
+[sub_resource type="Animation" id="Animation_6dcao"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GoruWalkFrente:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 384, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GoruWalkFrente2:region_rect")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 384, 64)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("GoruWalkFrente3:region_rect")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 384, 64)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("GoruWalk:region_rect")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 384, 64)]
+}
 
 [sub_resource type="Animation" id="Animation_li6ni"]
 resource_name = "fase 0"
@@ -759,57 +817,6 @@ tracks/3/keys = {
 "values": [Rect2(0, 128, 384, 64)]
 }
 
-[sub_resource type="Animation" id="Animation_6dcao"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GoruWalkFrente:region_rect")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 384, 64)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GoruWalkFrente2:region_rect")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 384, 64)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("GoruWalkFrente3:region_rect")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 384, 64)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("GoruWalk:region_rect")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Rect2(0, 0, 384, 64)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e1bqv"]
 _data = {
 "RESET": SubResource("Animation_6dcao"),
@@ -818,17 +825,40 @@ _data = {
 "fase 2": SubResource("Animation_dmvai")
 }
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3hu3u"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+border_blend = true
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(1, 0, 0, 0.670588)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kmadp"]
+size = Vector2(289, 207)
+
 [node name="jefe" type="CharacterBody2D" groups=["enemigo", "jefe"]]
-position = Vector2(236, 25)
+position = Vector2(236, 56)
 script = ExtResource("1_lv7bj")
 
-[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
-visible = false
-position = Vector2(0, -36)
+[node name="inicia_pelea" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -67)
 rotation = 1.5708
 
+[node name="fin_pelea" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="mostrar_barra_vida" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(2.00002, 254)
+
 [node name="GoruWalk" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("1_d5wlg")
 hframes = 6
 region_enabled = true
@@ -855,18 +885,24 @@ region_rect = Rect2(0, 0, 384, 64)
 
 [node name="Asiento" type="Node2D" parent="."]
 position = Vector2(0, 1)
+script = ExtResource("5_6cvu7")
 
-[node name="personaje" parent="Asiento" groups=["enemigo"] instance=ExtResource("3_7odty")]
+[node name="Enemigo" parent="Asiento" groups=["enemigo"] instance=ExtResource("3_7odty")]
 position = Vector2(0, -9)
 collision_layer = 0
 collision_mask = 0
+esperando = true
 skin = 11
 vida = 20
+
+[node name="Timer" type="Timer" parent="Asiento/Enemigo"]
+autostart = true
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="Asiento/Enemigo"]
 
 [node name="GoruWalkFrente" type="Sprite2D" parent="."]
 texture = ExtResource("4_ooufr")
 hframes = 6
-frame = 1
 region_enabled = true
 region_rect = Rect2(0, 0, 384, 64)
 
@@ -878,13 +914,58 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(-2, -1)
+position = Vector2(0, -1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_7qu2l")
+
+[node name="hitbox" type="Area2D" parent="CollisionShape2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/hitbox"]
+shape = SubResource("CapsuleShape2D_vurwq")
 
 [node name="fases" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_e1bqv")
 }
 
-[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[node name="jefe_hud" type="CanvasLayer" parent="."]
+
+[node name="vida" type="ProgressBar" parent="jefe_hud" node_paths=PackedStringArray("jefe")]
+visible = false
+modulate = Color(1, 0, 0, 0.8)
+custom_minimum_size = Vector2(180, 11)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -90.0
+offset_top = 9.0
+offset_right = 90.0
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_3hu3u")
+max_value = 1.0
+step = 0.0
+show_percentage = false
+script = ExtResource("6_oh7xu")
+jefe = NodePath("../../Asiento/Enemigo")
+
+[node name="Area_desplazamiento" type="Area2D" parent="jefe_hud"]
+position = Vector2(240, 155)
+script = ExtResource("8_brxcu")
+
+[node name="Timer" type="Timer" parent="jefe_hud/Area_desplazamiento"]
+wait_time = 5.0
+
+[node name="proxima_posicion" type="Marker2D" parent="jefe_hud/Area_desplazamiento"]
+position = Vector2(-4, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jefe_hud/Area_desplazamiento"]
+visible = false
+shape = SubResource("RectangleShape2D_kmadp")
+
+[connection signal="screen_entered" from="inicia_pelea" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="fin_pelea" to="." method="_cuando_termina_pelea"]
+[connection signal="screen_entered" from="mostrar_barra_vida" to="jefe_hud/vida" method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="timeout" from="Asiento/Enemigo/Timer" to="Asiento" method="_on_timer_timeout"]
+[connection signal="area_entered" from="CollisionShape2D/hitbox" to="." method="_cuando_area_entra_hitbox"]
+[connection signal="timeout" from="jefe_hud/Area_desplazamiento/Timer" to="jefe_hud/Area_desplazamiento" method="_on_timer_cambiar_posicion"]

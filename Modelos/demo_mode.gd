@@ -15,6 +15,7 @@ func lanzar(_personaje):
 	personaje = _personaje;
 	sprite = personaje.get_node("Sprite2D")
 	if not personaje.en_demo:
+		#personaje.position = get_viewport().get_visible_rect().size / 2
 		sprite.scale = Vector2(10,10);
 	personaje.en_demo = true;
 	timer = Timer.new();

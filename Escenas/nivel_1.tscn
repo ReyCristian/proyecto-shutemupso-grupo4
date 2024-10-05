@@ -37,6 +37,7 @@ bus = &"Musica"
 position = Vector2(284, 194)
 
 [node name="cinematica_fin_nivel" parent="." instance=ExtResource("8_wdq68")]
+position = Vector2(241, -3356)
 
 [node name="HUD" parent="." instance=ExtResource("9_7m18o")]
 

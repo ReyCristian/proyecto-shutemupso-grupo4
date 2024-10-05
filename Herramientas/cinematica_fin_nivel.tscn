@@ -9,7 +9,7 @@ _data = {
 point_count = 3
 
 [node name="cinematica_fin_nivel" type="Node2D"]
-position = Vector2(241, -3356)
+position = Vector2(241, 112)
 script = ExtResource("1_n7e82")
 
 [node name="Path2D" type="Path2D" parent="."]

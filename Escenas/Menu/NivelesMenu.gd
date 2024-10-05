@@ -18,7 +18,7 @@ func _on_lvl_1_pressed() -> void:
 	pre_cargar_lvl(pre_lvl_list[1]);
 	nivel_actual_indice = 1;
 	get_parent().ocultarMenu()
-	principal.ver_pantalla_inicio_nivel()
+	principal.ver_pantalla_inicio_nivel(nivel_actual_indice)
 	pass;
 
 
@@ -26,14 +26,14 @@ func _on_lvl_2_pressed() -> void:
 	pre_cargar_lvl(pre_lvl_list[2]);
 	nivel_actual_indice = 2;
 	get_parent().ocultarMenu()
-	principal.ver_pantalla_inicio_nivel()
+	principal.ver_pantalla_inicio_nivel(nivel_actual_indice)
 	pass;
 	
 func _on_lvl_3_pressed() -> void:
 	pre_cargar_lvl(pre_lvl_list[3]);
 	nivel_actual_indice = 3;
 	get_parent().ocultarMenu()
-	principal.ver_pantalla_inicio_nivel()
+	principal.ver_pantalla_inicio_nivel(nivel_actual_indice)
 	pass # Replace with function body.
 
 
@@ -60,5 +60,17 @@ func cargar_lvl(pre_lvl: PackedScene):
 
 func siguiente_nivel():
 	nivel_actual_indice += 1;
+	if nivel_actual_indice >= pre_lvl_list.size():
+		nivel_actual_indice = 0;
 	pre_cargar_lvl(pre_lvl_list[nivel_actual_indice]);
+	
+func _on_jefe_pressed() -> void:
+	pre_cargar_lvl(pre_lvl_list[3]);
+	nivel_actual_indice = 3;
+	principal.lvl_actual.saltar_al_final()
+	get_parent().ocultarMenu()
+	principal.ver_pantalla_inicio_nivel(nivel_actual_indice)
+	pass # Replace with function body.
+	
+	
 	

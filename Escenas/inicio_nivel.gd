@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var reiniciar:bool = false;
+var nivel=0;
 
 func _physics_process(_delta: float) -> void:
 	if $VisibleOnScreenEnabler2D.is_on_screen():
@@ -17,7 +18,7 @@ func _on_timer_timeout() -> void:
 		$ColorRect/Tutorial_controles/personaje4.magia.preparar_shot()
 		$ColorRect/Tutorial_controles/personaje5.magia.preparar_shot()
 
-func ver_pantalla_inicio_nivel():
+func ver_pantalla_inicio_nivel(_nivel:int):
 	get_tree().paused = true;
 	$ColorRect/Tutorial_controles/suelo_para_disparos.add_to_group("nivel")
 	visible = true;
@@ -26,6 +27,7 @@ func ver_pantalla_inicio_nivel():
 	mostrar_tutorial_controles()
 	$ColorRect/personaje.get_node("Sprite2D").demo_mode.timer.paused = false;
 	reiniciar = false;
+	nivel = _nivel;
 	
 func mostrar_boton_listo():
 	$ColorRect/listo.visible = true;
@@ -38,8 +40,11 @@ func mostrar_tutorial_controles():
 	
 
 func _on_listo_pressed() -> void:
+	print(nivel)
 	if reiniciar:
 		get_tree().get_nodes_in_group("principal")[0].reiniciar_nivel()
+	if nivel == 0:
+		get_tree().get_nodes_in_group("principal")[0].final_del_juego()
 	$ColorRect/Tutorial_controles/suelo_para_disparos.remove_from_group("nivel")
 	visible = false;
 	get_tree().paused = false;
@@ -52,7 +57,7 @@ func ver_pantalla_derrota(puntaje,referencia):
 	mostrar_boton_reiniciar()
 	$ColorRect/personaje.hitbox.morir();
 	$ColorRect/personaje.sprite.demo_mode.timer.paused = true;
-	ver_pantalla_puntaje(puntaje,referencia);
+	ver_pantalla_puntaje(puntaje,referencia,nivel);
 	
 func mostrar_boton_reiniciar():
 	reiniciar = true;
@@ -60,7 +65,8 @@ func mostrar_boton_reiniciar():
 	$ColorRect/listo.text = "Reiniciar";
 	$ColorRect/listo.pivot_offset.x = 61;
 
-func ver_pantalla_puntaje(puntaje,referencia):
+func ver_pantalla_puntaje(puntaje,referencia,_nivel):
+	nivel = _nivel;
 	get_tree().paused = true;
 	$ColorRect/Tutorial_controles/suelo_para_disparos.add_to_group("nivel")
 	visible = true;
