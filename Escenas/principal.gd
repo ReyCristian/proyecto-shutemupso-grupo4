@@ -54,11 +54,10 @@ func obtener_nodo_puntaje() -> Node2D:
 	var heroe = obtener_heroe();
 	if heroe == null:
 		return null;
-	return obtener_heroe().get_node("puntaje");
+	return heroe.get_node("puntaje");
 
 func _on_enemigo_muere(skin: ListasTexturas.texturas_personaje) -> void:
 	obtener_nodo_puntaje()._on_enemigo_muere(skin)
 	
 func _on_obstaculo_roto(id) -> void:
-	print(id)
 	obtener_nodo_puntaje()._on_obstaculo_roto(id)

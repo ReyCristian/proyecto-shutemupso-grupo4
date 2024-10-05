@@ -49,13 +49,9 @@ func detener():
 	$ColorRect/listo.visible = false;
 	
 func ver_pantalla_derrota(puntaje,referencia):
-	get_tree().paused = true;
-	$ColorRect/Tutorial_controles/suelo_para_disparos.add_to_group("nivel")
-	visible = true;
-	$Intense.stream_paused = false;
 	mostrar_boton_reiniciar()
-	$ColorRect/personaje.morir();
-	$ColorRect/personaje.get_node("Sprite2D").demo_mode.timer.paused = true;
+	$ColorRect/personaje.hitbox.morir();
+	$ColorRect/personaje.sprite.demo_mode.timer.paused = true;
 	ver_pantalla_puntaje(puntaje,referencia);
 	
 func mostrar_boton_reiniciar():
@@ -65,7 +61,10 @@ func mostrar_boton_reiniciar():
 	$ColorRect/listo.pivot_offset.x = 61;
 
 func ver_pantalla_puntaje(puntaje,referencia):
-	print(puntaje)
+	get_tree().paused = true;
+	$ColorRect/Tutorial_controles/suelo_para_disparos.add_to_group("nivel")
+	visible = true;
+	$Intense.stream_paused = false;	
 	reset_puntajes()
 	$ColorRect/Tutorial_controles.visible = false;
 	$ColorRect/puntajes.visible = true;

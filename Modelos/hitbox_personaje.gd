@@ -22,12 +22,12 @@ func tomar_daño():
 func morir():
 	if personaje.muerto:
 		return;
-	personaje.muerto = true;
 	sprite.morir();
-	if is_in_group("enemigo"):
+	if personaje.is_in_group("enemigo"):
 		emit_signal("muerte",personaje.skin)
-	if not personaje.en_demo:
-		self.queue_free();
+	if not personaje.en_demo and not personaje.is_in_group("demo"):
+		personaje.muerto = true;
+		self.get_node("CollisionShape2D2").queue_free();
 		$"../espada".queue_free();
 		$"../CollisionShape2D".queue_free();
 	
@@ -63,19 +63,22 @@ func deshabilitar_colisiones_enemigo():
 		personaje.set_collision_layer(1);
 		personaje.set_collision_mask(0);
 
-func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+func _cuando_salga_de_la_pantalla() -> void:
 	if personaje.is_in_group("demo") or personaje.en_demo:
 		return
 	if personaje.is_in_group("heroe"):
-		self.morir();
+		personaje.hitbox.morir();
 		return
 	personaje.queue_free();
 	liberar_padre();
 
 func _cuando_completa_animacion_muerte():
+	if personaje.is_in_group("demo"):
+		return;
 	if personaje.muerto and personaje.limpiar_cadaver:
+		queue_free()
 		personaje.queue_free()
 		liberar_padre()
 		if personaje.is_in_group("heroe"):
-			get_tree().get_nodes_in_group("principal")[0].derrota();
+			get_tree().get_first_node_in_group("principal").derrota();
 	
