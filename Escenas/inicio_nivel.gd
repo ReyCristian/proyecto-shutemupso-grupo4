@@ -4,18 +4,18 @@ var reiniciar:bool = false;
 
 func _physics_process(_delta: float) -> void:
 	if $VisibleOnScreenEnabler2D.is_on_screen():
-		$ColorRect/Tutorial_controles/personaje4.shot()
-		$ColorRect/Tutorial_controles/personaje5.shot(2)
+		$ColorRect/Tutorial_controles/personaje4.magia.shot()
+		$ColorRect/Tutorial_controles/personaje5.magia.shot(2)
 
 func _on_timer_timeout() -> void:
 	if $ColorRect/Tutorial_controles/personaje3/Sprite2D.golpe_preparado():
 		$ColorRect/Tutorial_controles/personaje3/Sprite2D.dar_golpe_espada();
-		$ColorRect/Tutorial_controles/personaje4.detener_shot()
-		$ColorRect/Tutorial_controles/personaje5.detener_shot()
+		$ColorRect/Tutorial_controles/personaje4.magia.detener_shot()
+		$ColorRect/Tutorial_controles/personaje5.magia.detener_shot()
 	else:
 		$ColorRect/Tutorial_controles/personaje3/Sprite2D.preparar_golpe_espada();
-		$ColorRect/Tutorial_controles/personaje4.preparar_shot()
-		$ColorRect/Tutorial_controles/personaje5.preparar_shot()
+		$ColorRect/Tutorial_controles/personaje4.magia.preparar_shot()
+		$ColorRect/Tutorial_controles/personaje5.magia.preparar_shot()
 
 func ver_pantalla_inicio_nivel():
 	get_tree().paused = true;

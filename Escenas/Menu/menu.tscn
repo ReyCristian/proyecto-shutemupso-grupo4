@@ -19,6 +19,7 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -480.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3e75f")
@@ -192,8 +193,8 @@ script = ExtResource("9_4k8xh")
 [connection signal="pressed" from="Menu/Niveles/Lvl2" to="Menu/Niveles/Control" method="_on_lvl_2_pressed"]
 [connection signal="pressed" from="Menu/Niveles/Lvl3" to="Menu/Niveles/Control" method="_on_lvl_3_pressed"]
 [connection signal="pressed" from="Menu/Opciones/Sonidos" to="Menu/Opciones/Sonidos" method="_on_pressed"]
-[connection signal="toggled" from="Menu/Opciones/pantalla_completa" to="Menu/Opciones/pantalla_completa" method="_on_toggled"]
+[connection signal="toggled" from="Menu/Opciones/pantalla_completa" to="Menu/Opciones/pantalla_completa" method="_al_cambiar"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/General" to="Menu/OpcionesSonido/General" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/Musica" to="Menu/OpcionesSonido/Musica" method="_on_value_changed"]
 [connection signal="value_changed" from="Menu/OpcionesSonido/Efectos" to="Menu/OpcionesSonido/Efectos" method="_on_value_changed"]
-[connection signal="toggled" from="Menu/OpcionesSonido/Silencio" to="Menu/OpcionesSonido/Silencio" method="_on_toggled"]
+[connection signal="toggled" from="Menu/OpcionesSonido/Silencio" to="Menu/OpcionesSonido/Silencio" method="_al_cambiar"]

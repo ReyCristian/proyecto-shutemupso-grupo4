@@ -1,11 +1,10 @@
 extends Node;
 
-@export var personaje_principal: NodePath;
 @export var mapa_nivel: NodePath;
 
 @export var isCorriendo: bool = false;
 
-@onready var personaje = get_node(personaje_principal);
+@onready var personaje = $"..";
 @onready var mapa = get_node(mapa_nivel);
 
 func _ready() -> void:
@@ -41,27 +40,27 @@ func check_corriendo():
 
 func check_golpe():
 	if Input.is_action_just_pressed("ui_accept"):
-		personaje.dar_golpe();
+		personaje.espada.dar_golpe();
 	if Input.is_action_just_released("ui_accept"):
-		personaje.dar_golpe_espada();
+		personaje.espada.dar_golpe_espada();
 
 func check_shot():
 	#Prepara ataque
 	if Input.is_action_just_pressed("ataque1") or Input.is_action_just_pressed("ataque2"):
-		personaje.preparar_shot(1 if Input.is_action_just_pressed("ataque1") else 2);
+		personaje.magia.preparar_shot(1 if Input.is_action_just_pressed("ataque1") else 2);
 		personaje.auto_movimiento = Vector2.ZERO;
 		
 	#Lanza ataque
 	if Input.is_action_pressed("ataque1"):
-		personaje.shot(1);
+		personaje.magia.shot(1);
 		personaje.direccion = Vector2.ZERO
 		
 	if Input.is_action_pressed("ataque2"):
-		personaje.shot(2);
+		personaje.magia.shot(2);
 
 	#Termina bucle de animacion de disparo
 	if Input.is_action_just_released("ataque1") or Input.is_action_just_released("ataque2"):
-		personaje.detener_shot();
+		personaje.magia.detener_shot();
 		load_movimiento_automatico()
 	
 	

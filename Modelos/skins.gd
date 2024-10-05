@@ -2,6 +2,7 @@ extends Sprite2D
 
 @onready var personaje = $"..";
 @onready var reproductor_animaciones:AnimationPlayer = $Animacion;
+@onready var direccion = $direccion;
 
 var demo_mode = preload("res://Modelos/demo_mode.gd").new()
 
@@ -60,7 +61,7 @@ func esta_preparando_ataque() -> bool:
 	return reproductor_animaciones.current_animation in ["magia","casteo_magia"];
 
 func esta_atacando() -> bool:
-	return personaje.magia_lista and not personaje.magia_lanzada
+	return personaje.magia.magia_lista and not personaje.magia.magia_lanzada
 
 func detener_shot() -> void:
 	reproducir("RESET")

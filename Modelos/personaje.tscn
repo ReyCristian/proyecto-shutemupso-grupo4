@@ -1,10 +1,19 @@
-[gd_scene load_steps=56 format=3 uid="uid://bp3b1wcfik24s"]
+[gd_scene load_steps=59 format=3 uid="uid://bp3b1wcfik24s"]
 
 [ext_resource type="Script" path="res://Modelos/personaje.gd" id="1_k874c"]
-[ext_resource type="Texture2D" uid="uid://c5qejwby1ymym" path="res://Recursos/personajes/Slime.png" id="2_qr588"]
+[ext_resource type="Script" path="res://Modelos/magia_personaje.gd" id="2_np3gv"]
+[ext_resource type="Texture2D" uid="uid://i8lpuhupvb5g" path="res://Recursos/personajes/Orc-Peon-Cyan.png" id="2_v6eds"]
+[ext_resource type="Script" path="res://Modelos/espada_personaje.gd" id="2_yly7c"]
 [ext_resource type="Script" path="res://Modelos/skins.gd" id="3_c85e1"]
 [ext_resource type="Script" path="res://Modelos/direccion.gd" id="3_yhpdf"]
 [ext_resource type="Script" path="res://Modelos/animacion.gd" id="4_644rf"]
+[ext_resource type="Script" path="res://Modelos/hitbox_personaje.gd" id="8_tnnrs"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nwevv"]
+radius = 24.0208
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7aq8q"]
+radius = 19.0
 
 [sub_resource type="Animation" id="Animation_3rx58"]
 length = 0.001
@@ -396,7 +405,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("espada")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -478,53 +487,6 @@ tracks/1/keys = {
 "values": [Color(1, 1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_3x6pj"]
-resource_name = "magia"
-length = 0.3
-loop_mode = 1
-step = 0.1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(15, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [],
-"method": &"set_magia_lista"
-}, {
-"args": [],
-"method": &"set_magia_lanzada"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_0q0pd"]
 resource_name = "muerte"
 length = 1.8
@@ -565,6 +527,20 @@ tracks/2/keys = {
 "update": 1,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("hitbox")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_cuando_completa_animacion_muerte"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_8urvy"]
 resource_name = "preparar_espada"
@@ -594,6 +570,53 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3x6pj"]
+resource_name = "magia"
+length = 0.3
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(15, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("magia")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"set_magia_lista"
+}, {
+"args": [],
+"method": &"set_magia_lanzada"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dcydf"]
@@ -821,23 +844,6 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_fv8ql"]
-resource_name = "magia"
-length = 0.8
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [12, 13, 14]
-}
-
 [sub_resource type="Animation" id="Animation_5xkqp"]
 resource_name = "muerte"
 length = 1.8
@@ -865,6 +871,23 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_fv8ql"]
+resource_name = "magia"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [12, 13, 14]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_s7h2q"]
@@ -1018,7 +1041,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_c4m4w"]
 resource_name = "muerte"
 length = 1.1
-step = 0.2
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1030,6 +1053,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../hitbox")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_cuando_completa_animacion_muerte"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bnpb7"]
@@ -1048,23 +1085,70 @@ _data = {
 radius = 4.0
 height = 8.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_nwevv"]
-radius = 24.0208
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lvdeg"]
 radius = 6.0
 height = 12.0
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7aq8q"]
-radius = 19.0
 
 [node name="personaje" type="CharacterBody2D" groups=["vivo"]]
 script = ExtResource("1_k874c")
 skin = 19
 
+[node name="espada" type="Node2D" parent="."]
+script = ExtResource("2_yly7c")
+
+[node name="hostilidad" type="Area2D" parent="espada"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="espada/hostilidad"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_nwevv")
+debug_color = Color(0.821314, 0.207266, 0.842732, 0.42)
+
+[node name="area_espada" type="Area2D" parent="espada"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="espada/area_espada"]
+shape = SubResource("CircleShape2D_7aq8q")
+
+[node name="magia" type="Node2D" parent="."]
+script = ExtResource("2_np3gv")
+
+[node name="puntos_disparo" type="Node2D" parent="magia"]
+
+[node name="Punto 1" type="Node2D" parent="magia/puntos_disparo"]
+position = Vector2(3, -5)
+rotation = -1.5708
+
+[node name="Punto 2" type="Node2D" parent="magia/puntos_disparo"]
+position = Vector2(-7, 0)
+rotation = -2.35619
+
+[node name="Punto 3" type="Node2D" parent="magia/puntos_disparo"]
+position = Vector2(-8, 2)
+rotation = 3.14159
+
+[node name="Punto 4" type="Node2D" parent="magia/puntos_disparo"]
+position = Vector2(-7, 6)
+rotation = 2.35619
+
+[node name="Punto 5" type="Node2D" parent="magia/puntos_disparo"]
+position = Vector2(-3, 9)
+rotation = 1.5708
+
+[node name="Punto 6" type="Node2D" parent="magia/puntos_disparo"]
+position = Vector2(7, 5)
+rotation = 0.785398
+
+[node name="Punto 7" type="Node2D" parent="magia/puntos_disparo"]
+position = Vector2(8, 2)
+
+[node name="Punto 8" type="Node2D" parent="magia/puntos_disparo"]
+position = Vector2(7, 0)
+rotation = -0.785398
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_qr588")
+texture = ExtResource("2_v6eds")
 hframes = 24
 region_enabled = true
 region_rect = Rect2(0, 0, 768, 32)
@@ -1101,68 +1185,22 @@ visible = false
 position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_jor17")
 
-[node name="hostilidad" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="hostilidad"]
-position = Vector2(0, 4)
-shape = SubResource("CircleShape2D_nwevv")
-debug_color = Color(0.821314, 0.207266, 0.842732, 0.42)
-
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(3.09944e-06, -3)
 scale = Vector2(0.7, 1)
 
 [node name="hitbox" type="Area2D" parent="."]
+script = ExtResource("8_tnnrs")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, 1)
 shape = SubResource("CapsuleShape2D_lvdeg")
 
-[node name="area_espada" type="Area2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="area_espada"]
-shape = SubResource("CircleShape2D_7aq8q")
-
-[node name="puntos_disparo" type="Node2D" parent="."]
-
-[node name="Punto 1" type="Node2D" parent="puntos_disparo"]
-position = Vector2(3, -5)
-rotation = -1.5708
-
-[node name="Punto 2" type="Node2D" parent="puntos_disparo"]
-position = Vector2(-7, 0)
-rotation = -2.35619
-
-[node name="Punto 3" type="Node2D" parent="puntos_disparo"]
-position = Vector2(-8, 2)
-rotation = 3.14159
-
-[node name="Punto 4" type="Node2D" parent="puntos_disparo"]
-position = Vector2(-7, 6)
-rotation = 2.35619
-
-[node name="Punto 5" type="Node2D" parent="puntos_disparo"]
-position = Vector2(-3, 9)
-rotation = 1.5708
-
-[node name="Punto 6" type="Node2D" parent="puntos_disparo"]
-position = Vector2(7, 5)
-rotation = 0.785398
-
-[node name="Punto 7" type="Node2D" parent="puntos_disparo"]
-position = Vector2(8, 2)
-
-[node name="Punto 8" type="Node2D" parent="puntos_disparo"]
-position = Vector2(7, 0)
-rotation = -0.785398
-
+[connection signal="body_entered" from="espada/hostilidad" to="espada" method="_cuando_cuerpo_entra_zona_hostilidad"]
+[connection signal="body_exited" from="espada/hostilidad" to="espada" method="_cuando_cuerpo_entra_area_espada_o_sale_area_hostilidad"]
+[connection signal="body_entered" from="espada/area_espada" to="espada" method="_cuando_cuerpo_entra_area_espada_o_sale_area_hostilidad"]
 [connection signal="animation_finished" from="Sprite2D/Animacion" to="." method="_on_animacion_animation_finished"]
 [connection signal="animation_finished" from="Sprite2D/Animacion3" to="." method="_on_animacion_animation_finished"]
-[connection signal="body_entered" from="hostilidad" to="." method="_on_cuerpo_entra_zona_hostilidad"]
-[connection signal="body_exited" from="hostilidad" to="." method="_on_area_espada_body_entered_o_exited"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
-[connection signal="area_entered" from="hitbox" to="." method="_on_area_entra_hitbox"]
-[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
-[connection signal="body_entered" from="area_espada" to="." method="_on_area_espada_body_entered_o_exited"]
+[connection signal="area_entered" from="hitbox" to="hitbox" method="_cuando_area_entra_hitbox"]
+[connection signal="body_entered" from="hitbox" to="hitbox" method="_cuando_cuerpo_entra_en_hitbox"]

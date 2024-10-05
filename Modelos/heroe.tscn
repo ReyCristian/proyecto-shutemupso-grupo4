@@ -16,7 +16,6 @@ position = Vector2(-256, -218)
 
 [node name="Control" type="Node" parent="heroe" groups=["liberar_al_final"]]
 script = ExtResource("2_811h6")
-personaje_principal = NodePath("..")
 mapa_nivel = NodePath("../../..")
 isCorriendo = true
 metadata/_edit_use_anchors_ = true

@@ -15,7 +15,7 @@ const bus_name = {
 }
 
 func _ready() -> void:
-	cambiar_volumen(int(value),bus_name[bus])
+	obtener_volumen(bus_name[bus])
 
 
 func _on_value_changed(valor: int) -> void:
@@ -25,3 +25,8 @@ func cambiar_volumen(valor:int,nombre_bus:String = "Master"):
 	var valor_adaptado = 0.0001*pow(valor,2)
 	var db_valor = linear_to_db(valor_adaptado)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(nombre_bus), db_valor)
+
+func obtener_volumen(nombre_bus:String):
+	var db_valor = AudioServer.get_bus_volume_db(AudioServer.get_bus_index(nombre_bus))
+	var valor_adaptado = db_to_linear(db_valor)
+	value = sqrt(10000*valor_adaptado)
