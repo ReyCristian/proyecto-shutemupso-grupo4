@@ -40,6 +40,7 @@ func auto_mover(direccion_normalizada) -> Vector2:
 	
 func cambiar_fase(_fase):
 	if _fase == 2:
+		$jefe_hud/Area_desplazamiento/Timer.stop()
 		$jefe_hud/vida.seleccionar_jefe(self);
 		$jefe_hud/vida.modulate = "#000000cc"
 		$jefe_hud/vida.listo.connect(fase2)
@@ -69,6 +70,7 @@ func _cuando_barra_vida_cargada():
 	$fases.play("fase 2");
 	fase = 2;
 	$jefe_hud/vida.listo.disconnect(fase2)
+	$jefe_hud/Area_desplazamiento/Timer.start()
 
 
 func _cuando_termina_pelea() -> void:

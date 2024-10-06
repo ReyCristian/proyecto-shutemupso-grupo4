@@ -886,6 +886,7 @@ region_rect = Rect2(0, 0, 384, 64)
 [node name="Asiento" type="Node2D" parent="."]
 position = Vector2(0, 1)
 script = ExtResource("5_6cvu7")
+espera_disparo = 0.5
 
 [node name="Enemigo" parent="Asiento" groups=["enemigo"] instance=ExtResource("3_7odty")]
 position = Vector2(0, -9)

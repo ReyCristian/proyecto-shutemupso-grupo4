@@ -30,7 +30,7 @@ func _ready() -> void:
 	if vida <=0:
 		$hitbox.morir()
 
-func _on_animacion_animation_finished(anim_name: StringName) -> void:
+func _on_animacion_animation_finished(_anim_name: StringName) -> void:
 	if en_demo:
 		$Sprite2D.visible = true;
 		return;

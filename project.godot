@@ -16,7 +16,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.505882, 0.0784314, 0.160784, 1)
 boot_splash/image="res://Recursos/UPSO-isologotipos-06.png"
 config/icon="res://icon.svg"
-boot_splash/minimum_display_time=3000
+boot_splash/minimum_display_time=1000
 
 [autoload]
 

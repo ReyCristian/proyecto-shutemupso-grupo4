@@ -60,7 +60,7 @@ func esta_preparando_ataque() -> bool:
 	return reproductor_animaciones.current_animation in ["magia","casteo_magia"];
 
 func esta_atacando() -> bool:
-	return personaje.magia.magia_lista and not personaje.magia.magia_lanzada
+	return personaje.magia.magia_lista
 
 func detener_animacion() -> void:
 	reproducir("RESET")

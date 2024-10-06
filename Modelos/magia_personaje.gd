@@ -7,8 +7,7 @@ extends Node2D
 var disparo_habilitado:bool = true;
 #Esta bandera demora el tiempo de casteo antes del primer disparo
 var magia_lista:bool = false;
-#Esta bandera avisa que el disparo ya se lanzo
-var magia_lanzada:bool = false;
+
 var pre_laser:Resource = preload("res://Modelos/laser.tscn");
 
 func _ready() -> void:
@@ -27,7 +26,6 @@ func set_magia_lista():
 
 func shot(ataque: int = 1):
 	if es_capaz_disparar():
-		magia_lanzada = false;
 		auto_apuntar()
 		var laser = crear_laser()
 		posicionar(laser)
@@ -55,9 +53,6 @@ func iniciar_recarga(ataque:int):
 
 func esta_incapacitado():
 	return personaje.muerto or personaje.hitbox.recibio_daño()
-
-func set_magia_lanzada():
-	magia_lanzada = true;
 
 func detener_shot():
 	if not esta_incapacitado():
