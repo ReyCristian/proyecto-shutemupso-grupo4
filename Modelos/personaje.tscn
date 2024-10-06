@@ -1118,6 +1118,7 @@ shape = SubResource("CircleShape2D_7aq8q")
 script = ExtResource("2_np3gv")
 
 [node name="puntos_disparo" type="Node2D" parent="magia"]
+visible = false
 
 [node name="Punto 1" type="Node2D" parent="magia/puntos_disparo"]
 position = Vector2(3, -5)

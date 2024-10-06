@@ -1,6 +1,6 @@
 extends Node
 
-@export var ataque:int = 2;
+@export var ataque:ListasAtaques.ataque = ListasAtaques.ataque.DISPARO;
 @export var espera_disparo:float = 2;
 @export var direccion: Vector2 = Vector2.DOWN;
 @export var objetivo: Node2D; 

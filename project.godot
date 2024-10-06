@@ -13,11 +13,15 @@ config_version=5
 config/name="proyecto-shutemupso-grupo4"
 run/main_scene="res://Escenas/Principal.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.505882, 0.0784314, 0.160784, 1)
+boot_splash/image="res://Recursos/UPSO-isologotipos-06.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=3000
 
 [autoload]
 
 ListasTexturas="*res://listas_texturas.gd"
+ListasAtaques="*res://listas_ataques.gd"
 
 [display]
 
@@ -36,6 +40,7 @@ liberar_al_morir=""
 demo=""
 liberar_al_final=""
 TileMapDestruible=""
+laser_p=""
 
 [input]
 

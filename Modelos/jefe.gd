@@ -45,7 +45,7 @@ func cambiar_fase(_fase):
 		$jefe_hud/vida.listo.connect(fase2)
 		
 func _cuando_area_entra_hitbox(area: Area2D) -> void:
-	if fase == 2 and area.is_in_group("laser"):
+	if fase == 2 and area.get_parent().is_in_group("laser_p"):
 		tomar_daño();
 		area.get_parent().queue_free();
 

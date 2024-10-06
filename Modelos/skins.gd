@@ -49,13 +49,12 @@ func golpe_preparado() -> bool:
 func dar_golpe_espada():
 	reproducir("espada");
 
-func shot(ataque: int = 1) -> void:
+func preparar_y_shot(ataque: int = ListasAtaques.ataque.LASER) -> void:
 	if not esta_preparando_ataque():
-		if ataque == 1:
-			reproducir("casteo_magia");
-			agregar_lista_reproduccion("magia");
-		else:
-			reproducir("magia");
+		detener_animacion();
+		for demora in ListasAtaques.demora_casteo[ataque]:
+			agregar_lista_reproduccion("casteo_magia");
+		agregar_lista_reproduccion("magia");
 
 func esta_preparando_ataque() -> bool:
 	return reproductor_animaciones.current_animation in ["magia","casteo_magia"];
@@ -63,7 +62,7 @@ func esta_preparando_ataque() -> bool:
 func esta_atacando() -> bool:
 	return personaje.magia.magia_lista and not personaje.magia.magia_lanzada
 
-func detener_shot() -> void:
+func detener_animacion() -> void:
 	reproducir("RESET")
 
 func tomar_daño():

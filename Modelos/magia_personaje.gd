@@ -3,8 +3,11 @@ extends Node2D
 @onready var personaje = $"..";
 @onready var sprite = $"../Sprite2D"
 
+#Esta bandera demora entre un disparo y otro
 var disparo_habilitado:bool = true;
+#Esta bandera demora el tiempo de casteo antes del primer disparo
 var magia_lista:bool = false;
+#Esta bandera avisa que el disparo ya se lanzo
 var magia_lanzada:bool = false;
 var pre_laser:Resource = preload("res://Modelos/laser.tscn");
 
@@ -13,37 +16,52 @@ func _ready() -> void:
 
 #Esta funcion se llama desde el controlador del personaje
 func preparar_shot(ataque: int = 1):
-	if personaje.muerto or personaje.hitbox.recibio_daño():
+	if esta_incapacitado():
 		return
 	auto_apuntar()
-	sprite.shot(ataque)
+	sprite.preparar_y_shot(ataque)
 
 #Esta funcion la llama la animacion cuando esta lista para lanzar poderes
 func set_magia_lista():
 	magia_lista = true;
 
 func shot(ataque: int = 1):
-	if personaje.muerto or personaje.hitbox.recibio_daño():
-		return;
-	if disparo_habilitado and magia_lista:
+	if es_capaz_disparar():
 		magia_lanzada = false;
 		auto_apuntar()
-		var laser = pre_laser.instantiate()
-		get_tree().get_nodes_in_group("nivel")[0].add_child(laser)
-		var origen_disparo = obtener_origen_disparo(sprite.direccion.obtener_angulo())
-		seleccionar_tipo_laser(laser);
-		laser.global_position = origen_disparo.global_position
-		dar_direccion(laser,origen_disparo);
-		disparo_habilitado = false
-		await get_tree().create_timer(0.0 if ataque==1 else 0.5).timeout
-		disparo_habilitado = true
-	
+		var laser = crear_laser()
+		posicionar(laser)
+		seleccionar_tipo(laser);
+		iniciar_recarga(ataque)
+
+func es_capaz_disparar():
+	return disparo_habilitado and magia_lista and not esta_incapacitado()
+
+func crear_laser() -> Node2D:
+	var laser = pre_laser.instantiate()
+	get_tree().get_first_node_in_group("nivel").add_child(laser)
+	return laser;
+
+func posicionar(laser):
+	var origen_disparo = obtener_origen_disparo(sprite.direccion.obtener_angulo())
+	laser.global_position = origen_disparo.global_position
+	dar_direccion(laser,origen_disparo);
+		
+
+func iniciar_recarga(ataque:int):
+	disparo_habilitado = false
+	await get_tree().create_timer(0.0 if ataque==1 else 0.5).timeout
+	disparo_habilitado = true
+
+func esta_incapacitado():
+	return personaje.muerto or personaje.hitbox.recibio_daño()
+
 func set_magia_lanzada():
 	magia_lanzada = true;
 
 func detener_shot():
-	if not (personaje.muerto or personaje.hitbox.recibio_daño()):
-		sprite.detener_shot();
+	if not esta_incapacitado():
+		sprite.detener_animacion();
 		magia_lista = false;
 
 var puntos_disparo = {}
@@ -76,7 +94,7 @@ func dar_direccion(laser,origen_disparo):
 	else:
 		laser.rotation = deg_to_rad(personaje.auto_apuntado);
 
-func seleccionar_tipo_laser(laser):
+func seleccionar_tipo(laser):
 	if personaje.is_in_group("heroe"):
 		laser.add_to_group("laser_p")
 	else:
