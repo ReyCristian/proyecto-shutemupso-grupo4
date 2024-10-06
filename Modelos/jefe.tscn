@@ -849,6 +849,9 @@ size = Vector2(289, 207)
 position = Vector2(236, 56)
 script = ExtResource("1_lv7bj")
 
+[node name="laser_fase2_timer" type="Timer" parent="."]
+wait_time = 2.0
+
 [node name="inicia_pelea" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0, -67)
 rotation = 1.5708
@@ -958,12 +961,13 @@ script = ExtResource("8_brxcu")
 wait_time = 5.0
 
 [node name="proxima_posicion" type="Marker2D" parent="jefe_hud/Area_desplazamiento"]
-position = Vector2(-4, -100)
+position = Vector2(-3, -103)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="jefe_hud/Area_desplazamiento"]
 visible = false
 shape = SubResource("RectangleShape2D_kmadp")
 
+[connection signal="timeout" from="laser_fase2_timer" to="." method="_dispara_laser_fase2"]
 [connection signal="screen_entered" from="inicia_pelea" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="fin_pelea" to="." method="_cuando_termina_pelea"]
 [connection signal="screen_entered" from="mostrar_barra_vida" to="jefe_hud/vida" method="_on_visible_on_screen_notifier_2d_screen_entered"]

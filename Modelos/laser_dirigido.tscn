@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://i35pe0n35rjw"]
+
+[ext_resource type="Script" path="res://Modelos/laser_dirigido.gd" id="1_5rdxt"]
+[ext_resource type="PackedScene" uid="uid://dduqxbbxae6nt" path="res://Modelos/laser.tscn" id="2_xgkoi"]
+[ext_resource type="Texture2D" uid="uid://cbn284ubmjsfb" path="res://Recursos/laser azul.png" id="3_4gq1p"]
+
+[sub_resource type="Curve2D" id="Curve2D_rbp4s"]
+_data = {
+"points": PackedVector2Array(-0.469127, -48.4072, 0, 50, 0, 0, 30, 0, -30, 0, -50, 50, 0, 40, -1.6811, -40.6024, -100, 0)
+}
+point_count = 3
+
+[node name="laser_dirigido" type="Path2D" groups=["liberar_al_morir"]]
+curve = SubResource("Curve2D_rbp4s")
+script = ExtResource("1_5rdxt")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="."]
+rotation = 1.5708
+loop = false
+
+[node name="Laser" parent="PathFollow2D" instance=ExtResource("2_xgkoi")]
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+
+[node name="marcador_a_seguir" type="PathFollow2D" parent="."]
+modulate = Color(0, 0, 1, 0.541176)
+position = Vector2(-100, 0)
+rotation = -1.5708
+progress = 166.925
+loop = false
+
+[node name="LaserAzul" type="Sprite2D" parent="marcador_a_seguir"]
+rotation = 1.5708
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_4gq1p")
+offset = Vector2(-100, 0)
+
+[node name="LaserAzul2" type="Sprite2D" parent="marcador_a_seguir"]
+rotation = -1.5708
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_4gq1p")
+offset = Vector2(-100, 0)
+
+[node name="LaserAzul3" type="Sprite2D" parent="marcador_a_seguir"]
+rotation = 3.14159
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_4gq1p")
+offset = Vector2(-100, 0)
+
+[node name="LaserAzul4" type="Sprite2D" parent="marcador_a_seguir"]
+scale = Vector2(0.04, 0.04)
+texture = ExtResource("3_4gq1p")
+offset = Vector2(-100, 0)

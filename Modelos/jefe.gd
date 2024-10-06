@@ -8,16 +8,16 @@ var fase = 1;
 
 var vida = 10;
 var fase2 = Callable(self,"_cuando_barra_vida_cargada")
+var heroe
 
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	auto_movimiento = Vector2.UP/4;
 	velocidad = 100;
 	$jefe_hud/Area_desplazamiento/Timer.start()
-	var heroe = get_tree().get_first_node_in_group("principal").obtener_heroe()
+	heroe = get_tree().get_first_node_in_group("principal").obtener_heroe()
 	$Asiento.objetivo = heroe;
 	$inicia_pelea.queue_free()
 	$mostrar_barra_vida.queue_free()
-	print(heroe.global_position)
 	#$Asiento/personaje/Sprite2D.reproducir("casteo_magia")
 	
 	
@@ -69,6 +69,7 @@ func morir():
 func _cuando_barra_vida_cargada():
 	$fases.play("fase 2");
 	fase = 2;
+	$laser_fase2_timer.start()
 	$jefe_hud/vida.listo.disconnect(fase2)
 	$jefe_hud/Area_desplazamiento/Timer.start()
 
@@ -82,3 +83,13 @@ func _cuando_termina_pelea() -> void:
 	terminar_nivel.global_position = Vector2(241,112)
 	queue_free()
 	pass
+
+
+func _dispara_laser_fase2() -> void:
+	if heroe!=null:
+		var laser_dirigido = preload("res://Modelos/laser_dirigido.tscn").instantiate()
+		get_parent().add_child(laser_dirigido)
+		laser_dirigido.seleccionar_laser(2)
+		laser_dirigido.global_position = global_position
+		laser_dirigido.marcar_camino(heroe.global_position)
+	pass 
