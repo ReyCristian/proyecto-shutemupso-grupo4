@@ -51,7 +51,7 @@ func _on_listo_pressed() -> void:
 	
 func detener():
 	$Intense.stream_paused = true;
-	$ColorRect/listo.visible = false;
+	#$ColorRect/listo.visible = false;
 	
 func ver_pantalla_derrota(puntaje,referencia):
 	mostrar_boton_reiniciar()

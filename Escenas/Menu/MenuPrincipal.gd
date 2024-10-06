@@ -36,3 +36,9 @@ func _on_continuar_pressed() -> void:
 func _on_creditos_pressed() -> void:
 	var creditos = preload("res://Escenas/creditos 1.tscn").instantiate();
 	get_tree().current_scene.add_child(creditos);
+	creditos.connect("tree_exited",Callable(self,"_al_final_creditos"))
+	$"../../EnchantedFestival".stream_paused = true
+
+func _al_final_creditos():
+	$"../../EnchantedFestival".stream_paused = false
+	

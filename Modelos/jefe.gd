@@ -10,6 +10,8 @@ var vida = 10;
 var fase2 = Callable(self,"_cuando_barra_vida_cargada")
 var heroe
 
+signal preparando_batalla;
+
 func _on_visible_on_screen_notifier_2d_screen_entered() -> void:
 	auto_movimiento = Vector2.UP/4;
 	velocidad = 100;
@@ -64,6 +66,7 @@ func recibio_daño():
 
 func morir():
 	velocidad = 0
+	$laser_fase2_timer.stop()
 	pass
 
 func _cuando_barra_vida_cargada():
@@ -93,3 +96,8 @@ func _dispara_laser_fase2() -> void:
 		laser_dirigido.global_position = global_position
 		laser_dirigido.marcar_camino(heroe.global_position)
 	pass 
+
+
+func _cuando_prepara_barra_vida() -> void:
+	emit_signal("preparando_batalla")
+	pass

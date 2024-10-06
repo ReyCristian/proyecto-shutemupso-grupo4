@@ -6,6 +6,8 @@ extends Node2D
 func dar_golpe(body: Node2D = null) -> void:
 	if personaje.muerto or personaje.hitbox.recibio_daño():
 		return;
+	if personaje.is_in_group("demo"):
+		$sonido_espada.stream_paused = true
 	if body!=null:
 		sprite.direccion.poner_direccion(body.global_position - global_position)
 	if personaje.tiene_espada:

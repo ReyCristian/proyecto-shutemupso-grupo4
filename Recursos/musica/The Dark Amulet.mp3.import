@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://16di0q78twnf"
+path="res://.godot/imported/The Dark Amulet.mp3-bfd35d3a9305b01acb3a5788ef54ccde.mp3str"
+
+[deps]
+
+source_file="res://Recursos/musica/The Dark Amulet.mp3"
+dest_files=["res://.godot/imported/The Dark Amulet.mp3-bfd35d3a9305b01acb3a5788ef54ccde.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

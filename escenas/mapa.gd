@@ -18,4 +18,9 @@ func detener():
 	Fin_del_mapa = 1
 	for fondo in get_tree().get_nodes_in_group("parallax"):
 		fondo.velocidad = 0;
-	
+
+
+func _on_jefe_preparando_batalla() -> void:
+	$TheDarkAmulet.stop()
+	$BlackmoorColossusLoop.play()
+	pass

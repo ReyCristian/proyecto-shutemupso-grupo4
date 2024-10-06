@@ -1,13 +1,15 @@
-[gd_scene load_steps=60 format=3 uid="uid://bp3b1wcfik24s"]
+[gd_scene load_steps=62 format=3 uid="uid://bp3b1wcfik24s"]
 
 [ext_resource type="Script" path="res://Modelos/personaje.gd" id="1_k874c"]
 [ext_resource type="Script" path="res://Modelos/caminar.gd" id="2_7o8pl"]
+[ext_resource type="AudioStream" uid="uid://vfajrvu7xs3f" path="res://Recursos/musica/efectos/Sharp 2.wav" id="2_82vbn"]
 [ext_resource type="Script" path="res://Modelos/magia_personaje.gd" id="2_np3gv"]
 [ext_resource type="Texture2D" uid="uid://i8lpuhupvb5g" path="res://Recursos/personajes/Orc-Peon-Cyan.png" id="2_v6eds"]
 [ext_resource type="Script" path="res://Modelos/espada_personaje.gd" id="2_yly7c"]
 [ext_resource type="Script" path="res://Modelos/skins.gd" id="3_c85e1"]
 [ext_resource type="Script" path="res://Modelos/direccion.gd" id="3_yhpdf"]
 [ext_resource type="Script" path="res://Modelos/animacion.gd" id="4_644rf"]
+[ext_resource type="AudioStream" uid="uid://b70e2siha4ga3" path="res://Recursos/musica/efectos/32.wav" id="5_77s0p"]
 [ext_resource type="Script" path="res://Modelos/hitbox_personaje.gd" id="8_tnnrs"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nwevv"]
@@ -210,6 +212,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sonido_muerte:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("espada/sonido_espada:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_053ly"]
@@ -429,6 +455,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("espada/sonido_espada:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_ln8w4"]
 resource_name = "golpe"
@@ -535,7 +573,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_0q0pd"]
 resource_name = "muerte"
 length = 1.8
-step = 0.2
+step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -585,6 +623,18 @@ tracks/3/keys = {
 "args": [],
 "method": &"_cuando_completa_animacion_muerte"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sonido_muerte:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_8urvy"]
@@ -1091,11 +1141,22 @@ height = 12.0
 script = ExtResource("1_k874c")
 skin = 19
 
+[node name="sonido_muerte" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_82vbn")
+volume_db = -10.0
+bus = &"Efectos"
+
 [node name="Caminar" type="Node2D" parent="."]
 script = ExtResource("2_7o8pl")
 
 [node name="espada" type="Node2D" parent="."]
 script = ExtResource("2_yly7c")
+
+[node name="sonido_espada" type="AudioStreamPlayer" parent="espada"]
+stream = ExtResource("5_77s0p")
+volume_db = -30.0
+pitch_scale = 2.0
+bus = &"Efectos"
 
 [node name="hostilidad" type="Area2D" parent="espada"]
 visible = false

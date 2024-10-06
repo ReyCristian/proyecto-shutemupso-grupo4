@@ -28,8 +28,8 @@ func shot(ataque: int = 1):
 	if es_capaz_disparar():
 		auto_apuntar()
 		var laser = crear_laser()
-		posicionar(laser)
 		seleccionar_tipo(laser);
+		posicionar(laser)
 		iniciar_recarga(ataque)
 
 func es_capaz_disparar():
@@ -37,10 +37,10 @@ func es_capaz_disparar():
 
 func crear_laser() -> Node2D:
 	var laser = pre_laser.instantiate()
-	get_tree().get_first_node_in_group("nivel").add_child(laser)
 	return laser;
 
 func posicionar(laser):
+	get_tree().get_first_node_in_group("nivel").add_child(laser)
 	var origen_disparo = obtener_origen_disparo(sprite.direccion.obtener_angulo())
 	laser.global_position = origen_disparo.global_position
 	dar_direccion(laser,origen_disparo);
@@ -94,3 +94,5 @@ func seleccionar_tipo(laser):
 		laser.add_to_group("laser_p")
 	else:
 		laser.seleccionar_laser(2);
+	if personaje.is_in_group("demo"):
+		laser.add_to_group("demo")

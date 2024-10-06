@@ -13,6 +13,7 @@ skin = 3
 
 [node name="AudioListener2D" type="AudioListener2D" parent="heroe"]
 position = Vector2(-256, -218)
+current = true
 
 [node name="Control" type="Node" parent="heroe" groups=["liberar_al_final"]]
 script = ExtResource("2_811h6")

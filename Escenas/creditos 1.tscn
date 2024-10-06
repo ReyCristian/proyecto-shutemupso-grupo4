@@ -1,5 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://6qhf3rloqbw"]
+[gd_scene load_steps=10 format=3 uid="uid://6qhf3rloqbw"]
 
+[ext_resource type="AudioStream" uid="uid://c5ps58inse1vi" path="res://Recursos/musica/Pleasant Creek Loop.wav" id="1_fp5r5"]
 [ext_resource type="Texture2D" uid="uid://dnuoe83axcev8" path="res://Recursos/Creditos/Creditos 01.png" id="2_yc8ts"]
 [ext_resource type="Texture2D" uid="uid://dk8qww5clgsu4" path="res://Recursos/Creditos/Creditos 02.png" id="3_ajc0w"]
 [ext_resource type="Texture2D" uid="uid://bpxit6ob8yo8n" path="res://Recursos/Creditos/Creditos 03.png" id="4_tec0v"]
@@ -71,6 +72,11 @@ _data = {
 [node name="Creditos1" type="CanvasLayer"]
 process_mode = 3
 layer = 102
+
+[node name="PleasantCreekLoop" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_fp5r5")
+autoplay = true
+bus = &"Musica"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15

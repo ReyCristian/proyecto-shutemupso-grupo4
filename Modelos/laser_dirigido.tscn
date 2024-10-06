@@ -10,7 +10,7 @@ _data = {
 }
 point_count = 3
 
-[node name="laser_dirigido" type="Path2D" groups=["liberar_al_morir"]]
+[node name="laser_dirigido" type="Path2D" groups=["liberar_al_final", "liberar_al_morir"]]
 curve = SubResource("Curve2D_rbp4s")
 script = ExtResource("1_5rdxt")
 

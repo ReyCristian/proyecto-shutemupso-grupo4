@@ -2,7 +2,9 @@ extends Node2D
 
 func _ready() -> void:
 	$AnimationPlayer.play("laser")
-	$AnimationPlayer2.play("recorte") 
+	$AnimationPlayer2.play("recorte")
+	if not is_in_group("demo"):
+		$Sonido.play()
 	rotar_fase_laser();
 
 func _physics_process(delta: float) -> void:
@@ -58,4 +60,5 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 func liberar_camino():
 	var camino = get_parent().get_parent()
 	if camino.is_in_group("liberar_al_morir"):
+		camino.get_parent().remove_child(camino)
 		camino.queue_free()

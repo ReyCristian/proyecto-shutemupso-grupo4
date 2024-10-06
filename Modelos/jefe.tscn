@@ -970,6 +970,7 @@ shape = SubResource("RectangleShape2D_kmadp")
 [connection signal="timeout" from="laser_fase2_timer" to="." method="_dispara_laser_fase2"]
 [connection signal="screen_entered" from="inicia_pelea" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="screen_exited" from="fin_pelea" to="." method="_cuando_termina_pelea"]
+[connection signal="screen_entered" from="mostrar_barra_vida" to="." method="_cuando_prepara_barra_vida"]
 [connection signal="screen_entered" from="mostrar_barra_vida" to="jefe_hud/vida" method="_on_visible_on_screen_notifier_2d_screen_entered"]
 [connection signal="timeout" from="Asiento/Enemigo/Timer" to="Asiento" method="_on_timer_timeout"]
 [connection signal="area_entered" from="CollisionShape2D/hitbox" to="." method="_cuando_area_entra_hitbox"]
