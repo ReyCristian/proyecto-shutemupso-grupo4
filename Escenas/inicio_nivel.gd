@@ -40,7 +40,6 @@ func mostrar_tutorial_controles():
 	
 
 func _on_listo_pressed() -> void:
-	print(nivel)
 	if reiniciar:
 		get_tree().get_nodes_in_group("principal")[0].reiniciar_nivel()
 	if nivel == 0:
@@ -54,10 +53,10 @@ func detener():
 	#$ColorRect/listo.visible = false;
 	
 func ver_pantalla_derrota(puntaje,referencia):
-	mostrar_boton_reiniciar()
+	ver_pantalla_puntaje(puntaje,referencia,nivel);
 	$ColorRect/personaje.hitbox.morir();
 	$ColorRect/personaje.sprite.demo_mode.timer.paused = true;
-	ver_pantalla_puntaje(puntaje,referencia,nivel);
+	mostrar_boton_reiniciar()
 	
 func mostrar_boton_reiniciar():
 	reiniciar = true;
@@ -70,8 +69,10 @@ func ver_pantalla_puntaje(puntaje,referencia,_nivel):
 	get_tree().paused = true;
 	$ColorRect/Tutorial_controles/suelo_para_disparos.add_to_group("nivel")
 	visible = true;
+	mostrar_boton_listo()
 	$Intense.stream_paused = false;	
 	reset_puntajes()
+	$ColorRect/personaje.sprite.detener_animacion()
 	$ColorRect/Tutorial_controles.visible = false;
 	$ColorRect/puntajes.visible = true;
 	var total=0

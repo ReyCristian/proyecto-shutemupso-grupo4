@@ -18,6 +18,7 @@ func lanzar(_personaje):
 		#personaje.position = get_viewport().get_visible_rect().size / 2
 		sprite.scale = Vector2(10,10);
 	personaje.en_demo = true;
+	personaje.get_node("espada/sonido_espada").volume_db = -INF
 	timer = Timer.new();
 	sprite.add_child(timer);
 	timer.wait_time = 3.0 ;

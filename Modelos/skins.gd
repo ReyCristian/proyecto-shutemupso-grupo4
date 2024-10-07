@@ -47,6 +47,8 @@ func golpe_preparado() -> bool:
 	return reproductor_animaciones.current_animation in ["golpe","preparar_espada"];
 	
 func dar_golpe_espada():
+	if personaje.is_in_group("demo"):
+		$"../espada/sonido_espada".volume_db = -INF
 	reproducir("espada");
 
 func preparar_y_shot(ataque: int = ListasAtaques.ataque.LASER) -> void:
@@ -59,8 +61,11 @@ func preparar_y_shot(ataque: int = ListasAtaques.ataque.LASER) -> void:
 func esta_preparando_ataque() -> bool:
 	return reproductor_animaciones.current_animation in ["magia","casteo_magia"];
 
-func esta_atacando() -> bool:
+func esta_lanzando_magia() -> bool:
 	return personaje.magia.magia_lista
+
+func esta_golpeando() -> bool:
+	return reproductor_animaciones.current_animation in ["espada","golpe"];
 
 func detener_animacion() -> void:
 	reproducir("RESET")

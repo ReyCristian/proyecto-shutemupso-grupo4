@@ -10,7 +10,7 @@ func _process(_delta: float) -> void:
 		return;
 	if sprite.esta_ocupado() and not sprite.esta_preparando_ataque():
 		return;
-	if sprite.esta_atacando():
+	if sprite.esta_lanzando_magia():
 		return;
 	var direccion = (personaje.direccion + personaje.auto_movimiento)
 	if direccion == Vector2.ZERO:
