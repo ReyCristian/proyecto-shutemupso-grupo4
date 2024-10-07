@@ -448,6 +448,7 @@ position = Vector2(137, -47)
 
 [node name="Lanza_magia5" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(104, -162)
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia8" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(345, -337)
@@ -457,6 +458,7 @@ position = Vector2(86, -313)
 
 [node name="Lanza_magia10" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(311, -313)
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia11" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(105, -361)
@@ -469,12 +471,15 @@ position = Vector2(278, -514)
 
 [node name="Lanza_magia14" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(361, -514)
+direccion = Vector2(-1, 1)
 
 [node name="Lanza_magia15" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(120, -421)
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia17" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(124, -497)
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia18" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(328, -430)
@@ -483,23 +488,28 @@ position = Vector2(328, -430)
 position = Vector2(231, -1168)
 ataque = 1
 espera_disparo = 3.0
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia23" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(88, -1123)
 espera_disparo = 1.0
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia20" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(248, -1168)
 ataque = 1
 espera_disparo = 3.0
+direccion = Vector2(-1, 1)
 
 [node name="Lanza_magia24" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(391, -1122)
 espera_disparo = 1.0
+direccion = Vector2(-1, 1)
 
 [node name="Lanza_magia25" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(101, -1408)
 espera_disparo = 1.0
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia26" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(55, -1470)
@@ -513,6 +523,7 @@ position = Vector2(425, -1535)
 [node name="Lanza_magia28" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(436, -1659)
 ataque = 1
+direccion = Vector2(-1, 0)
 
 [node name="Lanza_magia31" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(344, -1854)
@@ -524,10 +535,12 @@ position = Vector2(409, -1902)
 [node name="Lanza_magia34" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(391, -2023)
 ataque = 1
+direccion = Vector2(-1, 0)
 
 [node name="Lanza_magia35" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(88, -2038)
 ataque = 1
+direccion = Vector2(1, 0)
 
 [node name="Lanza_magia32" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(439, -1821)
@@ -543,18 +556,21 @@ espera_disparo = 1.0
 
 [node name="Lanza_magia16" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(393, -468)
+direccion = Vector2(-1, 1)
 
 [node name="Lanza_magia6" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(167, -150)
 
 [node name="Lanza_magia7" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(167, -265)
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia3" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(200, -73)
 
 [node name="Lanza_magia4" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(345, -76)
+direccion = Vector2(-1, 1)
 
 [node name="Lanza_magia29" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(135, -2272)
@@ -568,11 +584,13 @@ espera_disparo = 1.0
 position = Vector2(327, -2272)
 ataque = 1
 espera_disparo = 3.0
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia38" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(153, -2272)
 ataque = 1
 espera_disparo = 3.0
+direccion = Vector2(-1, 1)
 
 [node name="Lanza_magia39" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(264, -2400)
@@ -583,6 +601,7 @@ espera_disparo = 3.0
 position = Vector2(375, -2394)
 ataque = 1
 espera_disparo = 3.0
+direccion = Vector2(-1, 1)
 
 [node name="Lanza_magia41" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(216, -2400)
@@ -593,14 +612,17 @@ espera_disparo = 3.0
 position = Vector2(102, -2395)
 ataque = 1
 espera_disparo = 3.0
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia43" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(247, -2400)
 espera_disparo = 1.0
+direccion = Vector2(1, 1)
 
 [node name="Lanza_magia44" parent="MAGOS" instance=ExtResource("9_ib4i2")]
 position = Vector2(232, -2400)
 espera_disparo = 1.0
+direccion = Vector2(-1, 1)
 
 [node name="SLIMES" type="Node2D" parent="."]
 y_sort_enabled = true

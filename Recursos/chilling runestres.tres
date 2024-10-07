@@ -469,7 +469,6 @@ texture = ExtResource("1_yl6nt")
 15:6/6 = 6
 15:6/6/modulate = Color(0.913725, 0.854902, 1, 1)
 15:6/6/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 19.8874, 8.22012, 17.9428, 17.4125, 0.618719, 23.7765, -15.8215, 17.7661, -19.7106, 5.56847)
-15:6/6/physics_layer_0/polygon_0/one_way = true
 12:2/size_in_atlas = Vector2i(1, 2)
 12:2/next_alternative_id = 2
 12:2/0 = 0

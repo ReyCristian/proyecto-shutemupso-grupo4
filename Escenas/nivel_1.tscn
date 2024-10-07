@@ -869,6 +869,7 @@ position = Vector2(292, 60)
 
 [node name="slime_sube" parent="." instance=ExtResource("9_io8xs")]
 position = Vector2(283, 244)
+
 [node name="Advertencia" parent="." instance=ExtResource("10_lqo2l")]
 z_index = 4
 position = Vector2(285, 120)
