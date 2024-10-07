@@ -9,7 +9,6 @@ metadata/_edit_group_ = true
 
 [node name="personaje" parent="." groups=["enemigo"] instance=ExtResource("2_qtjwf")]
 process_mode = 4
-visible = false
 position = Vector2(-1, 0)
 direccion = Vector2(0, -1)
 tiene_espada = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dx4378fg2vya0"]
+[gd_scene load_steps=13 format=3 uid="uid://dx4378fg2vya0"]
 
 [ext_resource type="PackedScene" uid="uid://cwqohrojyjh0e" path="res://Escenas/mapa.tscn" id="1_2r6gf"]
 [ext_resource type="Script" path="res://Escenas/mapa.gd" id="1_ay07l"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://djscptpq6vn3o" path="res://Herramientas/cinematica_fin_nivel.tscn" id="8_wdq68"]
 [ext_resource type="PackedScene" uid="uid://damr361d0g16v" path="res://HUD.tscn" id="9_7m18o"]
 [ext_resource type="PackedScene" uid="uid://b6x52ibsxqpxd" path="res://Modelos/slime_sube.tscn" id="9_io8xs"]
+[ext_resource type="PackedScene" uid="uid://chlsyhasseknw" path="res://advertencia.tscn" id="10_lqo2l"]
 
 [sub_resource type="Curve2D" id="Curve2D_vt127"]
 _data = {
@@ -868,3 +869,6 @@ position = Vector2(292, 60)
 
 [node name="slime_sube" parent="." instance=ExtResource("9_io8xs")]
 position = Vector2(283, 244)
+[node name="Advertencia" parent="." instance=ExtResource("10_lqo2l")]
+z_index = 4
+position = Vector2(285, 120)
