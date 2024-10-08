@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="2_qtjwf"]
 
 [node name="slime_sube" type="Node2D" groups=["liberar_al_morir"]]
+y_sort_enabled = true
 script = ExtResource("1_0uamt")
 metadata/_edit_group_ = true
 
@@ -12,8 +13,8 @@ process_mode = 4
 visible = false
 position = Vector2(-1, 0)
 direccion = Vector2(0, -1)
-tiene_espada = false
 isCorriendo = true
+tiene_espada = false
 vida = 1
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]

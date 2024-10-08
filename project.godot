@@ -10,13 +10,13 @@ config_version=5
 
 [application]
 
-config/name="proyecto-shutemupso-grupo4"
+config/name="Hijaus"
 run/main_scene="res://Escenas/Principal.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-boot_splash/bg_color=Color(0.505882, 0.0784314, 0.160784, 1)
-boot_splash/image="res://Recursos/UPSO-isologotipos-06.png"
+boot_splash/bg_color=Color(0.207843, 0.364706, 0.407843, 1)
+boot_splash/image="res://Recursos/HIJAUS-06-06.png"
 config/icon="res://icon.svg"
-boot_splash/minimum_display_time=1000
+boot_splash/minimum_display_time=6000
 
 [autoload]
 

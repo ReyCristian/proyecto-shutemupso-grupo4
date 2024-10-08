@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Escenas/ataque_enemigo.gd" id="2_30a3r"]
 
 [node name="Lanza_magia" type="Node2D" groups=["liberar_al_morir"]]
+y_sort_enabled = true
 script = ExtResource("2_30a3r")
 
 [node name="Enemigo" parent="." groups=["enemigo"] instance=ExtResource("1_wayak")]

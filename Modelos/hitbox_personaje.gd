@@ -66,6 +66,8 @@ func deshabilitar_colisiones_enemigo():
 func _cuando_salga_de_la_pantalla() -> void:
 	if personaje.is_in_group("demo") or personaje.en_demo:
 		return
+	if personaje.caminar.esta_en_camino_fijo():
+		return
 	if personaje.is_in_group("heroe"):
 		personaje.hitbox.morir();
 		return

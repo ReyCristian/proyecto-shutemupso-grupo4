@@ -41,8 +41,8 @@ collision_layer = 0
 collision_mask = 0
 up_direction = Vector2(0, 1)
 direccion = Vector2(0, 1)
-en_demo = true
 esperando = true
+en_demo = true
 skin = 3
 
 [node name="listo" type="Button" parent="ColorRect"]
@@ -76,6 +76,8 @@ collision_layer = 0
 collision_mask = 0
 direccion = Vector2(0, 1)
 skin = 3
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="ColorRect/Tutorial_controles/Path2D/PathFollow2D/personaje2"]
 
 [node name="personaje3" parent="ColorRect/Tutorial_controles" groups=["demo", "heroe"] instance=ExtResource("1_q06pq")]
 position = Vector2(340, 134)

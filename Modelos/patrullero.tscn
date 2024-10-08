@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dgecw6xfucsoi"]
+[gd_scene load_steps=4 format=3 uid="uid://dgecw6xfucsoi"]
 
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="1_2krl1"]
+[ext_resource type="Script" path="res://Modelos/patrullero.gd" id="1_ln25l"]
 
 [sub_resource type="Curve2D" id="Curve2D_p3w8d"]
 _data = {
@@ -9,9 +10,12 @@ _data = {
 point_count = 3
 
 [node name="Patrullero" type="Path2D" groups=["liberar_al_morir"]]
+y_sort_enabled = true
 curve = SubResource("Curve2D_p3w8d")
+script = ExtResource("1_ln25l")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="."]
+y_sort_enabled = true
 position = Vector2(-100, 0)
 
 [node name="Enemigo" parent="PathFollow2D" groups=["enemigo"] instance=ExtResource("1_2krl1")]
@@ -19,6 +23,4 @@ position = Vector2(-1, 0)
 direccion = Vector2(1, 0)
 isCorriendo = true
 skin = 9
-vida = 1
-
-[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="PathFollow2D/Enemigo"]
+vida = 2

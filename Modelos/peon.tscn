@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://bp3b1wcfik24s" path="res://Modelos/personaje.tscn" id="2_jrv7s"]
 
 [node name="peon" type="Node2D" groups=["liberar_al_morir"]]
+y_sort_enabled = true
 script = ExtResource("1_lasyx")
 metadata/_edit_group_ = true
 
