@@ -68,7 +68,6 @@ layout_mode = 2
 text = "Creditos"
 
 [node name="Salir" type="Button" parent="Menu/Principal"]
-visible = false
 layout_mode = 2
 text = "Salir"
 

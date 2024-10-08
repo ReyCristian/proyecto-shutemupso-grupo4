@@ -864,15 +864,12 @@ position = Vector2(-26, -27)
 direccion = Vector2(1, 1)
 
 [node name="peon" parent="Peones" instance=ExtResource("7_5pva7")]
-y_sort_enabled = true
 position = Vector2(305, -33)
 
 [node name="peon2" parent="Peones" instance=ExtResource("7_5pva7")]
-y_sort_enabled = true
 position = Vector2(140, -63)
 
 [node name="peon3" parent="Peones" instance=ExtResource("7_5pva7")]
-y_sort_enabled = true
 position = Vector2(235, -128)
 
 [node name="Slimes" type="Node2D" parent="."]
