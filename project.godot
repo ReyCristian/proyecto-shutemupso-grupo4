@@ -15,7 +15,7 @@ run/main_scene="res://Escenas/Principal.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.207843, 0.364706, 0.407843, 1)
 boot_splash/image="res://Recursos/HIJAUS-06-06.png"
-config/icon="res://icon.svg"
+config/icon="res://Recursos/Slime-icon.png"
 boot_splash/minimum_display_time=6000
 
 [autoload]
